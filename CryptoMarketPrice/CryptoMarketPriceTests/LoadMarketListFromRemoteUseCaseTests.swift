@@ -7,6 +7,11 @@
 
 import XCTest
 
+struct CryptoMarket {
+    let symbol: String
+    let future: Bool
+}
+
 final class HTTPClientSpy {
     typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
     
@@ -34,7 +39,7 @@ final class RemoteCryptoMarketLoader {
         case connectivity
     }
     
-    typealias LoadResult = Swift.Result<Void, Error>
+    typealias LoadResult = Swift.Result<[CryptoMarket], Error>
     
     private let url: URL
     private let client: HTTPClientSpy
@@ -152,6 +157,30 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         }
         
         client.complete(with: 200, data: Data("invalid data".utf8))
+        
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertNotNil(receivedError)
+    }
+    
+    func test_load_deliversErrorON200HTTPURLResponseWithEmptyData() {
+        let (sut, client) = makeSUT()
+        
+        let exp = expectation(description: "Wait load to complete")
+        var receivedError: Error?
+        sut.load() { result in
+            switch result {
+            case let .failure(error):
+                receivedError = error
+                break
+                
+            default:
+                XCTFail("Expect error, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.complete(with: 200, data: Data())
         
         wait(for: [exp], timeout: 1.0)
         XCTAssertNotNil(receivedError)
