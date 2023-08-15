@@ -8,23 +8,33 @@
 import XCTest
 
 final class HTTPClientSpy {
-    typealias GETResult = Error?
+    typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
     
     var requestURLs = [URL]()
-    var requestCompletions = [(GETResult) -> Void]()
+    var requestCompletions = [(Result) -> Void]()
     
-    func get(from url: URL, completion: @escaping (GETResult) -> Void) {
+    func get(from url: URL, completion: @escaping (Result) -> Void) {
         requestURLs.append(url)
         requestCompletions.append(completion)
     }
     
-    func completeWith(error: Error, at index: Int = 0) {
-        requestCompletions[index](error)
+    func complete(with error: Error, at index: Int = 0) {
+        requestCompletions[index](.failure(error))
+    }
+    
+    func complete(with statusCode: Int, data: Data, at index: Int = 0) {
+        let response = HTTPURLResponse(url: requestURLs[index], statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+        requestCompletions[index](.success((data, response)))
     }
 }
 
 final class RemoteCryptoMarketLoader {
-    typealias LoadResult = Error?
+    enum LoadError: Swift.Error {
+        case invalidData
+        case connectivity
+    }
+    
+    typealias LoadResult = Swift.Result<Void, Error>
     
     private let url: URL
     private let client: HTTPClientSpy
@@ -35,8 +45,14 @@ final class RemoteCryptoMarketLoader {
     }
     
     func load(completion: @escaping (LoadResult) -> Void) {
-        client.get(from: url) { error in
-            completion(error)
+        client.get(from: url) { result in
+            switch result {
+            case let .failure(error):
+                completion(.failure(error))
+                
+            case .success:
+                completion(.failure(LoadError.invalidData))
+            }
         }
     }
 }
@@ -73,16 +89,47 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         
         let exp = expectation(description: "Wait load to complete")
         var receivedError: Error?
-        sut.load() { error in
-            receivedError = error
+        sut.load() { result in
+            switch result {
+            case let .failure(error):
+                receivedError = error
+                break
+                
+            default:
+                XCTFail("Expect error, got \(result) instead")
+            }
             
             exp.fulfill()
         }
         
-        client.completeWith(error: NSError(domain: "any error", code: -1))
+        client.complete(with: NSError(domain: "any error", code: -1))
         
         wait(for: [exp], timeout: 1.0)
         
+        XCTAssertNotNil(receivedError)
+    }
+    
+    func test_load_deliversErrorNon200HTTPURLResponse() {
+        let (sut, client) = makeSUT()
+        
+        let exp = expectation(description: "Wait load to complete")
+        var receivedError: Error?
+        sut.load() { result in
+            switch result {
+            case let .failure(error):
+                receivedError = error
+                break
+                
+            default:
+                XCTFail("Expect error, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.complete(with: 199, data: Data())
+        
+        wait(for: [exp], timeout: 1.0)
         XCTAssertNotNil(receivedError)
     }
     
