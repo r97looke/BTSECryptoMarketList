@@ -8,14 +8,23 @@
 import XCTest
 
 final class HTTPClientSpy {
-    var requestURLs = [URL]()
+    typealias GETResult = Error?
     
-    func get(from url: URL) {
+    var requestURLs = [URL]()
+    var requestCompletions = [(GETResult) -> Void]()
+    
+    func get(from url: URL, completion: @escaping (GETResult) -> Void) {
         requestURLs.append(url)
+        requestCompletions.append(completion)
+    }
+    
+    func completeWith(error: Error, at index: Int = 0) {
+        requestCompletions[index](error)
     }
 }
 
 final class RemoteCryptoMarketLoader {
+    typealias LoadResult = Error?
     
     private let url: URL
     private let client: HTTPClientSpy
@@ -25,15 +34,17 @@ final class RemoteCryptoMarketLoader {
         self.client = client
     }
     
-    func load() {
-        client.get(from: url)
+    func load(completion: @escaping (LoadResult) -> Void) {
+        client.get(from: url) { error in
+            completion(error)
+        }
     }
 }
 
 final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotGetDataFromURL() {
-        let (_, client) = makeSUT(url: anyURL())
+        let (_, client) = makeSUT()
         
         XCTAssertEqual(client.requestURLs, [])
     }
@@ -42,17 +53,31 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         let url = anyURL()
         let (sut, client) = makeSUT(url: url)
         
-        sut.load()
+        sut.load() { _ in }
         
         XCTAssertEqual(client.requestURLs, [url])
     }
     
     func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
         
+        let exp = expectation(description: "Wait load to complete")
+        var receivedError: Error?
+        sut.load() { error in
+            receivedError = error
+            
+            exp.fulfill()
+        }
+        
+        client.completeWith(error: NSError(domain: "any error", code: -1))
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertNotNil(receivedError)
     }
     
     // MARK: Helpers
-    private func makeSUT(url: URL) -> (sut: RemoteCryptoMarketLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "http://any-url")!) -> (sut: RemoteCryptoMarketLoader, client: HTTPClientSpy) {
         let url = url
         let client = HTTPClientSpy()
         let sut = RemoteCryptoMarketLoader(url: url, client: client)
