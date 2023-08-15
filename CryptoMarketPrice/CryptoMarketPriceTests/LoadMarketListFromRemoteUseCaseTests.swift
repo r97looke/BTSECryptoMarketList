@@ -7,9 +7,37 @@
 
 import XCTest
 
-struct CryptoMarket {
+struct CryptoMarket: Equatable {
     let symbol: String
     let future: Bool
+}
+
+struct RemoteCryptoMarket: Decodable {
+    let symbol: String
+    let future: Bool
+}
+
+struct RemoteCyptoMarketResponse: Decodable {
+    let code: Int?
+    let data: [RemoteCryptoMarket]?
+}
+
+private extension Array where Element == CryptoMarket {
+    func toRemote() -> [RemoteCryptoMarket] {
+        return map{ RemoteCryptoMarket(
+            symbol: $0.symbol,
+            future: $0.future)
+        }
+    }
+}
+
+private extension Array where Element == RemoteCryptoMarket {
+    func toModel() -> [CryptoMarket] {
+        return map { CryptoMarket(
+            symbol: $0.symbol,
+            future: $0.future)
+        }
+    }
 }
 
 final class HTTPClientSpy {
@@ -55,8 +83,13 @@ final class RemoteCryptoMarketLoader {
             case let .failure(error):
                 completion(.failure(error))
                 
-            case .success:
-                completion(.failure(LoadError.invalidData))
+            case let .success((data, httpURLResponse)):
+                if httpURLResponse.statusCode == 200, !data.isEmpty, let remoteCryptoResponse = try? JSONDecoder().decode(RemoteCyptoMarketResponse.self, from: data), let remoteCryptoMarkets = remoteCryptoResponse.data, !remoteCryptoMarkets.isEmpty {
+                    completion(.success(remoteCryptoMarkets.toModel()))
+                }
+                else {
+                    completion(.failure(LoadError.invalidData))
+                }
             }
         }
     }
@@ -186,6 +219,29 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         XCTAssertNotNil(receivedError)
     }
     
+    func test_load_deliversItemsON200HTTPURLResponseWithValidData() {
+        let cryptoMarkets = testCryptoMarkets()
+        let (sut, client) = makeSUT()
+        
+        let exp = expectation(description: "Wait load to complete")
+        var receivedCryptoMarkets: [CryptoMarket]?
+        sut.load() { result in
+            switch result {
+            case let .success(resultCryptoMarkets):
+                receivedCryptoMarkets = resultCryptoMarkets
+                
+            default:
+                XCTFail("Expect success, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.complete(with: 200, data: makeCryptoMarketsJSON(cryptoMarkets: cryptoMarkets))
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(receivedCryptoMarkets, cryptoMarkets)
+    }
+    
     // MARK: Helpers
     private func makeSUT(url: URL = URL(string: "http://any-url")!) -> (sut: RemoteCryptoMarketLoader, client: HTTPClientSpy) {
         let url = url
@@ -193,6 +249,29 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         let sut = RemoteCryptoMarketLoader(url: url, client: client)
         
         return (sut, client)
+    }
+    
+    private func testCryptoMarket() -> CryptoMarket {
+        return CryptoMarket(symbol: "CYBER", future: false)
+    }
+    
+    private func testAnotherCryptoMarket() -> CryptoMarket {
+        return CryptoMarket(symbol: "BTC-PERP", future: true)
+    }
+    
+    private func testCryptoMarkets() -> [CryptoMarket] {
+        return [testCryptoMarket(), testAnotherCryptoMarket()]
+    }
+    
+    private func makeCryptoMarketsJSON(cryptoMarkets: [CryptoMarket]) -> Data {
+        var data = [[String : Any]]()
+        for cryptoMarket in cryptoMarkets {
+            data.append(["symbol" : cryptoMarket.symbol,
+                         "future" : cryptoMarket.future])
+        }
+        let JSON: [String: Any] = ["code" : 1,
+                                   "data" : data]
+        return try! JSONSerialization.data(withJSONObject: JSON)
     }
     
     private func anyURL() -> URL {
