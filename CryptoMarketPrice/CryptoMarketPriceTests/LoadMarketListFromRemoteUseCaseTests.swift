@@ -109,7 +109,7 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         XCTAssertNotNil(receivedError)
     }
     
-    func test_load_deliversErrorNon200HTTPURLResponse() {
+    func test_load_deliversErrorOnNon200HTTPURLResponse() {
         let (sut, client) = makeSUT()
         
         let exp = expectation(description: "Wait load to complete")
@@ -128,6 +128,30 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         }
         
         client.complete(with: 199, data: Data())
+        
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertNotNil(receivedError)
+    }
+    
+    func test_load_deliversErrorON200HTTPURLResponseWithInvalidData() {
+        let (sut, client) = makeSUT()
+        
+        let exp = expectation(description: "Wait load to complete")
+        var receivedError: Error?
+        sut.load() { result in
+            switch result {
+            case let .failure(error):
+                receivedError = error
+                break
+                
+            default:
+                XCTFail("Expect error, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.complete(with: 200, data: Data("invalid data".utf8))
         
         wait(for: [exp], timeout: 1.0)
         XCTAssertNotNil(receivedError)
