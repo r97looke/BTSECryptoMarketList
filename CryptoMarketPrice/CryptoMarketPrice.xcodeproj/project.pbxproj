@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		BBE5D0572A8C319C0065DC00 /* CryptoMarketPrice.docc in Sources */ = {isa = PBXBuildFile; fileRef = BBE5D0562A8C319C0065DC00 /* CryptoMarketPrice.docc */; };
 		BBE5D05D2A8C319C0065DC00 /* CryptoMarketPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5D0522A8C319C0065DC00 /* CryptoMarketPrice.framework */; };
-		BBE5D0622A8C319C0065DC00 /* CryptoMarketPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5D0612A8C319C0065DC00 /* CryptoMarketPriceTests.swift */; };
 		BBE5D0632A8C319C0065DC00 /* CryptoMarketPrice.h in Headers */ = {isa = PBXBuildFile; fileRef = BBE5D0552A8C319C0065DC00 /* CryptoMarketPrice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBE5D06D2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5D06C2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +28,7 @@
 		BBE5D0552A8C319C0065DC00 /* CryptoMarketPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoMarketPrice.h; sourceTree = "<group>"; };
 		BBE5D0562A8C319C0065DC00 /* CryptoMarketPrice.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CryptoMarketPrice.docc; sourceTree = "<group>"; };
 		BBE5D05C2A8C319C0065DC00 /* CryptoMarketPriceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoMarketPriceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBE5D0612A8C319C0065DC00 /* CryptoMarketPriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceTests.swift; sourceTree = "<group>"; };
+		BBE5D06C2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMarketListFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 		BBE5D0602A8C319C0065DC00 /* CryptoMarketPriceTests */ = {
 			isa = PBXGroup;
 			children = (
-				BBE5D0612A8C319C0065DC00 /* CryptoMarketPriceTests.swift */,
+				BBE5D06C2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift */,
 			);
 			path = CryptoMarketPriceTests;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE5D0622A8C319C0065DC00 /* CryptoMarketPriceTests.swift in Sources */,
+				BBE5D06D2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
