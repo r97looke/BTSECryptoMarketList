@@ -58,6 +58,16 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(client.requestURLs, [url])
     }
     
+    func test_load_twice_requestsDataFromURLTwice() {
+        let url = anyURL()
+        let (sut, client) = makeSUT(url: url)
+        
+        sut.load() { _ in }
+        sut.load() { _ in }
+        
+        XCTAssertEqual(client.requestURLs, [url, url])
+    }
+    
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
