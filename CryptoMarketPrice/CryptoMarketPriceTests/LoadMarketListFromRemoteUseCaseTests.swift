@@ -33,23 +33,33 @@ final class RemoteCryptoMarketLoader {
 final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotGetDataFromURL() {
-        let client = HTTPClientSpy()
-        let _ = RemoteCryptoMarketLoader(url:anyURL(), client: client)
+        let (_, client) = makeSUT(url: anyURL())
         
         XCTAssertEqual(client.requestURLs, [])
     }
     
     func test_load_requestsDataFromURL() {
         let url = anyURL()
-        let client = HTTPClientSpy()
-        let sut = RemoteCryptoMarketLoader(url: url, client: client)
+        let (sut, client) = makeSUT(url: url)
         
         sut.load()
         
         XCTAssertEqual(client.requestURLs, [url])
     }
     
+    func test_load_deliversErrorOnClientError() {
+        
+    }
+    
     // MARK: Helpers
+    private func makeSUT(url: URL) -> (sut: RemoteCryptoMarketLoader, client: HTTPClientSpy) {
+        let url = url
+        let client = HTTPClientSpy()
+        let sut = RemoteCryptoMarketLoader(url: url, client: client)
+        
+        return (sut, client)
+    }
+    
     private func anyURL() -> URL {
         return URL(string: "http://www.any-url")!
     }
