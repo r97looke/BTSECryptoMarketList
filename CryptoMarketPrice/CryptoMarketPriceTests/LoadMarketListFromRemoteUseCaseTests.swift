@@ -7,16 +7,26 @@
 
 import XCTest
 
-class HTTPClientSpy {
-    var getCallCount = 0
+final class HTTPClientSpy {
+    var requestURLs = [URL]()
+    
+    func get(from url: URL) {
+        requestURLs.append(url)
+    }
 }
 
-class RemoteCryptoMarketLoader {
+final class RemoteCryptoMarketLoader {
     
-    let client: HTTPClientSpy
+    private let url: URL
+    private let client: HTTPClientSpy
     
-    init(client: HTTPClientSpy) {
+    init(url: URL, client: HTTPClientSpy) {
+        self.url = url
         self.client = client
+    }
+    
+    func load() {
+        client.get(from: url)
     }
 }
 
@@ -24,9 +34,24 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotGetDataFromURL() {
         let client = HTTPClientSpy()
-        let _ = RemoteCryptoMarketLoader(client: client)
+        let _ = RemoteCryptoMarketLoader(url:anyURL(), client: client)
         
-        XCTAssertEqual(client.getCallCount, 0)
+        XCTAssertEqual(client.requestURLs, [])
+    }
+    
+    func test_load_requestsDataFromURL() {
+        let url = anyURL()
+        let client = HTTPClientSpy()
+        let sut = RemoteCryptoMarketLoader(url: url, client: client)
+        
+        sut.load()
+        
+        XCTAssertEqual(client.requestURLs, [url])
+    }
+    
+    // MARK: Helpers
+    private func anyURL() -> URL {
+        return URL(string: "http://www.any-url")!
     }
 
 }
