@@ -91,6 +91,7 @@
 		BB91CFB02A8CA17100B4D523 /* CryptoMarketPriceApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB91CFE32A8CA56100B4D523 /* ViewModel */,
 				BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */,
 				BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */,
 				BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */,
@@ -113,6 +114,13 @@
 			children = (
 			);
 			path = CryptoMarketPriceAppUITests;
+			sourceTree = "<group>";
+		};
+		BB91CFE32A8CA56100B4D523 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
