@@ -28,20 +28,6 @@ private extension CryptoMarketPrice {
     }
 }
 
-protocol CryptoMarketPricesReceiverDelegate: AnyObject {
-    func receiverDidClose()
-    func receiverDidOpen()
-    func receiverSubscribeError()
-    func receiverSubscribeSuccess()
-    func receiverReceiveError()
-    func receiverReceiveInvalidData()
-    func receiverReceive(prices: [String : CryptoMarketPrice])
-}
-
-protocol CryptoMarketPricesReceiver: WebsocketClientDelegate {
-    var delegate: CryptoMarketPricesReceiverDelegate? { get set }
-}
-
 final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
     
     private let url: URL
