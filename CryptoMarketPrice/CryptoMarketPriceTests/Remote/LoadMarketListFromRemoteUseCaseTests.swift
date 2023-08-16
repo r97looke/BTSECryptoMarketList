@@ -46,8 +46,11 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnNon200HTTPURLResponse() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.invalidData)) {
-            client.complete(with: 199, data: Data())
+        let samples = [199, 201, 300, 400, 500]
+        samples.enumerated().forEach { (index, code) in
+            expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.invalidData)) {
+                client.complete(with: code, data: Data(), at: index)
+            }
         }
     }
     
