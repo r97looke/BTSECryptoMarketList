@@ -65,13 +65,17 @@ final class HTTPClientSpy: HTTPClient {
     }
 }
 
-final class RemoteCryptoMarketLoader {
+protocol CryptoMarketLoader {
+    typealias LoadResult = Swift.Result<[CryptoMarket], Error>
+    
+    func load(completion: @escaping (LoadResult) -> Void)
+}
+
+final class RemoteCryptoMarketLoader: CryptoMarketLoader {
     enum LoadError: Swift.Error {
         case invalidData
         case connectivity
     }
-    
-    typealias LoadResult = Swift.Result<[CryptoMarket], Error>
     
     private let url: URL
     private let client: HTTPClientSpy
@@ -81,7 +85,7 @@ final class RemoteCryptoMarketLoader {
         self.client = client
     }
     
-    func load(completion: @escaping (LoadResult) -> Void) {
+    func load(completion: @escaping (CryptoMarketLoader.LoadResult) -> Void) {
         client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             
