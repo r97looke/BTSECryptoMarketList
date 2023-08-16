@@ -8,9 +8,20 @@
 import UIKit
 import SnapKit
 
-class CryptoMarketPriceViewController: UIViewController {
+final class CryptoMarketPriceViewController: UIViewController {
     
-    let segmentedControl = UISegmentedControl(items: ["Spots", "Future"])
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private let viewModel: CryptoMarketPriceViewModel
+    
+    init(viewModel: CryptoMarketPriceViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    private let segmentedControl = UISegmentedControl(items: ["Spots", "Future"])
     
     override func loadView() {
         super.loadView()
@@ -27,7 +38,7 @@ class CryptoMarketPriceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        viewModel.loadCryptoMarket()
     }
     
 

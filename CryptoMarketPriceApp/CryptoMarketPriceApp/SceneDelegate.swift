@@ -6,6 +6,18 @@
 //
 
 import UIKit
+import CryptoMarketPrice
+
+struct CryptoMarketPriceAppSettings {
+    
+    static func cryptoMarketListEndpointURL() -> URL {
+        return URL(string: "https://api.btse.com/futures/api/inquire/initial/market")!
+    }
+    
+    static func cryptoMarketPriceWebsocketEndpointURL() -> URL {
+        return URL(string: "wss://ws.btse.com/ws/futures")!
+    }
+}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,8 +30,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let httpSession = URLSession(configuration: .ephemeral)
+        let httpClient = URLSessionHTTPClient(session: httpSession)
+        let cryptoMarketLoader = RemoteCryptoMarketLoader(url: CryptoMarketPriceAppSettings.cryptoMarketListEndpointURL(), client: httpClient)
+        
+        let websocketSession = URLSession(configuration: .ephemeral)
+        let websocketClient = URLSessionWebsocketClient(session: websocketSession)
+        let cryptoMarketPriceReceiver = RemoteCryptoMarketPricesReceiver(url: CryptoMarketPriceAppSettings.cryptoMarketPriceWebsocketEndpointURL(), client: websocketClient)
+        let viewModel = CryptoMarketPriceViewModel(cryptoMarketLoader: cryptoMarketLoader, cryptoMarketPricesReceiver: cryptoMarketPriceReceiver)
+        let viewController = CryptoMarketPriceViewController(viewModel: viewModel)
+        
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = CryptoMarketPriceViewController()
+        window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }
 

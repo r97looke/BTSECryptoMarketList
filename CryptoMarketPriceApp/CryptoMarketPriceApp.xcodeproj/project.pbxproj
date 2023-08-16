@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		6195CD257A7A5E6DF920ECCA /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64120348C1C8FFFC58C7DD20 /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework */; };
 		B195B9311BB3B773C62F73A0 /* Pods_CryptoMarketPriceAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC59E4DAC2775B83B4E831E /* Pods_CryptoMarketPriceAppTests.framework */; };
+		BB2DF6FC2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */; };
+		BB2DF6FF2A8CAF82003102D1 /* CryptoMarketPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */; };
+		BB2DF7002A8CAF82003102D1 /* CryptoMarketPrice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */; };
 		BB91CFB42A8CA17100B4D523 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */; };
 		BB91CFBB2A8CA17200B4D523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB91CFBA2A8CA17200B4D523 /* Assets.xcassets */; };
 		BB91CFBE2A8CA17200B4D523 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB91CFBC2A8CA17200B4D523 /* LaunchScreen.storyboard */; };
 		BB91CFE22A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */; };
-		EDBF08E072B056141BA105C1 /* Pods_CryptoMarketPriceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7109F347DA750E586D32B93 /* Pods_CryptoMarketPriceApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BB2DF7012A8CAF82003102D1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB2DF7002A8CAF82003102D1 /* CryptoMarketPrice.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0CC59E4DAC2775B83B4E831E /* Pods_CryptoMarketPriceAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		299F156C41D5BFF6DCF79A67 /* Pods-CryptoMarketPriceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceApp.release.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceApp/Pods-CryptoMarketPriceApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -41,6 +57,8 @@
 		64120348C1C8FFFC58C7DD20 /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B5AA3BE950BF969BD032A93 /* Pods-CryptoMarketPriceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceAppTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceAppTests/Pods-CryptoMarketPriceAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A7109F347DA750E586D32B93 /* Pods_CryptoMarketPriceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewModel.swift; sourceTree = "<group>"; };
+		BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoMarketPrice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB91CFAE2A8CA17100B4D523 /* CryptoMarketPriceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarketPriceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDBF08E072B056141BA105C1 /* Pods_CryptoMarketPriceApp.framework in Frameworks */,
+				BB2DF6FF2A8CAF82003102D1 /* CryptoMarketPrice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +154,7 @@
 		BB91CFE32A8CA56100B4D523 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -150,13 +169,13 @@
 				DBBFAE15A6BC0E573B819118 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */,
 				9B5AA3BE950BF969BD032A93 /* Pods-CryptoMarketPriceAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		FE46879850CE20A700E75927 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */,
 				A7109F347DA750E586D32B93 /* Pods_CryptoMarketPriceApp.framework */,
 				64120348C1C8FFFC58C7DD20 /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework */,
 				0CC59E4DAC2775B83B4E831E /* Pods_CryptoMarketPriceAppTests.framework */,
@@ -176,6 +195,7 @@
 				BB91CFAB2A8CA17100B4D523 /* Frameworks */,
 				BB91CFAC2A8CA17100B4D523 /* Resources */,
 				082ABE05E860CC04B4EA833A /* [CP] Embed Pods Frameworks */,
+				BB2DF7012A8CAF82003102D1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -404,6 +424,7 @@
 			files = (
 				BB91CFE22A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift in Sources */,
 				BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */,
+				BB2DF6FC2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift in Sources */,
 				BB91CFB42A8CA17100B4D523 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

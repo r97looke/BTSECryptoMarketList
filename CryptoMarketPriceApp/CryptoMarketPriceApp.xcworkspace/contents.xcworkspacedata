@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../CryptoMarketPrice/CryptoMarketPrice.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CryptoMarketPriceApp.xcodeproj">
    </FileRef>
    <FileRef
