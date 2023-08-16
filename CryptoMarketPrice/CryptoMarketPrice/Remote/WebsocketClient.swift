@@ -14,6 +14,7 @@ public protocol WebsocketClientDelegate: AnyObject {
     func websocketSendSuccess()
     func websocketReceiveError()
     func websocketReceive(data: Data)
+    func websocketReceive(string: String)
 }
 
 public protocol WebsocketClient {
@@ -24,6 +25,8 @@ public protocol WebsocketClient {
     func disconnect()
     
     func send(data: Data)
+    
+    func send(string: String)
     
     func receive()
 }

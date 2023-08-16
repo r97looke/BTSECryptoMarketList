@@ -37,9 +37,11 @@ public final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver 
         delegate?.receiverDidOpen()
         
         let subscribeJSON: [String : Any] = ["op": "subscribe",
-                                             "args": ["coinIndex"]]
+                             "args": ["coinIndex"]]
+        let subscribeData = try! JSONSerialization.data(withJSONObject: subscribeJSON)
+        let subscribeString = String(data: subscribeData, encoding: .utf8)!
         
-        client.send(data: try! JSONSerialization.data(withJSONObject: subscribeJSON))
+        client.send(string: subscribeString)
     }
     
     public func websocketSendError() {
@@ -58,6 +60,19 @@ public final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver 
     
     public func websocketReceive(data: Data) {
         if !data.isEmpty, let message = try? JSONDecoder().decode(RemoteCryptoMarketPricesMessage.self, from: data), let remotePrices = message.data, !remotePrices.isEmpty {
+            var prices = [String : CryptoMarketPrice]()
+            for (key, remote) in remotePrices {
+                prices[key] = remote.toModel()
+            }
+            delegate?.receiverReceive(prices: prices)
+        }
+        else {
+            delegate?.receiverReceiveInvalidData()
+        }
+    }
+    
+    public func websocketReceive(string: String) {
+        if let data = string.data(using: .utf8), let message = try? JSONDecoder().decode(RemoteCryptoMarketPricesMessage.self, from: data), let remotePrices = message.data, !remotePrices.isEmpty {
             var prices = [String : CryptoMarketPrice]()
             for (key, remote) in remotePrices {
                 prices[key] = remote.toModel()
