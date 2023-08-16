@@ -28,12 +28,6 @@ private extension Array where Element == RemoteCryptoMarket {
     }
 }
 
-protocol HTTPClient {
-    typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
-    
-    func get(from url: URL, completion: @escaping (Result) -> Void)
-}
-
 final class HTTPClientSpy: HTTPClient {
     var requestURLs = [URL]()
     var requestCompletions = [(Result) -> Void]()
