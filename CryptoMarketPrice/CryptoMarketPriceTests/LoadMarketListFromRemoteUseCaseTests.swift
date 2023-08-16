@@ -8,17 +8,6 @@
 import XCTest
 import CryptoMarketPrice
 
-
-
-private extension Array where Element == CryptoMarket {
-    func toRemote() -> [RemoteCryptoMarket] {
-        return map{ RemoteCryptoMarket(
-            symbol: $0.symbol,
-            future: $0.future)
-        }
-    }
-}
-
 final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotGetDataFromURL() {
@@ -152,7 +141,7 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
     
     private func makeCryptoMarketsJSON(cryptoMarkets: [CryptoMarket]) -> Data {
         var data = [[String : Any]]()
-        for cryptoMarket in cryptoMarkets {
+        for cryptoMarket in cryptoMarkets.toRemote() {
             data.append(["symbol" : cryptoMarket.symbol,
                          "future" : cryptoMarket.future])
         }
@@ -168,5 +157,13 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
     private func anyNSError() -> NSError {
         return NSError(domain: "any error", code: -1)
     }
+}
 
+private extension Array where Element == CryptoMarket {
+    func toRemote() -> [RemoteCryptoMarket] {
+        return map{ RemoteCryptoMarket(
+            symbol: $0.symbol,
+            future: $0.future)
+        }
+    }
 }
