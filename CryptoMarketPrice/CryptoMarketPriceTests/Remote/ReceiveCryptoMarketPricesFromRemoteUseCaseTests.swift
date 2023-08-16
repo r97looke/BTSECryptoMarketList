@@ -6,13 +6,7 @@
 //
 
 import XCTest
-
-struct CryptoMarketPrice: Equatable {
-    let id: String?
-    let name: String?
-    let type: Int?
-    let price: Double
-}
+import CryptoMarketPrice
 
 struct RemoteCryptoMarketPrice: Equatable, Codable {
     let id: String?
