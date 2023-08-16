@@ -7,6 +7,7 @@
 
 import Foundation
 import CryptoMarketPrice
+import RxSwift
 
 final class CryptoMarketPriceViewModel {
     private let cryptoMarketLoader: CryptoMarketLoader

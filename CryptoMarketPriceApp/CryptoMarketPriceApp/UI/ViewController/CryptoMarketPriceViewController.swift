@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class CryptoMarketPriceViewController: UIViewController {
     
@@ -15,6 +17,7 @@ final class CryptoMarketPriceViewController: UIViewController {
     }
     
     private let viewModel: CryptoMarketPriceViewModel
+    private var disposeBag = DisposeBag()
     
     init(viewModel: CryptoMarketPriceViewModel) {
         self.viewModel = viewModel
@@ -31,7 +34,13 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        segmentedControl.addTarget(self, action: #selector(didChangeSegment), for: .valueChanged)
+        let selectedCryptoMarketTypeObserver: Binder<CryptoMarketPriceViewModel.CryptoMarketType> = Binder(viewModel) { (viewModel, type) in
+            viewModel.selectedCryptoMarketType = type
+        }
+        
+        segmentedControl.rx.selectedSegmentIndex.asObservable().map { CryptoMarketPriceViewModel.CryptoMarketType(rawValue: $0) ?? .spot
+        }.bind(to: selectedCryptoMarketTypeObserver).disposed(by: disposeBag)
+        
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { make in
