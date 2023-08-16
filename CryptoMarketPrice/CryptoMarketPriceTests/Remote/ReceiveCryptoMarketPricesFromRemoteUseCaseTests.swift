@@ -8,13 +8,6 @@
 import XCTest
 import CryptoMarketPrice
 
-struct RemoteCryptoMarketPrice: Equatable, Codable {
-    let id: String?
-    let name: String?
-    let type: Int?
-    let price: Double
-}
-
 private extension RemoteCryptoMarketPrice {
     func toModel() -> CryptoMarketPrice {
         return CryptoMarketPrice(
