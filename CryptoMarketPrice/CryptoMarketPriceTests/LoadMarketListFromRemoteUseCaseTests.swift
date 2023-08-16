@@ -8,11 +8,6 @@
 import XCTest
 import CryptoMarketPrice
 
-struct RemoteCryptoMarket: Decodable {
-    let symbol: String
-    let future: Bool
-}
-
 struct RemoteCyptoMarketResponse: Decodable {
     let code: Int?
     let data: [RemoteCryptoMarket]?
