@@ -18,11 +18,6 @@ private extension RemoteCryptoMarketPrice {
     }
 }
 
-struct RemoteCryptoMarketPricesMessage: Codable {
-    let topic: String?
-    let data: [String : RemoteCryptoMarketPrice]?
-}
-
 private extension CryptoMarketPrice {
     func toRemote() -> RemoteCryptoMarketPrice {
         return RemoteCryptoMarketPrice(
