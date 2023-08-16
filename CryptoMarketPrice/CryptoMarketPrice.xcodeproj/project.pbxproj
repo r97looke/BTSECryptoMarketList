@@ -88,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				BB8C70682A8C4F53003C0257 /* HTTPClientSpy.swift */,
+				BBE5D06C2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -125,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				BB8C70672A8C4F2E003C0257 /* Remote */,
-				BBE5D06C2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift */,
 			);
 			path = CryptoMarketPriceTests;
 			sourceTree = "<group>";
