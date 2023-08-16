@@ -61,12 +61,6 @@ final class HTTPClientSpy: HTTPClient {
     }
 }
 
-protocol CryptoMarketLoader {
-    typealias LoadResult = Swift.Result<[CryptoMarket], Error>
-    
-    func load(completion: @escaping (LoadResult) -> Void)
-}
-
 final class RemoteCryptoMarketLoader: CryptoMarketLoader {
     enum LoadError: Swift.Error {
         case invalidData
