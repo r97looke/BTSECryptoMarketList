@@ -28,27 +28,6 @@ private extension CryptoMarketPrice {
     }
 }
 
-protocol WebsocketClientDelegate: AnyObject {
-    func websocketDidClose()
-    func websocketDidOpen()
-    func websocketSendError()
-    func websocketSendSuccess()
-    func websocketReceiveError()
-    func websocketReceive(data: Data)
-}
-
-protocol WebsocketClient {
-    var delegate: WebsocketClientDelegate? { set get }
-    
-    func connect(url: URL)
-    
-    func disconnect()
-    
-    func send(data: Data)
-    
-    func receive()
-}
-
 protocol CryptoMarketPricesReceiverDelegate: AnyObject {
     func receiverDidClose()
     func receiverDidOpen()
