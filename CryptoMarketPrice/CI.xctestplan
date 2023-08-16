@@ -1,0 +1,42 @@
+{
+  "configurations" : [
+    {
+      "id" : "8959A24F-E81C-40B2-94F4-F89A52CD76B3",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:CryptoMarketPrice.xcodeproj",
+          "identifier" : "BBE5D0512A8C319C0065DC00",
+          "name" : "CryptoMarketPrice"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CryptoMarketPrice.xcodeproj",
+        "identifier" : "BBE5D05B2A8C319C0065DC00",
+        "name" : "CryptoMarketPriceTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CryptoMarketPrice.xcodeproj",
+        "identifier" : "BB8C70782A8C5428003C0257",
+        "name" : "CryptoMarketPriceRemoteIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
