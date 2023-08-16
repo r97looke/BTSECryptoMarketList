@@ -9,7 +9,7 @@ import Foundation
 
 public final class URLSessionWebsocketClient: NSObject, WebsocketClient {
     
-    private let TAG = "TODO"
+    private let TAG = "URLSessionWebsocketClient"
     
     private let session: URLSession
     private var task: URLSessionWebSocketTask?

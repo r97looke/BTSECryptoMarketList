@@ -1,0 +1,6 @@
+framework module Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests {
+  umbrella header "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
