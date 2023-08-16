@@ -103,12 +103,6 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         return (sut, client)
     }
     
-    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should be deallocated. There may be a memory leak.", file: file, line: line)
-        }
-    }
-    
     private func expect(_ sut: RemoteCryptoMarketLoader, toCompleteWith expectedResult: RemoteCryptoMarketLoader.LoadResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait load to complete")
         sut.load() { receivedResult in
@@ -151,14 +145,6 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         let JSON: [String: Any] = ["code" : 1,
                                    "data" : data]
         return try! JSONSerialization.data(withJSONObject: JSON)
-    }
-    
-    private func anyURL() -> URL {
-        return URL(string: "http://www.any-url")!
-    }
-    
-    private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: -1)
     }
 }
 

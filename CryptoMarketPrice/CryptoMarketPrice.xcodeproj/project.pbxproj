@@ -15,6 +15,9 @@
 		BB8C70692A8C4F53003C0257 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C70682A8C4F53003C0257 /* HTTPClientSpy.swift */; };
 		BB8C706B2A8C4F96003C0257 /* RemoteCryptoMarketLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C706A2A8C4F96003C0257 /* RemoteCryptoMarketLoader.swift */; };
 		BB8C706D2A8C50BD003C0257 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C706C2A8C50BD003C0257 /* URLSessionHTTPClientTests.swift */; };
+		BB8C706F2A8C519D003C0257 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C706E2A8C519D003C0257 /* URLSessionHTTPClient.swift */; };
+		BB8C70712A8C51E2003C0257 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C70702A8C51E2003C0257 /* Helpers.swift */; };
+		BB8C70732A8C524D003C0257 /* XCTestCase+TrackMemoryLeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C70722A8C524D003C0257 /* XCTestCase+TrackMemoryLeaks.swift */; };
 		BBE5D0572A8C319C0065DC00 /* CryptoMarketPrice.docc in Sources */ = {isa = PBXBuildFile; fileRef = BBE5D0562A8C319C0065DC00 /* CryptoMarketPrice.docc */; };
 		BBE5D05D2A8C319C0065DC00 /* CryptoMarketPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5D0522A8C319C0065DC00 /* CryptoMarketPrice.framework */; };
 		BBE5D0632A8C319C0065DC00 /* CryptoMarketPrice.h in Headers */ = {isa = PBXBuildFile; fileRef = BBE5D0552A8C319C0065DC00 /* CryptoMarketPrice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +43,9 @@
 		BB8C70682A8C4F53003C0257 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		BB8C706A2A8C4F96003C0257 /* RemoteCryptoMarketLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCryptoMarketLoader.swift; sourceTree = "<group>"; };
 		BB8C706C2A8C50BD003C0257 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		BB8C706E2A8C519D003C0257 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		BB8C70702A8C51E2003C0257 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		BB8C70722A8C524D003C0257 /* XCTestCase+TrackMemoryLeaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackMemoryLeaks.swift"; sourceTree = "<group>"; };
 		BBE5D0522A8C319C0065DC00 /* CryptoMarketPrice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoMarketPrice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE5D0552A8C319C0065DC00 /* CryptoMarketPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoMarketPrice.h; sourceTree = "<group>"; };
 		BBE5D0562A8C319C0065DC00 /* CryptoMarketPrice.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CryptoMarketPrice.docc; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 				BB8C70632A8C4ECA003C0257 /* RemoteCyptoMarketResponse.swift */,
 				BB8C70652A8C4F06003C0257 /* HTTPClient.swift */,
 				BB8C706A2A8C4F96003C0257 /* RemoteCryptoMarketLoader.swift */,
+				BB8C706E2A8C519D003C0257 /* URLSessionHTTPClient.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -128,6 +135,8 @@
 		BBE5D0602A8C319C0065DC00 /* CryptoMarketPriceTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB8C70702A8C51E2003C0257 /* Helpers.swift */,
+				BB8C70722A8C524D003C0257 /* XCTestCase+TrackMemoryLeaks.swift */,
 				BB8C70672A8C4F2E003C0257 /* Remote */,
 			);
 			path = CryptoMarketPriceTests;
@@ -245,6 +254,7 @@
 				BB8C706B2A8C4F96003C0257 /* RemoteCryptoMarketLoader.swift in Sources */,
 				BB8C70642A8C4ECA003C0257 /* RemoteCyptoMarketResponse.swift in Sources */,
 				BB8C70622A8C4E5E003C0257 /* RemoteCryptoMarket.swift in Sources */,
+				BB8C706F2A8C519D003C0257 /* URLSessionHTTPClient.swift in Sources */,
 				BB8C70662A8C4F06003C0257 /* HTTPClient.swift in Sources */,
 				BB8C705F2A8C4E1F003C0257 /* CryptoMarketLoader.swift in Sources */,
 				BB8C705D2A8C4DDA003C0257 /* CryptoMarket.swift in Sources */,
@@ -259,6 +269,8 @@
 				BBE5D06D2A8C33370065DC00 /* LoadMarketListFromRemoteUseCaseTests.swift in Sources */,
 				BB8C706D2A8C50BD003C0257 /* URLSessionHTTPClientTests.swift in Sources */,
 				BB8C70692A8C4F53003C0257 /* HTTPClientSpy.swift in Sources */,
+				BB8C70732A8C524D003C0257 /* XCTestCase+TrackMemoryLeaks.swift in Sources */,
+				BB8C70712A8C51E2003C0257 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
