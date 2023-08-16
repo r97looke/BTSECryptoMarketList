@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "4E8CE226-FCFC-423A-843A-3683237FB498",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:CryptoMarketPrice.xcodeproj",
+          "identifier" : "BBE5D0512A8C319C0065DC00",
+          "name" : "CryptoMarketPrice"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CryptoMarketPrice.xcodeproj",
+        "identifier" : "BBE5D05B2A8C319C0065DC00",
+        "name" : "CryptoMarketPriceTests"
+      }
+    }
+  ],
+  "version" : 1
+}

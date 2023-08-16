@@ -74,12 +74,14 @@ Then the app should display the crypto market list and their price
 ## Model Specs
 
 ### Market
+
 |----------|--------|
 | property | type   |
 |----------|--------|
 | symbol   | String |
 | future   | Bool   |
-|----------|--------| 
+|----------|--------|
+ 
 
 ### Payload contract
 
@@ -650,7 +652,7 @@ GET
          "favorite":true
       }
    ],
-   "Success":true
+   "success":true
 }
 ```
 
