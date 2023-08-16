@@ -11,6 +11,7 @@ protocol WebsocketClientDelegate: AnyObject {
     func websocketDidClose()
     func websocketDidOpen()
     func websocketSendError()
+    func websocketSendSuccess()
 }
 
 protocol WebsocketClient {
@@ -48,12 +49,17 @@ final class WebsocketClientSpy: WebsocketClient {
     func completeSend(with error: Error) {
         delegate?.websocketSendError()
     }
+    
+    func completeSendSuccess() {
+        delegate?.websocketSendSuccess()
+    }
 }
 
 protocol CryptoMarketPricesReceiverDelegate: AnyObject {
     func receiverDidClose()
     func receiverDidOpen()
-    func receiverSendError()
+    func receiverSubscribeError()
+    func receiverSubscribeSuccess()
 }
 
 protocol CryptoMarketPricesReceiver: WebsocketClientDelegate {
@@ -91,7 +97,11 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
     }
     
     func websocketSendError() {
-        delegate?.receiverSendError()
+        delegate?.receiverSubscribeError()
+    }
+    
+    func websocketSendSuccess() {
+        delegate?.receiverSubscribeSuccess()
     }
 }
 
@@ -99,7 +109,8 @@ final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDel
     enum Message: Equatable {
         case close
         case open
-        case sendError
+        case subscribeError
+        case subscribeSuccess
     }
     
     var message = [Message]()
@@ -112,8 +123,12 @@ final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDel
         message.append(.open)
     }
     
-    func receiverSendError() {
-        message.append(.sendError)
+    func receiverSubscribeError() {
+        message.append(.subscribeError)
+    }
+    
+    func receiverSubscribeSuccess() {
+        message.append(.subscribeSuccess)
     }
 }
 
@@ -186,7 +201,21 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         
         client.completeConnectSuccess()
         client.completeSend(with: anyNSError())
-        XCTAssertEqual(delegateSpy.message, [.open, .sendError])
+        XCTAssertEqual(delegateSpy.message, [.open, .subscribeError])
+    }
+    
+    func test_startReceive_delegateSuccesOnSubscribeCoinIndexSuccess() {
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        
+        client.completeConnectSuccess()
+        client.completeSendSuccess()
+        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess])
     }
     
     // MARK: Helpers
