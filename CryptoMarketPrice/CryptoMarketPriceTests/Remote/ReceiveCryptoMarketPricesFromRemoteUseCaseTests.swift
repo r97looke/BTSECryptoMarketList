@@ -7,6 +7,45 @@
 
 import XCTest
 
+struct CryptoMarketPrice: Equatable {
+    let id: String?
+    let name: String?
+    let type: Int?
+    let price: Double
+}
+
+struct RemoteCryptoMarketPrice: Equatable, Codable {
+    let id: String?
+    let name: String?
+    let type: Int?
+    let price: Double
+}
+
+private extension RemoteCryptoMarketPrice {
+    func toModel() -> CryptoMarketPrice {
+        return CryptoMarketPrice(
+            id: id,
+            name: name,
+            type: type,
+            price: price)
+    }
+}
+
+struct RemoteCryptoMarketPricesMessage: Codable {
+    let topic: String?
+    let data: [String : RemoteCryptoMarketPrice]?
+}
+
+private extension CryptoMarketPrice {
+    func toRemote() -> RemoteCryptoMarketPrice {
+        return RemoteCryptoMarketPrice(
+            id: id,
+            name: name,
+            type: type,
+            price: price)
+    }
+}
+
 protocol WebsocketClientDelegate: AnyObject {
     func websocketDidClose()
     func websocketDidOpen()
@@ -80,6 +119,7 @@ protocol CryptoMarketPricesReceiverDelegate: AnyObject {
     func receiverSubscribeSuccess()
     func receiverReceiveError()
     func receiverReceiveInvalidData()
+    func receiverReceive(prices: [String : CryptoMarketPrice])
 }
 
 protocol CryptoMarketPricesReceiver: WebsocketClientDelegate {
@@ -131,7 +171,16 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
     }
     
     func websocketReceive(data: Data) {
-        delegate?.receiverReceiveInvalidData()
+        if !data.isEmpty, let message = try? JSONDecoder().decode(RemoteCryptoMarketPricesMessage.self, from: data), let remotePrices = message.data, !remotePrices.isEmpty {
+            var prices = [String : CryptoMarketPrice]()
+            for (key, remote) in remotePrices {
+                prices[key] = remote.toModel()
+            }
+            delegate?.receiverReceive(prices: prices)
+        }
+        else {
+            delegate?.receiverReceiveInvalidData()
+        }
     }
 }
 
@@ -143,6 +192,7 @@ final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDel
         case subscribeSuccess
         case receiveError
         case receiveInvalidData
+        case receivePrices([String : CryptoMarketPrice])
     }
     
     var message = [Message]()
@@ -169,6 +219,10 @@ final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDel
     
     func receiverReceiveInvalidData() {
         message.append(.receiveInvalidData)
+    }
+    
+    func receiverReceive(prices: [String : CryptoMarketPrice]) {
+        message.append(.receivePrices(prices))
     }
 }
 
@@ -317,6 +371,22 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receiveInvalidData])
     }
     
+    func test_startReceive_delegateItemsOnReceiveValidData() {
+        let prices = testCryptoMarketPrices()
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        
+        client.completeConnectSuccess()
+        client.completeSendSuccess()
+        client.completeReceive(with: makeCryptoMarketPricesJSON(cryptoMarketPrices: prices))
+        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receivePrices(prices)])
+    }
+    
     // MARK: Helpers
     private func anyWebsocketURL() -> URL {
         return URL(string: "wss://any-url")!
@@ -328,7 +398,45 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         return try! JSONSerialization.data(withJSONObject: subscribeJSON)
     }
     
-    private func makeCryptoMarketPricesJSON() -> Data {
-        return Data()
+    private func testCryptoMarketPrice() -> (String, CryptoMarketPrice) {
+        let cryptoMarketPrice = CryptoMarketPrice(
+            id: "ANT",
+            name: "ANT",
+            type: 1,
+            price: 3.273782)
+        return ("\(cryptoMarketPrice.name!)_\(cryptoMarketPrice.type!)", cryptoMarketPrice)
+    }
+    
+    private func testAnotherCryptoMarketPrice() -> (String, CryptoMarketPrice) {
+        let cryptoMarketPrice = CryptoMarketPrice(
+            id: "ONE",
+            name: "ONE",
+            type: 1,
+            price: 0.0125329578)
+        return ("\(cryptoMarketPrice.name!)_\(cryptoMarketPrice.type!)", cryptoMarketPrice)
+    }
+    
+    private func testCryptoMarketPrices() -> [String : CryptoMarketPrice] {
+        let price1 = testCryptoMarketPrice()
+        let price2 = testAnotherCryptoMarketPrice()
+        return [price1.0 : price1.1,
+                price2.0 : price2.1]
+    }
+    
+    private func makeCryptoMarketPricesJSON(cryptoMarketPrices : [String : CryptoMarketPrice]) -> Data {
+        var remoteCryptoMarketPrices = [String: RemoteCryptoMarketPrice]()
+        for (key, value) in cryptoMarketPrices {
+            remoteCryptoMarketPrices[key] = value.toRemote()
+        }
+        var data: [String : Any] = [:]
+        for (key, value) in remoteCryptoMarketPrices {
+            data[key] = ["id" : value.id!,
+                         "name" : value.name!,
+                         "type" : value.type!,
+                         "price" : value.price] as [String : Any]
+        }
+        let json: [String : Any] = [ "topic" : "coinIndex",
+                                     "data" : data ]
+        return try! JSONSerialization.data(withJSONObject: json)
     }
 }
