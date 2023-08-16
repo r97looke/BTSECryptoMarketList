@@ -18,7 +18,22 @@ final class CryptoMarketPriceViewModel {
         self.cryptoMarketPricesReceiver.delegate = self
     }
     
-    var cryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    enum CryptoMarketType: Int {
+        case spot = 0
+        case future
+    }
+    
+    var selectedCryptoMarketType: CryptoMarketType = .spot {
+        didSet {
+            onSelectCryptoMarketTypeChange?()
+        }
+    }
+    
+    var onSelectCryptoMarketTypeChange: (() -> Void)?
+    
+    var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    
+    var futureCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
     var onLoadingStateChange: ((Bool) -> Void)?
     var onCryptoMarketLoaded: (([CryptoMarket]) -> Void)?

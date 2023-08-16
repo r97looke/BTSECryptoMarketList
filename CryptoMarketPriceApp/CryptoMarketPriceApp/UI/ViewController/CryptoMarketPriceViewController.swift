@@ -32,7 +32,7 @@ final class CryptoMarketPriceViewController: UIViewController {
         }
     }
     
-    var cryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]() {
+    var displayCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]() {
         didSet {
             tableView.reloadData()
         }
@@ -48,6 +48,7 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        segmentedControl.addTarget(self, action: #selector(didChangeSegment), for: .valueChanged)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { make in
@@ -89,6 +90,10 @@ final class CryptoMarketPriceViewController: UIViewController {
         tableView.dataSource = self
         viewModel.loadCryptoMarket()
     }
+    
+    @objc private func didChangeSegment() {
+        viewModel.selectedCryptoMarketType = CryptoMarketPriceViewModel.CryptoMarketType(rawValue: segmentedControl.selectedSegmentIndex) ?? .spot
+    }
 }
 
 // MARK: UITableViewDataSource
@@ -99,11 +104,11 @@ extension CryptoMarketPriceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cryptoMarketNamePriceModels.count
+        return displayCryptoMarketNamePriceModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = cryptoMarketNamePriceModels[indexPath.row]
+        let model = displayCryptoMarketNamePriceModels[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", for: indexPath) as! CryptoMarketNamePriceCell
         cell.model = model
         return cell
