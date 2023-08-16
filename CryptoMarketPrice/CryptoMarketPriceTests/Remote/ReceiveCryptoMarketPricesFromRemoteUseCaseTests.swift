@@ -65,53 +65,6 @@ protocol WebsocketClient {
     func receive()
 }
 
-final class WebsocketClientSpy: WebsocketClient {
-    
-    weak var delegate: WebsocketClientDelegate?
-    
-    var requestConnectURLs = [URL]()
-    
-    var sentDatas = [Data]()
-    
-    var receiveCallCount = 0
-    
-    func connect(url: URL) {
-        requestConnectURLs.append(url)
-    }
-    
-    func send(data: Data) {
-        sentDatas.append(data)
-    }
-    
-    func receive() {
-        receiveCallCount += 1
-    }
-    
-    func completeConnect(with error: Error) {
-        delegate?.websocketDidClose()
-    }
-    
-    func completeConnectSuccess() {
-        delegate?.websocketDidOpen()
-    }
-    
-    func completeSend(with error: Error) {
-        delegate?.websocketSendError()
-    }
-    
-    func completeSendSuccess() {
-        delegate?.websocketSendSuccess()
-    }
-    
-    func completeReceive(with error: Error) {
-        delegate?.websocketReceiveError()
-    }
-    
-    func completeReceive(with data: Data) {
-        delegate?.websocketReceive(data: data)
-    }
-}
-
 protocol CryptoMarketPricesReceiverDelegate: AnyObject {
     func receiverDidClose()
     func receiverDidOpen()
@@ -128,14 +81,14 @@ protocol CryptoMarketPricesReceiver: WebsocketClientDelegate {
 
 final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
     
-    let url: URL
-    let client: WebsocketClientSpy
+    private let url: URL
+    private var client: WebsocketClient
     weak var delegate: CryptoMarketPricesReceiverDelegate?
     
-    init(url: URL, client: WebsocketClientSpy) {
+    init(url: URL, client: WebsocketClient) {
         self.url = url
         self.client = client
-        client.delegate = self
+        self.client.delegate = self
     }
     
     func startReceive() {
@@ -181,48 +134,6 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
         else {
             delegate?.receiverReceiveInvalidData()
         }
-    }
-}
-
-final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDelegate {
-    enum Message: Equatable {
-        case close
-        case open
-        case subscribeError
-        case subscribeSuccess
-        case receiveError
-        case receiveInvalidData
-        case receivePrices([String : CryptoMarketPrice])
-    }
-    
-    var message = [Message]()
-    
-    func receiverDidClose() {
-        message.append(.close)
-    }
-    
-    func receiverDidOpen() {
-        message.append(.open)
-    }
-    
-    func receiverSubscribeError() {
-        message.append(.subscribeError)
-    }
-    
-    func receiverSubscribeSuccess() {
-        message.append(.subscribeSuccess)
-    }
-    
-    func receiverReceiveError() {
-        message.append(.receiveError)
-    }
-    
-    func receiverReceiveInvalidData() {
-        message.append(.receiveInvalidData)
-    }
-    
-    func receiverReceive(prices: [String : CryptoMarketPrice]) {
-        message.append(.receivePrices(prices))
     }
 }
 
@@ -438,5 +349,94 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         let json: [String : Any] = [ "topic" : "coinIndex",
                                      "data" : data ]
         return try! JSONSerialization.data(withJSONObject: json)
+    }
+    
+    private final class WebsocketClientSpy: WebsocketClient {
+        
+        weak var delegate: WebsocketClientDelegate?
+        
+        var requestConnectURLs = [URL]()
+        
+        var sentDatas = [Data]()
+        
+        var receiveCallCount = 0
+        
+        func connect(url: URL) {
+            requestConnectURLs.append(url)
+        }
+        
+        func send(data: Data) {
+            sentDatas.append(data)
+        }
+        
+        func receive() {
+            receiveCallCount += 1
+        }
+        
+        func completeConnect(with error: Error) {
+            delegate?.websocketDidClose()
+        }
+        
+        func completeConnectSuccess() {
+            delegate?.websocketDidOpen()
+        }
+        
+        func completeSend(with error: Error) {
+            delegate?.websocketSendError()
+        }
+        
+        func completeSendSuccess() {
+            delegate?.websocketSendSuccess()
+        }
+        
+        func completeReceive(with error: Error) {
+            delegate?.websocketReceiveError()
+        }
+        
+        func completeReceive(with data: Data) {
+            delegate?.websocketReceive(data: data)
+        }
+    }
+    
+    private final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDelegate {
+        enum Message: Equatable {
+            case close
+            case open
+            case subscribeError
+            case subscribeSuccess
+            case receiveError
+            case receiveInvalidData
+            case receivePrices([String : CryptoMarketPrice])
+        }
+        
+        var message = [Message]()
+        
+        func receiverDidClose() {
+            message.append(.close)
+        }
+        
+        func receiverDidOpen() {
+            message.append(.open)
+        }
+        
+        func receiverSubscribeError() {
+            message.append(.subscribeError)
+        }
+        
+        func receiverSubscribeSuccess() {
+            message.append(.subscribeSuccess)
+        }
+        
+        func receiverReceiveError() {
+            message.append(.receiveError)
+        }
+        
+        func receiverReceiveInvalidData() {
+            message.append(.receiveInvalidData)
+        }
+        
+        func receiverReceive(prices: [String : CryptoMarketPrice]) {
+            message.append(.receivePrices(prices))
+        }
     }
 }
