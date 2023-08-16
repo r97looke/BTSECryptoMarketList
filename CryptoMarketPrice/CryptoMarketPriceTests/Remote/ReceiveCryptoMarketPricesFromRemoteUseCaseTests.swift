@@ -287,6 +287,21 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receiveError])
     }
     
+    func test_startReceive_delegateInvalidDataOnReceiveEmptyData() {
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        
+        client.completeConnectSuccess()
+        client.completeSendSuccess()
+        client.completeReceive(with: Data())
+        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receiveInvalidData])
+    }
+    
     func test_startReceive_delegateInvalidDataOnReceiveInvalidData() {
         let url = anyWebsocketURL()
         let client = WebsocketClientSpy()
