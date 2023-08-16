@@ -60,6 +60,8 @@ protocol WebsocketClient {
     
     func connect(url: URL)
     
+    func disconnect()
+    
     func send(data: Data)
     
     func receive()
@@ -93,6 +95,10 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
     
     func startReceive() {
         client.connect(url: url)
+    }
+    
+    func stopReceive() {
+        client.disconnect()
     }
     
     // MARK: WebsocketClientDelegate
@@ -298,6 +304,22 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receivePrices(prices)])
     }
     
+    func test_stopReceive_requestDisconnect() {
+        let prices = testCryptoMarketPrices()
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        client.completeConnectSuccess()
+        client.completeSendSuccess()
+        client.completeReceive(with: makeCryptoMarketPricesJSON(cryptoMarketPrices: prices))
+        sut.stopReceive()
+        XCTAssertEqual(client.disconnectCallCount, 1)
+    }
+    
     // MARK: Helpers
     private func anyWebsocketURL() -> URL {
         return URL(string: "wss://any-url")!
@@ -357,12 +379,18 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         
         var requestConnectURLs = [URL]()
         
+        var disconnectCallCount = 0
+        
         var sentDatas = [Data]()
         
         var receiveCallCount = 0
         
         func connect(url: URL) {
             requestConnectURLs.append(url)
+        }
+        
+        func disconnect() {
+            disconnectCallCount += 1
         }
         
         func send(data: Data) {
