@@ -10,6 +10,7 @@
 		BB8C705D2A8C4DDA003C0257 /* CryptoMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C705C2A8C4DDA003C0257 /* CryptoMarket.swift */; };
 		BB8C705F2A8C4E1F003C0257 /* CryptoMarketLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C705E2A8C4E1F003C0257 /* CryptoMarketLoader.swift */; };
 		BB8C70622A8C4E5E003C0257 /* RemoteCryptoMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C70612A8C4E5E003C0257 /* RemoteCryptoMarket.swift */; };
+		BB8C70642A8C4ECA003C0257 /* RemoteCyptoMarketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8C70632A8C4ECA003C0257 /* RemoteCyptoMarketResponse.swift */; };
 		BBE5D0572A8C319C0065DC00 /* CryptoMarketPrice.docc in Sources */ = {isa = PBXBuildFile; fileRef = BBE5D0562A8C319C0065DC00 /* CryptoMarketPrice.docc */; };
 		BBE5D05D2A8C319C0065DC00 /* CryptoMarketPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5D0522A8C319C0065DC00 /* CryptoMarketPrice.framework */; };
 		BBE5D0632A8C319C0065DC00 /* CryptoMarketPrice.h in Headers */ = {isa = PBXBuildFile; fileRef = BBE5D0552A8C319C0065DC00 /* CryptoMarketPrice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +31,7 @@
 		BB8C705C2A8C4DDA003C0257 /* CryptoMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarket.swift; sourceTree = "<group>"; };
 		BB8C705E2A8C4E1F003C0257 /* CryptoMarketLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketLoader.swift; sourceTree = "<group>"; };
 		BB8C70612A8C4E5E003C0257 /* RemoteCryptoMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCryptoMarket.swift; sourceTree = "<group>"; };
+		BB8C70632A8C4ECA003C0257 /* RemoteCyptoMarketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCyptoMarketResponse.swift; sourceTree = "<group>"; };
 		BBE5D0522A8C319C0065DC00 /* CryptoMarketPrice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoMarketPrice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE5D0552A8C319C0065DC00 /* CryptoMarketPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoMarketPrice.h; sourceTree = "<group>"; };
 		BBE5D0562A8C319C0065DC00 /* CryptoMarketPrice.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CryptoMarketPrice.docc; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				BB8C70612A8C4E5E003C0257 /* RemoteCryptoMarket.swift */,
+				BB8C70632A8C4ECA003C0257 /* RemoteCyptoMarketResponse.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB8C70642A8C4ECA003C0257 /* RemoteCyptoMarketResponse.swift in Sources */,
 				BB8C70622A8C4E5E003C0257 /* RemoteCryptoMarket.swift in Sources */,
 				BB8C705F2A8C4E1F003C0257 /* CryptoMarketLoader.swift in Sources */,
 				BB8C705D2A8C4DDA003C0257 /* CryptoMarket.swift in Sources */,

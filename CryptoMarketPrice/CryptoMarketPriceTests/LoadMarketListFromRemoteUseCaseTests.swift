@@ -8,10 +8,7 @@
 import XCTest
 import CryptoMarketPrice
 
-struct RemoteCyptoMarketResponse: Decodable {
-    let code: Int?
-    let data: [RemoteCryptoMarket]?
-}
+
 
 private extension Array where Element == CryptoMarket {
     func toRemote() -> [RemoteCryptoMarket] {
