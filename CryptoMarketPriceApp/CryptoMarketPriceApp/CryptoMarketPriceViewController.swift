@@ -6,13 +6,22 @@
 //
 
 import UIKit
+import SnapKit
 
 class CryptoMarketPriceViewController: UIViewController {
+    
+    let segmentedControl = UISegmentedControl(items: ["Spots", "Future"])
     
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = .red
+        view.backgroundColor = .white
+        
+        view.addSubview(segmentedControl)
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.centerX.equalToSuperview()
+        }
     }
 
     override func viewDidLoad() {
