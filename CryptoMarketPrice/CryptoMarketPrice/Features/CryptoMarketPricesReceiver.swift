@@ -19,4 +19,8 @@ public protocol CryptoMarketPricesReceiverDelegate: AnyObject {
 
 public protocol CryptoMarketPricesReceiver: WebsocketClientDelegate {
     var delegate: CryptoMarketPricesReceiverDelegate? { get set }
+    
+    func startReceive()
+    
+    func stopReceive()
 }

@@ -8,88 +8,6 @@
 import XCTest
 import CryptoMarketPrice
 
-private extension RemoteCryptoMarketPrice {
-    func toModel() -> CryptoMarketPrice {
-        return CryptoMarketPrice(
-            id: id,
-            name: name,
-            type: type,
-            price: price)
-    }
-}
-
-private extension CryptoMarketPrice {
-    func toRemote() -> RemoteCryptoMarketPrice {
-        return RemoteCryptoMarketPrice(
-            id: id,
-            name: name,
-            type: type,
-            price: price)
-    }
-}
-
-final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
-    
-    private let url: URL
-    private var client: WebsocketClient
-    weak var delegate: CryptoMarketPricesReceiverDelegate?
-    
-    init(url: URL, client: WebsocketClient) {
-        self.url = url
-        self.client = client
-        self.client.delegate = self
-    }
-    
-    func startReceive() {
-        client.connect(url: url)
-    }
-    
-    func stopReceive() {
-        client.disconnect()
-    }
-    
-    // MARK: WebsocketClientDelegate
-    func websocketDidClose() {
-        delegate?.receiverDidClose()
-    }
-    
-    func websocketDidOpen() {
-        delegate?.receiverDidOpen()
-        
-        let subscribeJSON: [String : Any] = ["op": "subscribe",
-                                             "args": ["coinIndex"]]
-        
-        client.send(data: try! JSONSerialization.data(withJSONObject: subscribeJSON))
-    }
-    
-    func websocketSendError() {
-        delegate?.receiverSubscribeError()
-    }
-    
-    func websocketSendSuccess() {
-        delegate?.receiverSubscribeSuccess()
-        
-        client.receive()
-    }
-    
-    func websocketReceiveError() {
-        delegate?.receiverReceiveError()
-    }
-    
-    func websocketReceive(data: Data) {
-        if !data.isEmpty, let message = try? JSONDecoder().decode(RemoteCryptoMarketPricesMessage.self, from: data), let remotePrices = message.data, !remotePrices.isEmpty {
-            var prices = [String : CryptoMarketPrice]()
-            for (key, remote) in remotePrices {
-                prices[key] = remote.toModel()
-            }
-            delegate?.receiverReceive(prices: prices)
-        }
-        else {
-            delegate?.receiverReceiveInvalidData()
-        }
-    }
-}
-
 final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotRequestConnect() {
@@ -413,5 +331,15 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         func receiverReceive(prices: [String : CryptoMarketPrice]) {
             message.append(.receivePrices(prices))
         }
+    }
+}
+
+private extension CryptoMarketPrice {
+    func toRemote() -> RemoteCryptoMarketPrice {
+        return RemoteCryptoMarketPrice(
+            id: id,
+            name: name,
+            type: type,
+            price: price)
     }
 }
