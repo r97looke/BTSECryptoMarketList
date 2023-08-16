@@ -10,6 +10,7 @@ import XCTest
 protocol WebsocketClientDelegate: AnyObject {
     func websocketDidClose()
     func websocketDidOpen()
+    func websocketSendError()
 }
 
 protocol WebsocketClient {
@@ -43,11 +44,16 @@ final class WebsocketClientSpy: WebsocketClient {
     func completeConnectSuccess() {
         delegate?.websocketDidOpen()
     }
+    
+    func completeSend(with error: Error) {
+        delegate?.websocketSendError()
+    }
 }
 
 protocol CryptoMarketPricesReceiverDelegate: AnyObject {
     func receiverDidClose()
     func receiverDidOpen()
+    func receiverSendError()
 }
 
 protocol CryptoMarketPricesReceiver: WebsocketClientDelegate {
@@ -83,12 +89,17 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
         
         client.send(data: try! JSONSerialization.data(withJSONObject: subscribeJSON))
     }
+    
+    func websocketSendError() {
+        delegate?.receiverSendError()
+    }
 }
 
 final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDelegate {
     enum Message: Equatable {
         case close
         case open
+        case sendError
     }
     
     var message = [Message]()
@@ -99,6 +110,10 @@ final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDel
     
     func receiverDidOpen() {
         message.append(.open)
+    }
+    
+    func receiverSendError() {
+        message.append(.sendError)
     }
 }
 
@@ -158,6 +173,20 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         
         client.completeConnectSuccess()
         XCTAssertEqual(client.sentDatas, [makeSubscribeJSON()])
+    }
+    
+    func test_startReceive_delegateErrorOnSubscribeCoinIndexError() {
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        
+        client.completeConnectSuccess()
+        client.completeSend(with: anyNSError())
+        XCTAssertEqual(delegateSpy.message, [.open, .sendError])
     }
     
     // MARK: Helpers
