@@ -11,16 +11,14 @@ import CryptoMarketPrice
 final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotRequestConnect() {
-        let client = WebsocketClientSpy()
-        let _ = RemoteCryptoMarketPricesReceiver(url: anyWebsocketURL(), client: client)
+        let (_, client, _) = makeSUT()
         
         XCTAssertEqual(client.requestConnectURLs, [])
     }
     
     func test_startReceive_requestConnectToTheURL() {
         let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let (sut, client, _) = makeSUT(url: url)
         
         sut.startReceive()
         
@@ -28,78 +26,57 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
     }
     
     func test_startReceive_delegateCloseOnConnectError() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnect(with: anyNSError())
-        XCTAssertEqual(delegateSpy.message, [.close])
+        XCTAssertEqual(delegate.message, [.close])
     }
     
     func test_startReceive_delegateOpenOnConnectSuccess() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
-        XCTAssertEqual(delegateSpy.message, [.open])
+        XCTAssertEqual(delegate.message, [.open])
     }
     
     func test_startReceive_sendSubscribeCoinIndexOnOpen() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, _) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
-        XCTAssertEqual(client.sentDatas, [makeSubscribeJSON()])
+        let subscribeJSON = makeSubscribeJSON()
+        let sentJSON = try! JSONSerialization.jsonObject(with: client.sentDatas[0]) as! [String : Any]
+        XCTAssertEqual(sentJSON["op"] as! String, subscribeJSON["op"] as! String)
+        XCTAssertEqual(sentJSON["args"] as! [String], subscribeJSON["args"] as! [String])
     }
     
     func test_startReceive_delegateErrorOnSubscribeCoinIndexError() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
         client.completeSend(with: anyNSError())
-        XCTAssertEqual(delegateSpy.message, [.open, .subscribeError])
+        XCTAssertEqual(delegate.message, [.open, .subscribeError])
     }
     
     func test_startReceive_delegateSuccesOnSubscribeCoinIndexSuccess() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
         client.completeSendSuccess()
-        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess])
+        XCTAssertEqual(delegate.message, [.open, .subscribeSuccess])
     }
     
     func test_startReceive_requestsReceiveOnSubscribeCoinIndexSuccess() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, _) = makeSUT()
         
         sut.startReceive()
         
@@ -109,73 +86,53 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
     }
     
     func test_startReceive_delegateErrorOnReceiveError() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
         client.completeSendSuccess()
         client.completeReceive(with: anyNSError())
-        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receiveError])
+        XCTAssertEqual(delegate.message, [.open, .subscribeSuccess, .receiveError])
     }
     
     func test_startReceive_delegateInvalidDataOnReceiveEmptyData() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
         client.completeSendSuccess()
         client.completeReceive(with: Data())
-        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receiveInvalidData])
+        XCTAssertEqual(delegate.message, [.open, .subscribeSuccess, .receiveInvalidData])
     }
     
     func test_startReceive_delegateInvalidDataOnReceiveInvalidData() {
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
         client.completeSendSuccess()
         client.completeReceive(with: Data("invalid data".utf8))
-        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receiveInvalidData])
+        XCTAssertEqual(delegate.message, [.open, .subscribeSuccess, .receiveInvalidData])
     }
     
     func test_startReceive_delegateItemsOnReceiveValidData() {
         let prices = testCryptoMarketPrices()
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, delegate) = makeSUT()
         
         sut.startReceive()
         
         client.completeConnectSuccess()
         client.completeSendSuccess()
         client.completeReceive(with: makeCryptoMarketPricesJSON(cryptoMarketPrices: prices))
-        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receivePrices(prices)])
+        XCTAssertEqual(delegate.message, [.open, .subscribeSuccess, .receivePrices(prices)])
     }
     
     func test_stopReceive_requestDisconnect() {
         let prices = testCryptoMarketPrices()
-        let url = anyWebsocketURL()
-        let client = WebsocketClientSpy()
-        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
-        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
-        sut.delegate = delegateSpy
+        let (sut, client, _) = makeSUT()
         
         sut.startReceive()
         client.completeConnectSuccess()
@@ -186,14 +143,28 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
     }
     
     // MARK: Helpers
+    private func makeSUT(url: URL? = nil, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteCryptoMarketPricesReceiver, client: WebsocketClientSpy, delegate: CryptoMarketPricesReceiverDelegateSpy){
+        let url = url ?? anyWebsocketURL()
+        let delegate = CryptoMarketPricesReceiverDelegateSpy()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        sut.delegate = delegate
+        
+        trackForMemoryLeaks(delegate, file: file, line: line)
+        trackForMemoryLeaks(client, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        
+        return (sut, client, delegate)
+    }
+    
     private func anyWebsocketURL() -> URL {
         return URL(string: "wss://any-url")!
     }
     
-    private func makeSubscribeJSON() -> Data {
+    private func makeSubscribeJSON() -> [String : Any] {
         let subscribeJSON: [String : Any] = ["op": "subscribe",
                                              "args": ["coinIndex"]]
-        return try! JSONSerialization.data(withJSONObject: subscribeJSON)
+        return subscribeJSON
     }
     
     private func testCryptoMarketPrice() -> (String, CryptoMarketPrice) {
