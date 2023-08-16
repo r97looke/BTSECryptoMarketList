@@ -125,121 +125,42 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load() { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                break
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.invalidData)) {
+            client.complete(with: NSError(domain: "any error", code: -1))
         }
-        
-        client.complete(with: NSError(domain: "any error", code: -1))
-        
-        wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversErrorOnNon200HTTPURLResponse() {
         let (sut, client) = makeSUT()
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load() { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                break
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.invalidData)) {
+            client.complete(with: 199, data: Data())
         }
-        
-        client.complete(with: 199, data: Data())
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversErrorON200HTTPURLResponseWithInvalidData() {
         let (sut, client) = makeSUT()
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load() { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                break
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.invalidData)) {
+            client.complete(with: 200, data: Data("invalid data".utf8))
         }
-        
-        client.complete(with: 200, data: Data("invalid data".utf8))
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversErrorON200HTTPURLResponseWithEmptyData() {
         let (sut, client) = makeSUT()
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedError: Error?
-        sut.load() { result in
-            switch result {
-            case let .failure(error):
-                receivedError = error
-                break
-                
-            default:
-                XCTFail("Expect error, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.invalidData)) {
+            client.complete(with: 200, data: Data())
         }
-        
-        client.complete(with: 200, data: Data())
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertNotNil(receivedError)
     }
     
     func test_load_deliversItemsON200HTTPURLResponseWithValidData() {
         let cryptoMarkets = testCryptoMarkets()
         let (sut, client) = makeSUT()
         
-        let exp = expectation(description: "Wait load to complete")
-        var receivedCryptoMarkets: [CryptoMarket]?
-        sut.load() { result in
-            switch result {
-            case let .success(resultCryptoMarkets):
-                receivedCryptoMarkets = resultCryptoMarkets
-                
-            default:
-                XCTFail("Expect success, got \(result) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: .success(cryptoMarkets)) {
+            client.complete(with: 200, data: makeCryptoMarketsJSON(cryptoMarkets: cryptoMarkets))
         }
-        
-        client.complete(with: 200, data: makeCryptoMarketsJSON(cryptoMarkets: cryptoMarkets))
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(receivedCryptoMarkets, cryptoMarkets)
     }
     
     // MARK: Helpers
@@ -249,6 +170,27 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
         let sut = RemoteCryptoMarketLoader(url: url, client: client)
         
         return (sut, client)
+    }
+    
+    private func expect(_ sut: RemoteCryptoMarketLoader, toCompleteWith expectedResult: RemoteCryptoMarketLoader.LoadResult, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "Wait load to complete")
+        sut.load() { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedCryptoMarkets), .success(expectedCryptoMarkets)):
+                XCTAssertEqual(receivedCryptoMarkets, expectedCryptoMarkets, file: file, line: line)
+                
+            case (.failure, .failure):
+                break
+                
+            default:
+                XCTFail("Expect \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func testCryptoMarket() -> CryptoMarket {
