@@ -26,9 +26,12 @@ final class WebsocketClientSpy: WebsocketClient {
     
     weak var delegate: WebsocketClientDelegate?
     
+    var requestConnectURLs = [URL]()
+    
     var sentDatas = [Data]()
     
-    var requestConnectURLs = [URL]()
+    var receiveCallCount = 0
+
     
     func connect(url: URL) {
         requestConnectURLs.append(url)
@@ -36,6 +39,10 @@ final class WebsocketClientSpy: WebsocketClient {
     
     func send(data: Data) {
         sentDatas.append(data)
+    }
+    
+    func receive() {
+        receiveCallCount += 1
     }
     
     func completeConnect(with error: Error) {
@@ -102,6 +109,8 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
     
     func websocketSendSuccess() {
         delegate?.receiverSubscribeSuccess()
+        
+        client.receive()
     }
 }
 
@@ -216,6 +225,20 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         client.completeConnectSuccess()
         client.completeSendSuccess()
         XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess])
+    }
+    
+    func test_startReceive_requestReceiveDataOnSubscribeCoinIndexSuccess() {
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        
+        client.completeConnectSuccess()
+        client.completeSendSuccess()
+        XCTAssertEqual(client.receiveCallCount, 1)
     }
     
     // MARK: Helpers
