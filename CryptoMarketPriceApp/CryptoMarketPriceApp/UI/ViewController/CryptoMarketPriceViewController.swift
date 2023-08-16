@@ -21,23 +21,6 @@ final class CryptoMarketPriceViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var isLoadingCryptoMarket = false {
-        didSet {
-            if isLoadingCryptoMarket {
-                loadingView.startAnimating()
-            }
-            else {
-                loadingView.stopAnimating()
-            }
-        }
-    }
-    
-    var displayCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
     private let DefaultSpace: CGFloat = 8.0
     private let DefaultMargin: CGFloat = 16.0
     
@@ -85,9 +68,29 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        segmentedControl.selectedSegmentIndex = viewModel.selectedCryptoMarketType.rawValue
+        
         tableView.register(CryptoMarketNamePriceCell.self, forCellReuseIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))")
         
         tableView.dataSource = self
+        
+        viewModel.onLoadingStateChange = { [weak self] _ in
+            guard let self = self else { return }
+            
+            if self.viewModel.isLoading {
+                self.loadingView.startAnimating()
+            }
+            else {
+                self.loadingView.stopAnimating()
+            }
+        }
+        
+        viewModel.displayCryptoMarketNamePriceModelsObserver = { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.tableView.reloadData()
+        }
+        
         viewModel.loadCryptoMarket()
     }
     
@@ -104,11 +107,11 @@ extension CryptoMarketPriceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayCryptoMarketNamePriceModels.count
+        return viewModel.displayCryptoMarketNamePriceModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = displayCryptoMarketNamePriceModels[indexPath.row]
+        let model = viewModel.displayCryptoMarketNamePriceModels[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", for: indexPath) as! CryptoMarketNamePriceCell
         cell.model = model
         return cell

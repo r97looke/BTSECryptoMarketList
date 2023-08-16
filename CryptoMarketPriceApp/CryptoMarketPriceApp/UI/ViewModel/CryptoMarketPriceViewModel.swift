@@ -25,39 +25,83 @@ final class CryptoMarketPriceViewModel {
     
     var selectedCryptoMarketType: CryptoMarketType = .spot {
         didSet {
-            onSelectCryptoMarketTypeChange?()
+            if selectedCryptoMarketType == .spot {
+                displayCryptoMarketNamePriceModels = spotCryptoMarketNamePriceModels
+            }
+            else {
+                displayCryptoMarketNamePriceModels = futureCryptoMarketNamePriceModels
+            }
         }
     }
     
-    var onSelectCryptoMarketTypeChange: (() -> Void)?
+    var onLoadingStateChange: ((Bool) -> Void)?
+    
+    var isLoading: Bool = false {
+        didSet {
+            onLoadingStateChange?(isLoading)
+        }
+    }
     
     var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
     var futureCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
-    var onLoadingStateChange: ((Bool) -> Void)?
-    var onCryptoMarketLoaded: (([CryptoMarket]) -> Void)?
+    var displayCryptoMarketNamePriceModelsObserver: (([CryptoMarketNamePriceModel]) -> Void)?
+    
+    var displayCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]() {
+        didSet {
+            displayCryptoMarketNamePriceModelsObserver?(displayCryptoMarketNamePriceModels)
+        }
+    }
     
     func loadCryptoMarket() {
-        onLoadingStateChange?(true)
+        isLoading = true
         
         cryptoMarketLoader.load { [weak self] result in
             guard let self = self else { return }
             
+            var receivedCryptoMarkets = [CryptoMarket]()
             switch result {
             case let .success(cryptoMarkets):
-                self.onCryptoMarketLoaded?(cryptoMarkets)
+                receivedCryptoMarkets = cryptoMarkets
                 self.startReceive()
                 
             default:
-                self.onCryptoMarketLoaded?([])
+                break
             }
             
-            self.onLoadingStateChange?(false)
+            let spot = receivedCryptoMarkets.filter{ !$0.future }.map { market in
+                CryptoMarketNamePriceModel(
+                    nameText: market.symbol,
+                    priceText: "--")
+            }.sorted { model1, model2 in
+                model1.nameText < model2.nameText
+            }
+            
+            let future = receivedCryptoMarkets.filter{ $0.future }.map { market in
+                CryptoMarketNamePriceModel(
+                    nameText: market.symbol,
+                    priceText: "--")
+            }.sorted { model1, model2 in
+                model1.nameText < model2.nameText
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                self.spotCryptoMarketNamePriceModels = spot
+                self.futureCryptoMarketNamePriceModels = future
+                if self.selectedCryptoMarketType == .spot {
+                    self.displayCryptoMarketNamePriceModels = self.spotCryptoMarketNamePriceModels
+                }
+                else {
+                    self.displayCryptoMarketNamePriceModels = self.futureCryptoMarketNamePriceModels
+                }
+                
+                self.isLoading = false
+            }
         }
     }
-    
-    var onCryptoMarketPricesUpdate: (([String : CryptoMarketPrice]) -> Void)?
     
     func startReceive() {
         cryptoMarketPricesReceiver.startReceive()
@@ -96,6 +140,41 @@ extension CryptoMarketPriceViewModel: CryptoMarketPricesReceiverDelegate {
     }
     
     func receiverReceive(prices: [String : CryptoMarketPrice]) {
-        onCryptoMarketPricesUpdate?(prices)
+        let spot = spotCryptoMarketNamePriceModels
+        let future = futureCryptoMarketNamePriceModels
+        let updatedSpot = spot.map { model in
+            if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
+                return CryptoMarketNamePriceModel(
+                    nameText: model.nameText,
+                    priceText: "\(cryptoMarketPrice.price)")
+            }
+            else {
+                return model
+            }
+        }
+        
+        let updatedFuture = future.map { model in
+            if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
+                return CryptoMarketNamePriceModel(
+                    nameText: model.nameText,
+                    priceText: "\(cryptoMarketPrice.price)")
+            }
+            else {
+                return model
+            }
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.spotCryptoMarketNamePriceModels = updatedSpot
+            self.futureCryptoMarketNamePriceModels = updatedFuture
+            if self.selectedCryptoMarketType == .spot {
+                self.displayCryptoMarketNamePriceModels = self.spotCryptoMarketNamePriceModels
+            }
+            else if self.selectedCryptoMarketType == .future {
+                self.displayCryptoMarketNamePriceModels = self.futureCryptoMarketNamePriceModels
+            }
+        }
     }
 }
