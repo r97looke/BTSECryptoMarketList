@@ -652,7 +652,7 @@ GET
          "favorite":true
       }
    ],
-   "Success":true
+   "success":true
 }
 ```
 
