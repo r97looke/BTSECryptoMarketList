@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */; };
 		BB91CFB42A8CA17100B4D523 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */; };
-		BB91CFB62A8CA17100B4D523 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB52A8CA17100B4D523 /* ViewController.swift */; };
-		BB91CFB92A8CA17100B4D523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB91CFB72A8CA17100B4D523 /* Main.storyboard */; };
 		BB91CFBB2A8CA17200B4D523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB91CFBA2A8CA17200B4D523 /* Assets.xcassets */; };
 		BB91CFBE2A8CA17200B4D523 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB91CFBC2A8CA17200B4D523 /* LaunchScreen.storyboard */; };
+		BB91CFE22A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +35,12 @@
 		BB91CFAE2A8CA17100B4D523 /* CryptoMarketPriceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarketPriceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BB91CFB52A8CA17100B4D523 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BB91CFB82A8CA17100B4D523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB91CFBA2A8CA17200B4D523 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB91CFBD2A8CA17200B4D523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB91CFBF2A8CA17200B4D523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB91CFC42A8CA17200B4D523 /* CryptoMarketPriceAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoMarketPriceAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB91CFCE2A8CA17200B4D523 /* CryptoMarketPriceAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoMarketPriceAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +93,7 @@
 			children = (
 				BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */,
 				BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */,
-				BB91CFB52A8CA17100B4D523 /* ViewController.swift */,
-				BB91CFB72A8CA17100B4D523 /* Main.storyboard */,
+				BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */,
 				BB91CFBA2A8CA17200B4D523 /* Assets.xcassets */,
 				BB91CFBC2A8CA17200B4D523 /* LaunchScreen.storyboard */,
 				BB91CFBF2A8CA17200B4D523 /* Info.plist */,
@@ -224,7 +221,6 @@
 			files = (
 				BB91CFBE2A8CA17200B4D523 /* LaunchScreen.storyboard in Resources */,
 				BB91CFBB2A8CA17200B4D523 /* Assets.xcassets in Resources */,
-				BB91CFB92A8CA17100B4D523 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB91CFB62A8CA17100B4D523 /* ViewController.swift in Sources */,
+				BB91CFE22A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift in Sources */,
 				BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */,
 				BB91CFB42A8CA17100B4D523 /* SceneDelegate.swift in Sources */,
 			);
@@ -285,14 +281,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BB91CFB72A8CA17100B4D523 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB91CFB82A8CA17100B4D523 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BB91CFBC2A8CA17200B4D523 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -429,7 +417,6 @@
 				INFOPLIST_FILE = CryptoMarketPriceApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,7 +443,6 @@
 				INFOPLIST_FILE = CryptoMarketPriceApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
