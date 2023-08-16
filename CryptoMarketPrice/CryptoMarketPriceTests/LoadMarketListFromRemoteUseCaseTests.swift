@@ -19,49 +19,6 @@ private extension Array where Element == CryptoMarket {
     }
 }
 
-private extension Array where Element == RemoteCryptoMarket {
-    func toModel() -> [CryptoMarket] {
-        return map { CryptoMarket(
-            symbol: $0.symbol,
-            future: $0.future)
-        }
-    }
-}
-
-final class RemoteCryptoMarketLoader: CryptoMarketLoader {
-    enum LoadError: Swift.Error {
-        case invalidData
-        case connectivity
-    }
-    
-    private let url: URL
-    private let client: HTTPClientSpy
-    
-    init(url: URL, client: HTTPClientSpy) {
-        self.url = url
-        self.client = client
-    }
-    
-    func load(completion: @escaping (CryptoMarketLoader.LoadResult) -> Void) {
-        client.get(from: url) { [weak self] result in
-            guard self != nil else { return }
-            
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-                
-            case let .success((data, httpURLResponse)):
-                if httpURLResponse.statusCode == 200, !data.isEmpty, let remoteCryptoResponse = try? JSONDecoder().decode(RemoteCyptoMarketResponse.self, from: data), let remoteCryptoMarkets = remoteCryptoResponse.data, !remoteCryptoMarkets.isEmpty {
-                    completion(.success(remoteCryptoMarkets.toModel()))
-                }
-                else {
-                    completion(.failure(LoadError.invalidData))
-                }
-            }
-        }
-    }
-}
-
 final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotGetDataFromURL() {
@@ -92,7 +49,7 @@ final class LoadMarketListFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.invalidData)) {
+        expect(sut, toCompleteWith: .failure(RemoteCryptoMarketLoader.LoadError.connectivity)) {
             client.complete(with: anyNSError())
         }
     }
