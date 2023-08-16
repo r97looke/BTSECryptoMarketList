@@ -12,6 +12,7 @@ protocol WebsocketClientDelegate: AnyObject {
     func websocketDidOpen()
     func websocketSendError()
     func websocketSendSuccess()
+    func websocketReceiveError()
 }
 
 protocol WebsocketClient {
@@ -20,6 +21,8 @@ protocol WebsocketClient {
     func connect(url: URL)
     
     func send(data: Data)
+    
+    func receive()
 }
 
 final class WebsocketClientSpy: WebsocketClient {
@@ -31,7 +34,6 @@ final class WebsocketClientSpy: WebsocketClient {
     var sentDatas = [Data]()
     
     var receiveCallCount = 0
-
     
     func connect(url: URL) {
         requestConnectURLs.append(url)
@@ -60,6 +62,10 @@ final class WebsocketClientSpy: WebsocketClient {
     func completeSendSuccess() {
         delegate?.websocketSendSuccess()
     }
+    
+    func completeReceive(with error: Error) {
+        delegate?.websocketReceiveError()
+    }
 }
 
 protocol CryptoMarketPricesReceiverDelegate: AnyObject {
@@ -67,6 +73,7 @@ protocol CryptoMarketPricesReceiverDelegate: AnyObject {
     func receiverDidOpen()
     func receiverSubscribeError()
     func receiverSubscribeSuccess()
+    func receiverReceiveError()
 }
 
 protocol CryptoMarketPricesReceiver: WebsocketClientDelegate {
@@ -112,6 +119,10 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
         
         client.receive()
     }
+    
+    func websocketReceiveError() {
+        delegate?.receiverReceiveError()
+    }
 }
 
 final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDelegate {
@@ -120,6 +131,7 @@ final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDel
         case open
         case subscribeError
         case subscribeSuccess
+        case receiveError
     }
     
     var message = [Message]()
@@ -138,6 +150,10 @@ final class CryptoMarketPricesReceiverDelegateSpy: CryptoMarketPricesReceiverDel
     
     func receiverSubscribeSuccess() {
         message.append(.subscribeSuccess)
+    }
+    
+    func receiverReceiveError() {
+        message.append(.receiveError)
     }
 }
 
@@ -227,7 +243,7 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess])
     }
     
-    func test_startReceive_requestReceiveDataOnSubscribeCoinIndexSuccess() {
+    func test_startReceive_requestsReceiveOnSubscribeCoinIndexSuccess() {
         let url = anyWebsocketURL()
         let client = WebsocketClientSpy()
         let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
@@ -239,6 +255,21 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         client.completeConnectSuccess()
         client.completeSendSuccess()
         XCTAssertEqual(client.receiveCallCount, 1)
+    }
+    
+    func test_startReceive_delegateErrorOnReceiveError() {
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        
+        client.completeConnectSuccess()
+        client.completeSendSuccess()
+        client.completeReceive(with: anyNSError())
+        XCTAssertEqual(delegateSpy.message, [.open, .subscribeSuccess, .receiveError])
     }
     
     // MARK: Helpers
