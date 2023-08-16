@@ -6,11 +6,7 @@
 //
 
 import XCTest
-
-struct CryptoMarket: Equatable {
-    let symbol: String
-    let future: Bool
-}
+import CryptoMarketPrice
 
 struct RemoteCryptoMarket: Decodable {
     let symbol: String
