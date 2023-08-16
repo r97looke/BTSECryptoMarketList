@@ -18,6 +18,8 @@ final class CryptoMarketPriceViewModel {
         self.cryptoMarketPricesReceiver.delegate = self
     }
     
+    var cryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    
     var onLoadingStateChange: ((Bool) -> Void)?
     var onCryptoMarketLoaded: (([CryptoMarket]) -> Void)?
     
@@ -30,6 +32,7 @@ final class CryptoMarketPriceViewModel {
             switch result {
             case let .success(cryptoMarkets):
                 self.onCryptoMarketLoaded?(cryptoMarkets)
+                self.startReceive()
                 
             default:
                 self.onCryptoMarketLoaded?([])
@@ -37,6 +40,16 @@ final class CryptoMarketPriceViewModel {
             
             self.onLoadingStateChange?(false)
         }
+    }
+    
+    var onCryptoMarketPricesUpdate: (([String : CryptoMarketPrice]) -> Void)?
+    
+    func startReceive() {
+        cryptoMarketPricesReceiver.startReceive()
+    }
+    
+    func stopReceive() {
+        cryptoMarketPricesReceiver.stopReceive()
     }
 }
 
@@ -68,6 +81,6 @@ extension CryptoMarketPriceViewModel: CryptoMarketPricesReceiverDelegate {
     }
     
     func receiverReceive(prices: [String : CryptoMarketPrice]) {
-        
+        onCryptoMarketPricesUpdate?(prices)
     }
 }

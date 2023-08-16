@@ -25,10 +25,32 @@ class CryptoMarketPriceViewComposer {
                 CryptoMarketNamePriceModel(
                     nameText: $0.symbol,
                     priceText: "--")
+            }.sorted { model1, model2 in
+                return model1.nameText < model2.nameText
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak viewController] in
+                viewModel.cryptoMarketNamePriceModels = cryptoMarketNamePriceModels
                 viewController?.cryptoMarketNamePriceModels = cryptoMarketNamePriceModels
+            }
+        }
+        
+        viewModel.onCryptoMarketPricesUpdate = { [weak viewController] prices in
+            let cryptoMarketNamePriceModels = viewModel.cryptoMarketNamePriceModels
+            let updatedCryptoMarketNamePriceModels = cryptoMarketNamePriceModels.map { model in
+                if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
+                    return CryptoMarketNamePriceModel(
+                        nameText: model.nameText,
+                        priceText: "\(cryptoMarketPrice.price)")
+                }
+                else {
+                    return model
+                }
+            }
+            
+            DispatchQueue.main.async { [weak viewController] in
+                viewModel.cryptoMarketNamePriceModels = updatedCryptoMarketNamePriceModels
+                viewController?.cryptoMarketNamePriceModels = updatedCryptoMarketNamePriceModels
             }
         }
         
