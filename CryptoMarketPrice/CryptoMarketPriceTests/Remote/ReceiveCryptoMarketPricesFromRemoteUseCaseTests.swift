@@ -14,16 +14,26 @@ protocol WebsocketClientDelegate: AnyObject {
 
 protocol WebsocketClient {
     var delegate: WebsocketClientDelegate? { set get }
+    
+    func connect(url: URL)
+    
+    func send(data: Data)
 }
 
 final class WebsocketClientSpy: WebsocketClient {
     
     weak var delegate: WebsocketClientDelegate?
     
+    var sentDatas = [Data]()
+    
     var requestConnectURLs = [URL]()
     
     func connect(url: URL) {
         requestConnectURLs.append(url)
+    }
+    
+    func send(data: Data) {
+        sentDatas.append(data)
     }
     
     func completeConnect(with error: Error) {
@@ -67,6 +77,11 @@ final class RemoteCryptoMarketPricesReceiver: CryptoMarketPricesReceiver {
     
     func websocketDidOpen() {
         delegate?.receiverDidOpen()
+        
+        let subscribeJSON: [String : Any] = ["op": "subscribe",
+                                             "args": ["coinIndex"]]
+        
+        client.send(data: try! JSONSerialization.data(withJSONObject: subscribeJSON))
     }
 }
 
@@ -132,8 +147,27 @@ final class ReceiveCryptoMarketPricesFromRemoteUseCaseTests: XCTestCase {
         XCTAssertEqual(delegateSpy.message, [.open])
     }
     
+    func test_startReceive_sendSubscribeCoinIndexOnOpen() {
+        let url = anyWebsocketURL()
+        let client = WebsocketClientSpy()
+        let sut = RemoteCryptoMarketPricesReceiver(url: url, client: client)
+        let delegateSpy = CryptoMarketPricesReceiverDelegateSpy()
+        sut.delegate = delegateSpy
+        
+        sut.startReceive()
+        
+        client.completeConnectSuccess()
+        XCTAssertEqual(client.sentDatas, [makeSubscribeJSON()])
+    }
+    
     // MARK: Helpers
     private func anyWebsocketURL() -> URL {
         return URL(string: "wss://any-url")!
+    }
+    
+    private func makeSubscribeJSON() -> Data {
+        let subscribeJSON: [String : Any] = ["op": "subscribe",
+                                             "args": ["coinIndex"]]
+        return try! JSONSerialization.data(withJSONObject: subscribeJSON)
     }
 }
