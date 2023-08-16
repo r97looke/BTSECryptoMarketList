@@ -36,9 +36,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let websocketSession = URLSession(configuration: .ephemeral)
         let websocketClient = URLSessionWebsocketClient(session: websocketSession)
-        let cryptoMarketPriceReceiver = RemoteCryptoMarketPricesReceiver(url: CryptoMarketPriceAppSettings.cryptoMarketPriceWebsocketEndpointURL(), client: websocketClient)
-        let viewModel = CryptoMarketPriceViewModel(cryptoMarketLoader: cryptoMarketLoader, cryptoMarketPricesReceiver: cryptoMarketPriceReceiver)
-        let viewController = CryptoMarketPriceViewController(viewModel: viewModel)
+        let cryptoMarketPricesReceiver = RemoteCryptoMarketPricesReceiver(url: CryptoMarketPriceAppSettings.cryptoMarketPriceWebsocketEndpointURL(), client: websocketClient)
+        
+        let viewController = CryptoMarketPriceViewComposer.compose(cryptoMarketLoader: cryptoMarketLoader, cryptoMarketPricesReceiver: cryptoMarketPricesReceiver)
         
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = viewController

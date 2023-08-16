@@ -8,9 +8,9 @@
 import Foundation
 import CryptoMarketPrice
 
-class CryptoMarketPriceViewModel {
-    let cryptoMarketLoader: CryptoMarketLoader
-    let cryptoMarketPricesReceiver: CryptoMarketPricesReceiver
+final class CryptoMarketPriceViewModel {
+    private let cryptoMarketLoader: CryptoMarketLoader
+    private let cryptoMarketPricesReceiver: CryptoMarketPricesReceiver
     
     init(cryptoMarketLoader: CryptoMarketLoader, cryptoMarketPricesReceiver: CryptoMarketPricesReceiver) {
         self.cryptoMarketLoader = cryptoMarketLoader
@@ -30,10 +30,9 @@ class CryptoMarketPriceViewModel {
             switch result {
             case let .success(cryptoMarkets):
                 self.onCryptoMarketLoaded?(cryptoMarkets)
-                NSLog("TODO: cryptoMarkets.count = \(cryptoMarkets.count)")
                 
             default:
-                break
+                self.onCryptoMarketLoaded?([])
             }
             
             self.onLoadingStateChange?(false)

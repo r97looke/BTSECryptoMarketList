@@ -12,6 +12,7 @@
 		BB2DF6FC2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */; };
 		BB2DF6FF2A8CAF82003102D1 /* CryptoMarketPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */; };
 		BB2DF7002A8CAF82003102D1 /* CryptoMarketPrice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BB2DF7062A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DF7052A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift */; };
 		BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */; };
 		BB91CFB42A8CA17100B4D523 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */; };
 		BB91CFBB2A8CA17200B4D523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB91CFBA2A8CA17200B4D523 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		A7109F347DA750E586D32B93 /* Pods_CryptoMarketPriceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewModel.swift; sourceTree = "<group>"; };
 		BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoMarketPrice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2DF7052A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewComposer.swift; sourceTree = "<group>"; };
 		BB91CFAE2A8CA17100B4D523 /* CryptoMarketPriceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarketPriceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB2DF7022A8CBD02003102D1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BB2DF7042A8CBD7D003102D1 /* Composer */,
+				BB2DF7032A8CBD16003102D1 /* ViewController */,
+				BB91CFE32A8CA56100B4D523 /* ViewModel */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BB2DF7032A8CBD16003102D1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BB2DF7042A8CBD7D003102D1 /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				BB2DF7052A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift */,
+			);
+			path = Composer;
+			sourceTree = "<group>";
+		};
 		BB91CFA52A8CA17100B4D523 = {
 			isa = PBXGroup;
 			children = (
@@ -126,10 +154,9 @@
 		BB91CFB02A8CA17100B4D523 /* CryptoMarketPriceApp */ = {
 			isa = PBXGroup;
 			children = (
-				BB91CFE32A8CA56100B4D523 /* ViewModel */,
+				BB2DF7022A8CBD02003102D1 /* UI */,
 				BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */,
 				BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */,
-				BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */,
 				BB91CFBA2A8CA17200B4D523 /* Assets.xcassets */,
 				BB91CFBC2A8CA17200B4D523 /* LaunchScreen.storyboard */,
 				BB91CFBF2A8CA17200B4D523 /* Info.plist */,
@@ -424,6 +451,7 @@
 			files = (
 				BB91CFE22A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift in Sources */,
 				BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */,
+				BB2DF7062A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift in Sources */,
 				BB2DF6FC2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift in Sources */,
 				BB91CFB42A8CA17100B4D523 /* SceneDelegate.swift in Sources */,
 			);
