@@ -20,6 +20,18 @@ class CryptoMarketPriceViewComposer {
             }
         }
         
+        viewModel.onCryptoMarketLoaded = { [weak viewController] cryptoMarkets in
+            let cryptoMarketNamePriceModels = cryptoMarkets.map {
+                CryptoMarketNamePriceModel(
+                    nameText: $0.symbol,
+                    priceText: "--")
+            }
+            
+            DispatchQueue.main.async {
+                viewController?.cryptoMarketNamePriceModels = cryptoMarketNamePriceModels
+            }
+        }
+        
         return viewController
     }
 }

@@ -13,6 +13,8 @@
 		BB2DF6FF2A8CAF82003102D1 /* CryptoMarketPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */; };
 		BB2DF7002A8CAF82003102D1 /* CryptoMarketPrice.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BB2DF7062A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DF7052A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift */; };
+		BB2DF70A2A8CC215003102D1 /* CryptoMarketNamePriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DF7092A8CC215003102D1 /* CryptoMarketNamePriceModel.swift */; };
+		BB2DF70C2A8CC257003102D1 /* CryptoMarketNamePriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DF70B2A8CC257003102D1 /* CryptoMarketNamePriceCell.swift */; };
 		BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */; };
 		BB91CFB42A8CA17100B4D523 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */; };
 		BB91CFBB2A8CA17200B4D523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB91CFBA2A8CA17200B4D523 /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 		BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewModel.swift; sourceTree = "<group>"; };
 		BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoMarketPrice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2DF7052A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewComposer.swift; sourceTree = "<group>"; };
+		BB2DF7092A8CC215003102D1 /* CryptoMarketNamePriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketNamePriceModel.swift; sourceTree = "<group>"; };
+		BB2DF70B2A8CC257003102D1 /* CryptoMarketNamePriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketNamePriceCell.swift; sourceTree = "<group>"; };
 		BB91CFAE2A8CA17100B4D523 /* CryptoMarketPriceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoMarketPriceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB91CFB12A8CA17100B4D523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB91CFB32A8CA17100B4D523 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 		BB2DF7022A8CBD02003102D1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				BB2DF7082A8CC1E6003102D1 /* Model */,
+				BB2DF7072A8CC1CC003102D1 /* View */,
 				BB2DF7042A8CBD7D003102D1 /* Composer */,
 				BB2DF7032A8CBD16003102D1 /* ViewController */,
 				BB91CFE32A8CA56100B4D523 /* ViewModel */,
@@ -127,6 +133,22 @@
 				BB2DF7052A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift */,
 			);
 			path = Composer;
+			sourceTree = "<group>";
+		};
+		BB2DF7072A8CC1CC003102D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB2DF70B2A8CC257003102D1 /* CryptoMarketNamePriceCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB2DF7082A8CC1E6003102D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB2DF7092A8CC215003102D1 /* CryptoMarketNamePriceModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BB91CFA52A8CA17100B4D523 = {
@@ -449,6 +471,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2DF70A2A8CC215003102D1 /* CryptoMarketNamePriceModel.swift in Sources */,
+				BB2DF70C2A8CC257003102D1 /* CryptoMarketNamePriceCell.swift in Sources */,
 				BB91CFE22A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift in Sources */,
 				BB91CFB22A8CA17100B4D523 /* AppDelegate.swift in Sources */,
 				BB2DF7062A8CBD98003102D1 /* CryptoMarketPriceViewComposer.swift in Sources */,

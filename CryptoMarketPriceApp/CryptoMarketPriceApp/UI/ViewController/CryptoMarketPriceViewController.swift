@@ -32,6 +32,12 @@ final class CryptoMarketPriceViewController: UIViewController {
         }
     }
     
+    var cryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     private let DefaultSpace: CGFloat = 8.0
     private let DefaultMargin: CGFloat = 16.0
     
@@ -55,6 +61,8 @@ final class CryptoMarketPriceViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60.0
+        tableView.allowsSelection = false
+        tableView.allowsFocus = false
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -76,8 +84,28 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(CryptoMarketNamePriceCell.self, forCellReuseIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))")
+        
+        tableView.dataSource = self
         viewModel.loadCryptoMarket()
     }
-    
+}
 
+// MARK: UITableViewDataSource
+extension CryptoMarketPriceViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cryptoMarketNamePriceModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = cryptoMarketNamePriceModels[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", for: indexPath) as! CryptoMarketNamePriceCell
+        cell.model = model
+        return cell
+    }
 }
