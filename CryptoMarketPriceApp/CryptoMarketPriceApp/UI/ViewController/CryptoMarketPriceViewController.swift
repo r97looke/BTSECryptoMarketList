@@ -19,6 +19,8 @@ final class CryptoMarketPriceViewController: UIViewController {
     private let viewModel: CryptoMarketPriceViewModel
     private let disposeBag = DisposeBag()
     
+    private var displayCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    
     init(viewModel: CryptoMarketPriceViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -85,11 +87,10 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         viewModel.isLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)
         
-        viewModel.displayCryptoMarketNamePriceModelsObserver = { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.tableView.reloadData()
-        }
+        viewModel.displayCryptoMarketNamePriceModels.subscribe { [weak self] models in
+            self?.displayCryptoMarketNamePriceModels = models
+            self?.tableView.reloadData()
+        }.disposed(by: disposeBag)
         
         viewModel.loadCryptoMarket()
     }
@@ -107,11 +108,11 @@ extension CryptoMarketPriceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.displayCryptoMarketNamePriceModels.count
+        return displayCryptoMarketNamePriceModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = viewModel.displayCryptoMarketNamePriceModels[indexPath.row]
+        let model = displayCryptoMarketNamePriceModels[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", for: indexPath) as! CryptoMarketNamePriceCell
         cell.model = model
         return cell

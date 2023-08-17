@@ -28,27 +28,21 @@ final class CryptoMarketPriceViewModel {
     var selectedCryptoMarketType: CryptoMarketType = .spot {
         didSet {
             if selectedCryptoMarketType == .spot {
-                displayCryptoMarketNamePriceModels = spotCryptoMarketNamePriceModels
+                displayCryptoMarketNamePriceModels.accept(spotCryptoMarketNamePriceModels)
             }
             else {
-                displayCryptoMarketNamePriceModels = futureCryptoMarketNamePriceModels
+                displayCryptoMarketNamePriceModels.accept(futureCryptoMarketNamePriceModels)
             }
         }
     }
     
     let isLoading = PublishRelay<Bool>()
     
-    var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    private var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
-    var futureCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    private var futureCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
-    var displayCryptoMarketNamePriceModelsObserver: (([CryptoMarketNamePriceModel]) -> Void)?
-    
-    var displayCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]() {
-        didSet {
-            displayCryptoMarketNamePriceModelsObserver?(displayCryptoMarketNamePriceModels)
-        }
-    }
+    let displayCryptoMarketNamePriceModels = PublishRelay<[CryptoMarketNamePriceModel]>()
     
     func loadCryptoMarket() {
         isLoading.accept(true)
@@ -88,10 +82,10 @@ final class CryptoMarketPriceViewModel {
                 self.spotCryptoMarketNamePriceModels = spot
                 self.futureCryptoMarketNamePriceModels = future
                 if self.selectedCryptoMarketType == .spot {
-                    self.displayCryptoMarketNamePriceModels = self.spotCryptoMarketNamePriceModels
+                    self.displayCryptoMarketNamePriceModels.accept(self.spotCryptoMarketNamePriceModels)
                 }
                 else {
-                    self.displayCryptoMarketNamePriceModels = self.futureCryptoMarketNamePriceModels
+                    self.displayCryptoMarketNamePriceModels.accept(self.futureCryptoMarketNamePriceModels)
                 }
                 
                 self.isLoading.accept(false)
@@ -166,10 +160,10 @@ extension CryptoMarketPriceViewModel: CryptoMarketPricesReceiverDelegate {
             self.spotCryptoMarketNamePriceModels = updatedSpot
             self.futureCryptoMarketNamePriceModels = updatedFuture
             if self.selectedCryptoMarketType == .spot {
-                self.displayCryptoMarketNamePriceModels = self.spotCryptoMarketNamePriceModels
+                self.displayCryptoMarketNamePriceModels.accept(self.spotCryptoMarketNamePriceModels)
             }
             else if self.selectedCryptoMarketType == .future {
-                self.displayCryptoMarketNamePriceModels = self.futureCryptoMarketNamePriceModels
+                self.displayCryptoMarketNamePriceModels.accept(self.futureCryptoMarketNamePriceModels)
             }
         }
     }
