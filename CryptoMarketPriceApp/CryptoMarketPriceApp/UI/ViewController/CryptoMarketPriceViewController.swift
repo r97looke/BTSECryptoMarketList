@@ -97,6 +97,7 @@ final class CryptoMarketPriceViewController: UIViewController {
         tableView.register(CryptoMarketNamePriceCell.self, forCellReuseIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))")
         
         viewModel.isLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)
+        viewModel.isLoading.filter { $0 }.bind(to: emptyLabel.rx.isHidden).disposed(by: disposeBag)
         
         viewModel.displayCryptoMarketNamePriceModels.bind(to: tableView.rx.items(cellIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", cellType: CryptoMarketNamePriceCell.self)) { (row, model, cell) in
             cell.model = model
@@ -104,6 +105,17 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         viewModel.displayCryptoMarketNamePriceModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden ).disposed(by: disposeBag)
         
+        
+        NotificationCenter.default.rx.notification(UIApplication.willResignActiveNotification).subscribe(onNext: { [weak self] _ in
+            self?.viewModel.stopReceive()
+        }).disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification).subscribe(onNext: { [weak self] _ in
+            self?.refresh()
+        }).disposed(by: disposeBag)
+    }
+    
+    @objc func refresh() {
         viewModel.loadCryptoMarket()
     }
 }
