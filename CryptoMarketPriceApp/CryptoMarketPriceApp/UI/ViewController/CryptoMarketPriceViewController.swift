@@ -28,6 +28,7 @@ final class CryptoMarketPriceViewController: UIViewController {
     private let DefaultMargin: CGFloat = 16.0
     
     private let segmentedControl = UISegmentedControl(items: ["Spots", "Future"])
+    private let sortButton = UIButton()
     private let tableView = UITableView()
     private let loadingView = UIActivityIndicatorView(style: .large)
     private let emptyLabel = UILabel()
@@ -35,17 +36,19 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        let selectedCryptoMarketTypeObserver: Binder<CryptoMarketPriceViewModel.CryptoMarketType> = Binder(viewModel) { (viewModel, type) in
-            viewModel.selectedCryptoMarketType = type
-        }
-        
-        segmentedControl.rx.selectedSegmentIndex.asObservable().map { CryptoMarketPriceViewModel.CryptoMarketType(rawValue: $0) ?? .spot
-        }.bind(to: selectedCryptoMarketTypeObserver).disposed(by: disposeBag)
-        
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(DefaultMargin)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(40)
+        }
+        
+        sortButton.setTitle(viewModel.sortType.displayText(), for: .normal)
+        sortButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(sortButton)
+        sortButton.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom).offset(DefaultSpace)
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
         }
@@ -60,7 +63,7 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp.bottom).offset(DefaultSpace)
+            make.top.equalTo(sortButton.snp.bottom).offset(DefaultSpace)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(DefaultMargin)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-DefaultMargin)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-DefaultMargin)
@@ -92,7 +95,18 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let selectedCryptoMarketTypeObserver: Binder<CryptoMarketPriceViewModel.CryptoMarketType> = Binder(viewModel) { (viewModel, type) in
+            viewModel.selectedCryptoMarketType = type
+        }
+        
+        segmentedControl.rx.selectedSegmentIndex.asObservable().map { CryptoMarketPriceViewModel.CryptoMarketType(rawValue: $0) ?? .spot
+        }.bind(to: selectedCryptoMarketTypeObserver).disposed(by: disposeBag)
+        
         segmentedControl.selectedSegmentIndex = viewModel.selectedCryptoMarketType.rawValue
+        
+        sortButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.showSortByActionSheet()
+        }).disposed(by: disposeBag)
         
         tableView.register(CryptoMarketNamePriceCell.self, forCellReuseIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))")
         
@@ -117,5 +131,19 @@ final class CryptoMarketPriceViewController: UIViewController {
     
     @objc func refresh() {
         viewModel.loadCryptoMarket()
+    }
+    
+    private func showSortByActionSheet() {
+        let alert = UIAlertController(title: "Sort By", message: nil, preferredStyle: .actionSheet)
+        
+        for type in CryptoMarketPriceViewModel.CryptoMarketSortType.allCases {
+            let action = UIAlertAction(title: type.displayText(), style: .default) { _ in
+                self.viewModel.sortType = type
+                self.sortButton.rx.title(for: .normal).onNext(type.displayText())
+            }
+            alert.addAction(action)
+        }
+        
+        present(alert, animated: true)
     }
 }
