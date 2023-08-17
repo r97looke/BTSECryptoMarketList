@@ -30,6 +30,7 @@ final class CryptoMarketPriceViewController: UIViewController {
     private let segmentedControl = UISegmentedControl(items: ["Spots", "Future"])
     private let tableView = UITableView()
     private let loadingView = UIActivityIndicatorView(style: .large)
+    private let emptyLabel = UILabel()
     
     override func loadView() {
         super.loadView()
@@ -72,6 +73,20 @@ final class CryptoMarketPriceViewController: UIViewController {
             make.center.equalTo(tableView)
             make.edges.equalTo(tableView)
         }
+        
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.font = .boldSystemFont(ofSize: 24)
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = .red
+        emptyLabel.numberOfLines = 0
+        emptyLabel.text = "Can not get crypto market prices now. Please try again later!"
+        emptyLabel.isHidden = true
+        view.addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.center.equalTo(tableView)
+            make.leading.equalTo(tableView)
+            make.trailing.equalTo(tableView)
+        }
     }
 
     override func viewDidLoad() {
@@ -86,6 +101,8 @@ final class CryptoMarketPriceViewController: UIViewController {
         viewModel.displayCryptoMarketNamePriceModels.bind(to: tableView.rx.items(cellIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", cellType: CryptoMarketNamePriceCell.self)) { (row, model, cell) in
             cell.model = model
         }.disposed(by: disposeBag)
+        
+        viewModel.displayCryptoMarketNamePriceModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden ).disposed(by: disposeBag)
         
         viewModel.loadCryptoMarket()
     }
