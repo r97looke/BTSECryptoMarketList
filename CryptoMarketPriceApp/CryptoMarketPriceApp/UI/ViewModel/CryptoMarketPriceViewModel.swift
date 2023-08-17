@@ -130,32 +130,32 @@ extension CryptoMarketPriceViewModel: CryptoMarketPricesReceiverDelegate {
     }
     
     func receiverReceive(prices: [String : CryptoMarketPrice]) {
-        let spot = spotCryptoMarketNamePriceModels
-        let future = futureCryptoMarketNamePriceModels
-        let updatedSpot = spot.map { model in
-            if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
-                return CryptoMarketNamePriceModel(
-                    nameText: model.nameText,
-                    priceText: "\(cryptoMarketPrice.price)")
-            }
-            else {
-                return model
-            }
-        }
-        
-        let updatedFuture = future.map { model in
-            if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
-                return CryptoMarketNamePriceModel(
-                    nameText: model.nameText,
-                    priceText: "\(cryptoMarketPrice.price)")
-            }
-            else {
-                return model
-            }
-        }
-        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            
+            let spot = spotCryptoMarketNamePriceModels
+            let future = futureCryptoMarketNamePriceModels
+            let updatedSpot = spot.map { model in
+                if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
+                    return CryptoMarketNamePriceModel(
+                        nameText: model.nameText,
+                        priceText: "\(cryptoMarketPrice.price)")
+                }
+                else {
+                    return model
+                }
+            }
+            
+            let updatedFuture = future.map { model in
+                if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
+                    return CryptoMarketNamePriceModel(
+                        nameText: model.nameText,
+                        priceText: "\(cryptoMarketPrice.price)")
+                }
+                else {
+                    return model
+                }
+            }
             
             self.spotCryptoMarketNamePriceModels = updatedSpot
             self.futureCryptoMarketNamePriceModels = updatedFuture
