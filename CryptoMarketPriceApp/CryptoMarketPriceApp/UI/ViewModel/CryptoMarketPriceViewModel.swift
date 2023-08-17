@@ -7,6 +7,8 @@
 
 import Foundation
 import CryptoMarketPrice
+import RxSwift
+import RxRelay
 
 final class CryptoMarketPriceViewModel {
     private let cryptoMarketLoader: CryptoMarketLoader
@@ -26,36 +28,24 @@ final class CryptoMarketPriceViewModel {
     var selectedCryptoMarketType: CryptoMarketType = .spot {
         didSet {
             if selectedCryptoMarketType == .spot {
-                displayCryptoMarketNamePriceModels = spotCryptoMarketNamePriceModels
+                displayCryptoMarketNamePriceModels.accept(spotCryptoMarketNamePriceModels)
             }
             else {
-                displayCryptoMarketNamePriceModels = futureCryptoMarketNamePriceModels
+                displayCryptoMarketNamePriceModels.accept(futureCryptoMarketNamePriceModels)
             }
         }
     }
     
-    var onLoadingStateChange: ((Bool) -> Void)?
+    let isLoading = PublishRelay<Bool>()
     
-    var isLoading: Bool = false {
-        didSet {
-            onLoadingStateChange?(isLoading)
-        }
-    }
+    private var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
-    var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    private var futureCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
-    var futureCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
-    
-    var displayCryptoMarketNamePriceModelsObserver: (([CryptoMarketNamePriceModel]) -> Void)?
-    
-    var displayCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]() {
-        didSet {
-            displayCryptoMarketNamePriceModelsObserver?(displayCryptoMarketNamePriceModels)
-        }
-    }
+    let displayCryptoMarketNamePriceModels = PublishRelay<[CryptoMarketNamePriceModel]>()
     
     func loadCryptoMarket() {
-        isLoading = true
+        isLoading.accept(true)
         
         cryptoMarketLoader.load { [weak self] result in
             guard let self = self else { return }
@@ -92,13 +82,13 @@ final class CryptoMarketPriceViewModel {
                 self.spotCryptoMarketNamePriceModels = spot
                 self.futureCryptoMarketNamePriceModels = future
                 if self.selectedCryptoMarketType == .spot {
-                    self.displayCryptoMarketNamePriceModels = self.spotCryptoMarketNamePriceModels
+                    self.displayCryptoMarketNamePriceModels.accept(self.spotCryptoMarketNamePriceModels)
                 }
                 else {
-                    self.displayCryptoMarketNamePriceModels = self.futureCryptoMarketNamePriceModels
+                    self.displayCryptoMarketNamePriceModels.accept(self.futureCryptoMarketNamePriceModels)
                 }
                 
-                self.isLoading = false
+                self.isLoading.accept(false)
             }
         }
     }
@@ -140,40 +130,40 @@ extension CryptoMarketPriceViewModel: CryptoMarketPricesReceiverDelegate {
     }
     
     func receiverReceive(prices: [String : CryptoMarketPrice]) {
-        let spot = spotCryptoMarketNamePriceModels
-        let future = futureCryptoMarketNamePriceModels
-        let updatedSpot = spot.map { model in
-            if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
-                return CryptoMarketNamePriceModel(
-                    nameText: model.nameText,
-                    priceText: "\(cryptoMarketPrice.price)")
-            }
-            else {
-                return model
-            }
-        }
-        
-        let updatedFuture = future.map { model in
-            if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
-                return CryptoMarketNamePriceModel(
-                    nameText: model.nameText,
-                    priceText: "\(cryptoMarketPrice.price)")
-            }
-            else {
-                return model
-            }
-        }
-        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            
+            let spot = spotCryptoMarketNamePriceModels
+            let future = futureCryptoMarketNamePriceModels
+            let updatedSpot = spot.map { model in
+                if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
+                    return CryptoMarketNamePriceModel(
+                        nameText: model.nameText,
+                        priceText: "\(cryptoMarketPrice.price)")
+                }
+                else {
+                    return model
+                }
+            }
+            
+            let updatedFuture = future.map { model in
+                if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
+                    return CryptoMarketNamePriceModel(
+                        nameText: model.nameText,
+                        priceText: "\(cryptoMarketPrice.price)")
+                }
+                else {
+                    return model
+                }
+            }
             
             self.spotCryptoMarketNamePriceModels = updatedSpot
             self.futureCryptoMarketNamePriceModels = updatedFuture
             if self.selectedCryptoMarketType == .spot {
-                self.displayCryptoMarketNamePriceModels = self.spotCryptoMarketNamePriceModels
+                self.displayCryptoMarketNamePriceModels.accept(self.spotCryptoMarketNamePriceModels)
             }
             else if self.selectedCryptoMarketType == .future {
-                self.displayCryptoMarketNamePriceModels = self.futureCryptoMarketNamePriceModels
+                self.displayCryptoMarketNamePriceModels.accept(self.futureCryptoMarketNamePriceModels)
             }
         }
     }

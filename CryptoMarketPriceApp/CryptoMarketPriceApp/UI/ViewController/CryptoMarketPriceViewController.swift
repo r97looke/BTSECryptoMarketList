@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class CryptoMarketPriceViewController: UIViewController {
     
@@ -15,6 +17,7 @@ final class CryptoMarketPriceViewController: UIViewController {
     }
     
     private let viewModel: CryptoMarketPriceViewModel
+    private let disposeBag = DisposeBag()
     
     init(viewModel: CryptoMarketPriceViewModel) {
         self.viewModel = viewModel
@@ -27,11 +30,18 @@ final class CryptoMarketPriceViewController: UIViewController {
     private let segmentedControl = UISegmentedControl(items: ["Spots", "Future"])
     private let tableView = UITableView()
     private let loadingView = UIActivityIndicatorView(style: .large)
+    private let emptyLabel = UILabel()
     
     override func loadView() {
         super.loadView()
         
-        segmentedControl.addTarget(self, action: #selector(didChangeSegment), for: .valueChanged)
+        let selectedCryptoMarketTypeObserver: Binder<CryptoMarketPriceViewModel.CryptoMarketType> = Binder(viewModel) { (viewModel, type) in
+            viewModel.selectedCryptoMarketType = type
+        }
+        
+        segmentedControl.rx.selectedSegmentIndex.asObservable().map { CryptoMarketPriceViewModel.CryptoMarketType(rawValue: $0) ?? .spot
+        }.bind(to: selectedCryptoMarketTypeObserver).disposed(by: disposeBag)
+        
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { make in
@@ -63,6 +73,20 @@ final class CryptoMarketPriceViewController: UIViewController {
             make.center.equalTo(tableView)
             make.edges.equalTo(tableView)
         }
+        
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        emptyLabel.font = .boldSystemFont(ofSize: 24)
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = .red
+        emptyLabel.numberOfLines = 0
+        emptyLabel.text = "Can not get crypto market prices now. Please try again later!"
+        emptyLabel.isHidden = true
+        view.addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.center.equalTo(tableView)
+            make.leading.equalTo(tableView)
+            make.trailing.equalTo(tableView)
+        }
     }
 
     override func viewDidLoad() {
@@ -72,48 +96,26 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         tableView.register(CryptoMarketNamePriceCell.self, forCellReuseIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))")
         
-        tableView.dataSource = self
+        viewModel.isLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)
+        viewModel.isLoading.filter { $0 }.bind(to: emptyLabel.rx.isHidden).disposed(by: disposeBag)
         
-        viewModel.onLoadingStateChange = { [weak self] _ in
-            guard let self = self else { return }
-            
-            if self.viewModel.isLoading {
-                self.loadingView.startAnimating()
-            }
-            else {
-                self.loadingView.stopAnimating()
-            }
-        }
+        viewModel.displayCryptoMarketNamePriceModels.bind(to: tableView.rx.items(cellIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", cellType: CryptoMarketNamePriceCell.self)) { (row, model, cell) in
+            cell.model = model
+        }.disposed(by: disposeBag)
         
-        viewModel.displayCryptoMarketNamePriceModelsObserver = { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.tableView.reloadData()
-        }
+        viewModel.displayCryptoMarketNamePriceModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden ).disposed(by: disposeBag)
         
+        
+        NotificationCenter.default.rx.notification(UIApplication.willResignActiveNotification).subscribe(onNext: { [weak self] _ in
+            self?.viewModel.stopReceive()
+        }).disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIApplication.didBecomeActiveNotification).subscribe(onNext: { [weak self] _ in
+            self?.refresh()
+        }).disposed(by: disposeBag)
+    }
+    
+    @objc func refresh() {
         viewModel.loadCryptoMarket()
-    }
-    
-    @objc private func didChangeSegment() {
-        viewModel.selectedCryptoMarketType = CryptoMarketPriceViewModel.CryptoMarketType(rawValue: segmentedControl.selectedSegmentIndex) ?? .spot
-    }
-}
-
-// MARK: UITableViewDataSource
-extension CryptoMarketPriceViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.displayCryptoMarketNamePriceModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = viewModel.displayCryptoMarketNamePriceModels[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", for: indexPath) as! CryptoMarketNamePriceCell
-        cell.model = model
-        return cell
     }
 }
