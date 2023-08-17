@@ -17,7 +17,7 @@ final class CryptoMarketPriceViewController: UIViewController {
     }
     
     private let viewModel: CryptoMarketPriceViewModel
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     init(viewModel: CryptoMarketPriceViewModel) {
         self.viewModel = viewModel
@@ -83,16 +83,7 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         tableView.dataSource = self
         
-        viewModel.onLoadingStateChange = { [weak self] _ in
-            guard let self = self else { return }
-            
-            if self.viewModel.isLoading {
-                self.loadingView.startAnimating()
-            }
-            else {
-                self.loadingView.stopAnimating()
-            }
-        }
+        viewModel.isLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)
         
         viewModel.displayCryptoMarketNamePriceModelsObserver = { [weak self] _ in
             guard let self = self else { return }

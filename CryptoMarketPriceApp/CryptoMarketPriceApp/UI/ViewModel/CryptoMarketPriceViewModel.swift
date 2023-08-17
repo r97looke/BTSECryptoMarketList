@@ -8,6 +8,7 @@
 import Foundation
 import CryptoMarketPrice
 import RxSwift
+import RxRelay
 
 final class CryptoMarketPriceViewModel {
     private let cryptoMarketLoader: CryptoMarketLoader
@@ -35,13 +36,7 @@ final class CryptoMarketPriceViewModel {
         }
     }
     
-    var onLoadingStateChange: ((Bool) -> Void)?
-    
-    var isLoading: Bool = false {
-        didSet {
-            onLoadingStateChange?(isLoading)
-        }
-    }
+    let isLoading = PublishRelay<Bool>()
     
     var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
     
@@ -56,7 +51,7 @@ final class CryptoMarketPriceViewModel {
     }
     
     func loadCryptoMarket() {
-        isLoading = true
+        isLoading.accept(true)
         
         cryptoMarketLoader.load { [weak self] result in
             guard let self = self else { return }
@@ -99,7 +94,7 @@ final class CryptoMarketPriceViewModel {
                     self.displayCryptoMarketNamePriceModels = self.futureCryptoMarketNamePriceModels
                 }
                 
-                self.isLoading = false
+                self.isLoading.accept(false)
             }
         }
     }
