@@ -89,8 +89,4 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         viewModel.loadCryptoMarket()
     }
-    
-    @objc private func didChangeSegment() {
-        viewModel.selectedCryptoMarketType = CryptoMarketPriceViewModel.CryptoMarketType(rawValue: segmentedControl.selectedSegmentIndex) ?? .spot
-    }
 }
