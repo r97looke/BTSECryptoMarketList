@@ -1,5 +1,9 @@
 # BTSECryptoMarketList
 
+## Special Note
+
+### The code is development on macOS Ventura, Xcode 14.3.1 and test on iOS 16.4
+
 ## List Crypto Market List Price Feature Specs
 
 ### Story: User request to see the crypto market list and it's price
@@ -75,12 +79,11 @@ Then the app should display the crypto market list and their price
 
 ### Market
 
-|----------|--------|
+
 | property | type   |
 |----------|--------|
 | symbol   | String |
 | future   | Bool   |
-|----------|--------|
  
 
 ### Payload contract
@@ -660,10 +663,6 @@ GET
 
 ### Price
 
-|----------|--------|
-| property | type.  |
-|----------|--------|
-| 
 
 ### Payload contract
 
