@@ -31,10 +31,13 @@ class CryptoMarketNamePriceCell: UITableViewCell {
     }
     
     private func setupView() {
-        contentView.layer.cornerRadius = 8.0
+        backgroundView = nil
+        backgroundColor = .white
+        contentView.backgroundColor = .white
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = .boldSystemFont(ofSize: 20)
+        nameLabel.textColor = .black
         nameLabel.lineBreakMode = .byTruncatingTail
         contentView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
@@ -46,6 +49,7 @@ class CryptoMarketNamePriceCell: UITableViewCell {
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.font = .boldSystemFont(ofSize: 20)
+        priceLabel.textColor = .darkGray
         priceLabel.textAlignment = .right
         priceLabel.lineBreakMode = .byTruncatingTail
         contentView.addSubview(priceLabel)

@@ -36,6 +36,12 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        view.backgroundColor = .white
+        
+        segmentedControl.backgroundColor = .lightGray
+        segmentedControl.selectedSegmentTintColor = .white
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .selected)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.darkGray], for: .normal)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { make in
@@ -44,6 +50,13 @@ final class CryptoMarketPriceViewController: UIViewController {
             make.height.equalTo(40)
         }
         
+        sortButton.backgroundColor = .lightGray
+        sortButton.layer.cornerRadius = 8.0
+        sortButton.layer.borderColor = UIColor.blue.cgColor
+        sortButton.layer.borderWidth = 1.0
+        sortButton.clipsToBounds = true
+        sortButton.setTitleColor(.blue, for: .normal)
+        sortButton.configuration = .bordered()
         sortButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(sortButton)
         sortButton.snp.makeConstraints { make in
@@ -54,7 +67,7 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundView = nil
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .white
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.allowsSelection = false
