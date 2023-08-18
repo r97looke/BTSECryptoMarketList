@@ -44,7 +44,6 @@ final class CryptoMarketPriceViewController: UIViewController {
             make.height.equalTo(40)
         }
         
-        sortButton.setTitle(viewModel.sortType.displayText(), for: .normal)
         sortButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(sortButton)
         sortButton.snp.makeConstraints { make in
@@ -95,14 +94,23 @@ final class CryptoMarketPriceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let selectedCryptoMarketTypeObserver: Binder<CryptoMarketPriceViewModel.CryptoMarketType> = Binder(viewModel) { (viewModel, type) in
-            viewModel.selectedCryptoMarketType = type
+        viewModel.selectedTypeRelay.map { type in
+            return type.rawValue
         }
+        .bind(to: segmentedControl.rx.selectedSegmentIndex)
+        .dispose()
         
-        segmentedControl.rx.selectedSegmentIndex.asObservable().map { CryptoMarketPriceViewModel.CryptoMarketType(rawValue: $0) ?? .spot
-        }.bind(to: selectedCryptoMarketTypeObserver).disposed(by: disposeBag)
+        segmentedControl.rx.selectedSegmentIndex.map { raw in
+            return CryptoMarketPriceViewModel.CryptoMarketType(rawValue: raw)!
+        }
+        .bind(to: viewModel.selectedTypeRelay)
+        .disposed(by: disposeBag)
         
-        segmentedControl.selectedSegmentIndex = viewModel.selectedCryptoMarketType.rawValue
+        viewModel.selectedSortMethodRelay.map { sortMethod in
+            return sortMethod.displayText()
+        }
+        .bind(to: sortButton.rx.title(for: .normal))
+        .dispose()
         
         sortButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.showSortByActionSheet()
@@ -112,13 +120,6 @@ final class CryptoMarketPriceViewController: UIViewController {
         
         viewModel.isLoading.bind(to: loadingView.rx.isAnimating).disposed(by: disposeBag)
         viewModel.isLoading.filter { $0 }.bind(to: emptyLabel.rx.isHidden).disposed(by: disposeBag)
-        
-        viewModel.displayCryptoMarketNamePriceModels.bind(to: tableView.rx.items(cellIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", cellType: CryptoMarketNamePriceCell.self)) { (row, model, cell) in
-            cell.model = model
-        }.disposed(by: disposeBag)
-        
-        viewModel.displayCryptoMarketNamePriceModels.map { !$0.isEmpty }.bind(to: emptyLabel.rx.isHidden ).disposed(by: disposeBag)
-        
         
         NotificationCenter.default.rx.notification(UIApplication.willResignActiveNotification).subscribe(onNext: { [weak self] _ in
             self?.viewModel.stopReceive()
@@ -130,16 +131,23 @@ final class CryptoMarketPriceViewController: UIViewController {
     }
     
     @objc func refresh() {
-        viewModel.loadCryptoMarket()
+        tableView.dataSource = nil
+        tableView.delegate = nil
+        
+        let displayModelsDriver = viewModel.loadCryptoMarket()
+        displayModelsDriver.drive(tableView.rx.items(cellIdentifier: "\(type(of: CryptoMarketNamePriceCell.self))", cellType: CryptoMarketNamePriceCell.self)) { (row, model, cell) in
+            cell.model = model
+        }.disposed(by: disposeBag)
+        displayModelsDriver.map { !$0.isEmpty }.drive(emptyLabel.rx.isHidden).disposed(by: disposeBag)
     }
     
     private func showSortByActionSheet() {
         let alert = UIAlertController(title: "Sort By", message: nil, preferredStyle: .actionSheet)
         
-        for type in CryptoMarketPriceViewModel.CryptoMarketSortType.allCases {
-            let action = UIAlertAction(title: type.displayText(), style: .default) { _ in
-                self.viewModel.sortType = type
-                self.sortButton.rx.title(for: .normal).onNext(type.displayText())
+        for sortMethod in CryptoMarketPriceViewModel.CryptoMarketSortMethod.allCases {
+            let action = UIAlertAction(title: sortMethod.displayText(), style: .default) { _ in
+                self.viewModel.selectedSortMethodRelay.accept(sortMethod)
+                self.sortButton.rx.title(for: .normal).onNext(sortMethod.displayText())
             }
             alert.addAction(action)
         }

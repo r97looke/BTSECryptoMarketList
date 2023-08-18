@@ -9,5 +9,14 @@ import Foundation
 
 struct CryptoMarketNamePriceModel {
     let nameText: String
-    let priceText: String
+    let price: Double?
+    
+    var priceText: String {
+        if let price = price {
+            return "\(price)"
+        }
+        else {
+            return "--"
+        }
+    }
 }

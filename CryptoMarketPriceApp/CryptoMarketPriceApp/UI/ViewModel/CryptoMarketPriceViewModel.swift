@@ -8,35 +8,15 @@
 import Foundation
 import CryptoMarketPrice
 import RxSwift
-import RxRelay
+import RxCocoa
 
 final class CryptoMarketPriceViewModel {
-    private let cryptoMarketLoader: CryptoMarketLoader
-    private let cryptoMarketPricesReceiver: CryptoMarketPricesReceiver
-    
-    init(cryptoMarketLoader: CryptoMarketLoader, cryptoMarketPricesReceiver: CryptoMarketPricesReceiver) {
-        self.cryptoMarketLoader = cryptoMarketLoader
-        self.cryptoMarketPricesReceiver = cryptoMarketPricesReceiver
-        self.cryptoMarketPricesReceiver.delegate = self
-    }
-    
     enum CryptoMarketType: Int {
         case spot = 0
         case future
     }
     
-    var selectedCryptoMarketType: CryptoMarketType = .spot {
-        didSet {
-            if selectedCryptoMarketType == .spot {
-                displayCryptoMarketNamePriceModels.accept(spotCryptoMarketNamePriceModels)
-            }
-            else {
-                displayCryptoMarketNamePriceModels.accept(futureCryptoMarketNamePriceModels)
-            }
-        }
-    }
-    
-    enum CryptoMarketSortType: Int, CaseIterable {
+    enum CryptoMarketSortMethod: Int, CaseIterable {
         case nameAsceding = 0
         case nameDesceding
         case priceAsceding
@@ -59,72 +39,43 @@ final class CryptoMarketPriceViewModel {
         }
     }
     
-    var sortType: CryptoMarketSortType = .nameAsceding {
-        didSet {
-            let type = sortType
-            let sortMethod: (CryptoMarketNamePriceModel, CryptoMarketNamePriceModel) -> Bool = { model1, model2 in
-                switch (type) {
-                case .nameAsceding:
-                    return model1.nameText < model2.nameText
-                    
-                case .nameDesceding:
-                    return model1.nameText > model2.nameText
-                    
-                case .priceAsceding:
-                    if let price1 = Double(model1.priceText), let price2 = Double(model2.priceText) {
-                        return price1 < price2
-                    }
-                    else if Double(model1.priceText) != nil {
-                        return true
-                    }
-                    else if Double(model2.priceText) != nil {
-                        return false
-                    }
-                    else {
-                        return model1.nameText < model2.nameText
-                    }
-                    
-                case .priceDesceding:
-                    if let price1 = Double(model1.priceText), let price2 = Double(model2.priceText) {
-                        return price1 > price2
-                    }
-                    else if Double(model1.priceText) != nil {
-                        return false
-                    }
-                    else if Double(model2.priceText) != nil {
-                        return true
-                    }
-                    else {
-                        return model1.nameText > model2.nameText
-                    }
-                }
-            }
-            
-            let sport = spotCryptoMarketNamePriceModels.sorted(by: sortMethod)
-            let future = futureCryptoMarketNamePriceModels.sorted(by: sortMethod)
-            spotCryptoMarketNamePriceModels = sport
-            futureCryptoMarketNamePriceModels = future
-        }
+    struct SpotFuture {
+        let spot: [CryptoMarketNamePriceModel]
+        let future: [CryptoMarketNamePriceModel]
     }
     
-    private func updateDisplayModels() {
-        if self.selectedCryptoMarketType == .spot {
-            self.displayCryptoMarketNamePriceModels.accept(self.spotCryptoMarketNamePriceModels)
-        }
-        else {
-            self.displayCryptoMarketNamePriceModels.accept(self.futureCryptoMarketNamePriceModels)
-        }
-    }
+    private let cryptoMarketLoader: CryptoMarketLoader
+    private let cryptoMarketPricesReceiver: CryptoMarketPricesReceiver
+    private let disposeBag = DisposeBag()
     
+    // MARK: Inputs
+    let selectedTypeRelay = BehaviorRelay<CryptoMarketType>(value: .spot)
+    let selectedSortMethodRelay = BehaviorRelay<CryptoMarketSortMethod>(value: .nameAsceding)
+    
+    // MARK: Outputs
     let isLoading = PublishRelay<Bool>()
     
-    private var spotCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    // MARK: Internal
+    private let spotFutureRelay = PublishRelay<SpotFuture>()
+    private var spotFutureSubscribeDisposable: Disposable?
+    private var displayModelsDriver: Driver<[CryptoMarketNamePriceModel]>?
     
-    private var futureCryptoMarketNamePriceModels = [CryptoMarketNamePriceModel]()
+    private var spotFuture: SpotFuture = SpotFuture(spot: [], future: [])
     
-    let displayCryptoMarketNamePriceModels = PublishRelay<[CryptoMarketNamePriceModel]>()
+    init(cryptoMarketLoader: CryptoMarketLoader, cryptoMarketPricesReceiver: CryptoMarketPricesReceiver) {
+        self.cryptoMarketLoader = cryptoMarketLoader
+        self.cryptoMarketPricesReceiver = cryptoMarketPricesReceiver
+        self.cryptoMarketPricesReceiver.delegate = self
+    }
     
-    func loadCryptoMarket() {
+    func loadCryptoMarket() -> Driver<[CryptoMarketNamePriceModel]> {
+        if spotFutureSubscribeDisposable == nil {
+            spotFutureSubscribeDisposable = spotFutureRelay.subscribe { [weak self] sportFuture in
+                self?.spotFuture = sportFuture
+            }
+            spotFutureSubscribeDisposable?.disposed(by: disposeBag)
+        }
+        
         isLoading.accept(true)
         
         cryptoMarketLoader.load { [weak self] result in
@@ -143,29 +94,61 @@ final class CryptoMarketPriceViewModel {
             let spot = receivedCryptoMarkets.filter{ !$0.future }.map { market in
                 CryptoMarketNamePriceModel(
                     nameText: market.symbol,
-                    priceText: "--")
-            }.sorted { model1, model2 in
-                model1.nameText < model2.nameText
+                    price: nil)
             }
             
             let future = receivedCryptoMarkets.filter{ $0.future }.map { market in
                 CryptoMarketNamePriceModel(
                     nameText: market.symbol,
-                    priceText: "--")
-            }.sorted { model1, model2 in
-                model1.nameText < model2.nameText
+                    price: nil)
             }
+            
+            let spotFuture = SpotFuture(spot: spot, future: future)
             
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 
-                self.spotCryptoMarketNamePriceModels = spot
-                self.futureCryptoMarketNamePriceModels = future
-                self.updateDisplayModels()
+                self.spotFutureRelay.accept(spotFuture)
                 
                 self.isLoading.accept(false)
             }
         }
+        
+        if displayModelsDriver != nil {
+            return displayModelsDriver!
+        }
+        
+        displayModelsDriver = Observable.combineLatest(selectedTypeRelay, selectedSortMethodRelay, spotFutureRelay) { type, sortMethod, spotFuture in
+            if type == .spot {
+                if sortMethod == .nameDesceding {
+                    return spotFuture.spot.sorted { $0.nameText > $1.nameText }
+                }
+                else if sortMethod == .priceAsceding {
+                    return spotFuture.spot.sorted { ($0.price ?? 0) < ($1.price ?? 0) }
+                }
+                else if sortMethod == .priceDesceding {
+                    return spotFuture.spot.sorted { ($0.price ?? 0) > ($1.price ?? 0) }
+                }
+                else {
+                    return spotFuture.spot.sorted { $0.nameText < $1.nameText }
+                }
+            }
+            else {
+                if sortMethod == .nameDesceding {
+                    return spotFuture.future.sorted { $0.nameText > $1.nameText }
+                }
+                else if sortMethod == .priceAsceding {
+                    return spotFuture.future.sorted { ($0.price ?? 0) < ($1.price ?? 0) }
+                }
+                else if sortMethod == .priceDesceding {
+                    return spotFuture.future.sorted { ($0.price ?? 0) > ($1.price ?? 0) }
+                }
+                else {
+                    return spotFuture.future.sorted { $0.nameText < $1.nameText }
+                }
+            }
+        }.asDriver(onErrorJustReturn: [])
+        return displayModelsDriver!
     }
     
     func startReceive() {
@@ -208,13 +191,14 @@ extension CryptoMarketPriceViewModel: CryptoMarketPricesReceiverDelegate {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
-            let spot = spotCryptoMarketNamePriceModels
-            let future = futureCryptoMarketNamePriceModels
+            let spotFuture = self.spotFuture
+            let spot = spotFuture.spot
+            let future = spotFuture.future
             let updatedSpot = spot.map { model in
                 if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
                     return CryptoMarketNamePriceModel(
                         nameText: model.nameText,
-                        priceText: "\(cryptoMarketPrice.price)")
+                        price: cryptoMarketPrice.price)
                 }
                 else {
                     return model
@@ -225,21 +209,15 @@ extension CryptoMarketPriceViewModel: CryptoMarketPricesReceiverDelegate {
                 if let cryptoMarketPrice = prices["\(model.nameText)_1"] {
                     return CryptoMarketNamePriceModel(
                         nameText: model.nameText,
-                        priceText: "\(cryptoMarketPrice.price)")
+                        price: cryptoMarketPrice.price)
                 }
                 else {
                     return model
                 }
             }
             
-            self.spotCryptoMarketNamePriceModels = updatedSpot
-            self.futureCryptoMarketNamePriceModels = updatedFuture
-            if self.selectedCryptoMarketType == .spot {
-                self.displayCryptoMarketNamePriceModels.accept(self.spotCryptoMarketNamePriceModels)
-            }
-            else if self.selectedCryptoMarketType == .future {
-                self.displayCryptoMarketNamePriceModels.accept(self.futureCryptoMarketNamePriceModels)
-            }
+            let updatedSpotFuture = SpotFuture(spot: updatedSpot, future: updatedFuture)
+            self.spotFutureRelay.accept(updatedSpotFuture)
         }
     }
 }
