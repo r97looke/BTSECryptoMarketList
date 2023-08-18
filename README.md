@@ -2,7 +2,7 @@
 
 ## Special Note
 
-### The code is development on macOS Ventura, Xcode 14.3.1 and test on iOS 16.4
+### The code is development on macOS Ventura, Xcode 14.3.1, CocoaPod 1.12.1 and test on iOS 16.4
 
 ## List Crypto Market List Price Feature Specs
 
