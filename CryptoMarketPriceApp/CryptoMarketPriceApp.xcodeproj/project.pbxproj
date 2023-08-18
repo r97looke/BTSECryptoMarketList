@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6195CD257A7A5E6DF920ECCA /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64120348C1C8FFFC58C7DD20 /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework */; };
+		07B0EC1C22B3D25E832A5AF1 /* Pods_CryptoMarketPriceAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C878FDB83CE337C1D7D7BD /* Pods_CryptoMarketPriceAppUITests.framework */; };
 		7279B0FBCBC5DF7E724C4ED6 /* Pods_CryptoMarketPriceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7109F347DA750E586D32B93 /* Pods_CryptoMarketPriceApp.framework */; };
 		B195B9311BB3B773C62F73A0 /* Pods_CryptoMarketPriceAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC59E4DAC2775B83B4E831E /* Pods_CryptoMarketPriceAppTests.framework */; };
 		BB2DF6FC2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */; };
@@ -58,8 +58,8 @@
 		0CC59E4DAC2775B83B4E831E /* Pods_CryptoMarketPriceAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		299F156C41D5BFF6DCF79A67 /* Pods-CryptoMarketPriceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceApp.release.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceApp/Pods-CryptoMarketPriceApp.release.xcconfig"; sourceTree = "<group>"; };
 		58562A25515A26B457C0D9C7 /* Pods-CryptoMarketPriceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceApp.debug.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceApp/Pods-CryptoMarketPriceApp.debug.xcconfig"; sourceTree = "<group>"; };
-		64120348C1C8FFFC58C7DD20 /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B5AA3BE950BF969BD032A93 /* Pods-CryptoMarketPriceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceAppTests.release.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceAppTests/Pods-CryptoMarketPriceAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		9F5A17F2AF993B741B844A13 /* Pods-CryptoMarketPriceAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceAppUITests.release.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A7109F347DA750E586D32B93 /* Pods_CryptoMarketPriceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2DF6FB2A8CABCF003102D1 /* CryptoMarketPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewModel.swift; sourceTree = "<group>"; };
 		BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoMarketPrice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +77,8 @@
 		BB91CFE12A8CA30F00B4D523 /* CryptoMarketPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMarketPriceViewController.swift; sourceTree = "<group>"; };
 		BD3B67ACC4326717601675CD /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BE9AF5E3A9875C2238366F5A /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C8C878FDB83CE337C1D7D7BD /* Pods_CryptoMarketPriceAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoMarketPriceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6C122DA5775E25FE26E4C9C /* Pods-CryptoMarketPriceAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBBFAE15A6BC0E573B819118 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoMarketPriceAppTests.debug.xcconfig"; path = "Target Support Files/Pods-CryptoMarketPriceAppTests/Pods-CryptoMarketPriceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6195CD257A7A5E6DF920ECCA /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework in Frameworks */,
+				07B0EC1C22B3D25E832A5AF1 /* Pods_CryptoMarketPriceAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +221,8 @@
 				BD3B67ACC4326717601675CD /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig */,
 				DBBFAE15A6BC0E573B819118 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */,
 				9B5AA3BE950BF969BD032A93 /* Pods-CryptoMarketPriceAppTests.release.xcconfig */,
+				D6C122DA5775E25FE26E4C9C /* Pods-CryptoMarketPriceAppUITests.debug.xcconfig */,
+				9F5A17F2AF993B741B844A13 /* Pods-CryptoMarketPriceAppUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -228,8 +232,8 @@
 			children = (
 				BB2DF6FD2A8CAF72003102D1 /* CryptoMarketPrice.framework */,
 				A7109F347DA750E586D32B93 /* Pods_CryptoMarketPriceApp.framework */,
-				64120348C1C8FFFC58C7DD20 /* Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework */,
 				0CC59E4DAC2775B83B4E831E /* Pods_CryptoMarketPriceAppTests.framework */,
+				C8C878FDB83CE337C1D7D7BD /* Pods_CryptoMarketPriceAppUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -284,7 +288,6 @@
 				BB91CFCA2A8CA17200B4D523 /* Sources */,
 				BB91CFCB2A8CA17200B4D523 /* Frameworks */,
 				BB91CFCC2A8CA17200B4D523 /* Resources */,
-				3001061972868E611B240D96 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -405,23 +408,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3001061972868E611B240D96 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5EF3D7E5A8B46370C73EE463 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,7 +445,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CryptoMarketPriceAppUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -734,7 +720,7 @@
 		};
 		BB91CFDF2A8CA17200B4D523 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE9AF5E3A9875C2238366F5A /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig */;
+			baseConfigurationReference = D6C122DA5775E25FE26E4C9C /* Pods-CryptoMarketPriceAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -752,7 +738,7 @@
 		};
 		BB91CFE02A8CA17200B4D523 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD3B67ACC4326717601675CD /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig */;
+			baseConfigurationReference = 9F5A17F2AF993B741B844A13 /* Pods-CryptoMarketPriceAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

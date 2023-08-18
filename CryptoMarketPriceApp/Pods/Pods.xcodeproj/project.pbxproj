@@ -24,7 +24,7 @@
 		0CE8F062E45D7E0C7DCE5BDB8F72FC5D /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35580E1194759EF43AA9B0398A855B3B /* Sequence.swift */; };
 		0CFD1E1525D69CBC9D86DB5E0DA76FE1 /* BooleanDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E3123F43121C33C88FCD4C5D311D02 /* BooleanDisposable.swift */; };
 		0EA071E3F129011E94308A05A2036807 /* CombineLatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D0858EF8619EF1A04FFF73C7DC9ECE /* CombineLatest.swift */; };
-		1087AE9095AF3B6CC56E277F69904687 /* Pods-CryptoMarketPriceApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC524D7241A9441A0F4B155C95B4A0 /* Pods-CryptoMarketPriceApp-dummy.m */; };
+		1087AE9095AF3B6CC56E277F69904687 /* Pods-CryptoMarketPriceApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F6999989C6860DA1ABCF183012ABBD /* Pods-CryptoMarketPriceApp-dummy.m */; };
 		111810B8652D290C58076B92FCE40A1F /* RxPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAADD5021F75490313D0D10C7486F8A2 /* RxPickerViewAdapter.swift */; };
 		111AEBA66CBC38606D7046FC71923E7A /* Disposables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFAF1FC1B325F42A36619FE645E7B53 /* Disposables.swift */; };
 		114F6342633413C8BBEC4169F34CFAFD /* RxTextViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4152A9563E920AC9191D88B9A948ABB /* RxTextViewDelegateProxy.swift */; };
@@ -38,7 +38,6 @@
 		1A0B23119B36D47A2CA557FBFB94CB3B /* Date+Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EECDBBD060FD94F698EB997CB2D12 /* Date+Dispatch.swift */; };
 		1C37F4D283217C4D481AD0A18A562081 /* VirtualTimeScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B76672917F00667D5A483E9F9119 /* VirtualTimeScheduler.swift */; };
 		1CC3FBF38E35B664C2A003664C58E2D7 /* ControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25162C2615655FC80DC6D01ECCDE08F1 /* ControlEvent.swift */; };
-		1D5314B1858101E21055B30B9E7E2E5C /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD9945E7C64AD0FB40401CE16707931 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-dummy.m */; };
 		1E9C828D9839959BEDAC575147FCFC98 /* First.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FD00F1F5F103F7960227DAEEF38BF /* First.swift */; };
 		1E9EEA756F2774D73347F1660EEFE3E9 /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCC5F061148984A5405E757D576A4D9 /* ConstraintView+Extensions.swift */; };
 		1F5109DE0735FC191065F83DB522BC38 /* InvocableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE7212B261A116F2A86ADCCE396929A /* InvocableType.swift */; };
@@ -53,6 +52,7 @@
 		2701E25FB5A9EA572773FD0B3A5CA53E /* ReplayRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59A0E87754421BC72D7F732D1B9A77 /* ReplayRelay.swift */; };
 		274DF0E2BF04F6F4F9F1E70CF513A4F2 /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4407D8631CFDDD5CB68C7AC89BB4373 /* ConstraintLayoutSupportDSL.swift */; };
 		275C15979C1EC7DB6234974758037906 /* PublishRelay+Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58BC232AD7ABF3340F73537F0DEB760 /* PublishRelay+Signal.swift */; };
+		27CB578B7904DEAA192AD7D9AF47AD10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		27F2BE5D6E990841E8DA1DF91CF3623B /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93363FC62275AF083F43558F3E4732F0 /* Signal.swift */; };
 		28B20C35F4E1B3DDE716C831B049ADBC /* _RX.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D126D3819A88AB6DFDF5B957E14905C /* _RX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2987A730911012C32AF6695D7B54E35C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
@@ -63,7 +63,6 @@
 		2EFF6DCB0FC66EB564B96A35840D5016 /* RxTableViewDataSourcePrefetchingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4239D916C8800600608F6ABD29D82803 /* RxTableViewDataSourcePrefetchingProxy.swift */; };
 		2FCCAB4BA1D71EDB993309159D5DFA7C /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678E10B5FCDDC47064B91CCEC0059094 /* RecursiveLock.swift */; };
 		32FADBAE42ADC50817A1CD38B303C07C /* SynchronizedOnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F2A3CB1E8ECBAC25D807FB1BDBA69C /* SynchronizedOnType.swift */; };
-		358F9258F8ABCCD5458F5D94BEE1F3C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		36B5037D0687A0F71BF00145D82E380F /* Deferred.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F31FFF0E13B6C0AF147CBF654CF904 /* Deferred.swift */; };
 		371CD58570B89DE6A3090CC6CE16AEE7 /* UIControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2182A3FA9FAB512969F230F203D055 /* UIControl+Rx.swift */; };
 		377229136C0061FE2FABE71862C2070F /* ItemEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543FCE6FCE0D392CC491A50E0A03802 /* ItemEvents.swift */; };
@@ -79,7 +78,7 @@
 		3CC7D1EC10A08307E43C13A0DFF1F6A0 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932009B61D7E18B5AE654EAECAB0CB71 /* Errors.swift */; };
 		3CD5FAFC746A76D73C3F501734199DFF /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC3811B896A0BA1968D94D25D2E2E5 /* Typealiases.swift */; };
 		3DEDFA52B3A196F6D3E1F0937617628A /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D651EB2EDCD121D49BE61CE573BA3 /* ConstraintLayoutGuide+Extensions.swift */; };
-		3E1C3396660B0BCC7F416094CD6AE76C /* Pods-CryptoMarketPriceAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DA35A39D1697DB20F3457F153E3D7640 /* Pods-CryptoMarketPriceAppTests-dummy.m */; };
+		3E1C3396660B0BCC7F416094CD6AE76C /* Pods-CryptoMarketPriceAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE10541D094B78F0F72CD56CBF8026AC /* Pods-CryptoMarketPriceAppTests-dummy.m */; };
 		3E470D98AE07F6CCC05EAE7CB66F84ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		3E7710221D8C30C0330640B0A9C9F129 /* SerialDispatchQueueScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251AD830A939CD7C96FA6DFA7EB99EC7 /* SerialDispatchQueueScheduler.swift */; };
 		3E85083BCE998008BD50F9F446D92A9A /* RxMutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947DBAF37092343F7CBD58F484C5B22 /* RxMutableBox.swift */; };
@@ -201,7 +200,7 @@
 		99F0ECB6E8B85001EF7F37CB5B18643A /* WithLatestFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1149071E7BF76F3B4FA6F01FCC7C555 /* WithLatestFrom.swift */; };
 		9A151985A3D24023E8B2996BF3EBA2BB /* RxCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = 89A7EFF56870DE4171380302387CB148 /* RxCocoa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9ADE1DD7C6AD8B57FD158350A66EF8D0 /* SharedSequence+Operators+arity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED18DB56B5D5405FABE3D2C33C745AFA /* SharedSequence+Operators+arity.swift */; };
-		9B54096F84BF6295187B8BA073A3BBC6 /* Pods-CryptoMarketPriceAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 758B3C1F91DD2AEF236C5BADC2DB035B /* Pods-CryptoMarketPriceAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B54096F84BF6295187B8BA073A3BBC6 /* Pods-CryptoMarketPriceAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 02416D184B7515733DBE0368C106BB04 /* Pods-CryptoMarketPriceAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B784B1B1EF3E5F1B15FD51A33DFFE79 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D50DCF79B8343F30F2DD2DEA227FD1 /* Scan.swift */; };
 		9CA0DE2E4B825862051DF1DC051F5BCF /* ScheduledDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A061691BB93412B4257DB357D154DD5 /* ScheduledDisposable.swift */; };
 		9E8BA4FB802EDCD492DAF618CA7BFCE8 /* SharedSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4398F1D3EA19A182FC417F05E114 /* SharedSequence.swift */; };
@@ -239,6 +238,7 @@
 		B5A58B35737EA312F15B11A218B4485D /* Do.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009C2963C253D0DCDF010F0FFFA69DC /* Do.swift */; };
 		B5A9B86D79BB4D3408AF0A002300274B /* SchedulerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E79BCF483D7400D5033D8EEFB8A424B /* SchedulerType.swift */; };
 		B5ACECCDD52AF69EBA2E11666BBAEB42 /* RxCollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFA7B9724D6FEEFB9614FB7F78CA030 /* RxCollectionViewDataSourceProxy.swift */; };
+		B6951BBC8456AFA9A5F6BCBC32F297BF /* Pods-CryptoMarketPriceAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 65E3BFACFE4AF04493D9F951A3225591 /* Pods-CryptoMarketPriceAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7BBA94A58846F810677B7985B5777A6 /* MainScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7D1FCE386D0B75299D9AA935861A23 /* MainScheduler.swift */; };
 		BA5658B6C27A81FA4665E507A1ED88DA /* Driver+Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9CD7312D282C901A3BFE0512CDBEC5 /* Driver+Subscription.swift */; };
 		BAA5E59E5E9380C85073DECE028806E7 /* ScheduledItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAD2FA24DBAC0C66F76922134CA330A /* ScheduledItemType.swift */; };
@@ -270,7 +270,7 @@
 		CB8E4BF0D710970BE2CB4C87ED1043E4 /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997FCBDB57B9F5C23F18C657FFFD3530 /* ConstraintMakerRelatable.swift */; };
 		CC970CB1EAA634F5A416A2F753E2C913 /* ConcurrentDispatchQueueScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97227670547F6C06D140A39501041EE /* ConcurrentDispatchQueueScheduler.swift */; };
 		CCA22C9F421C9E8C13009947816D8C82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		CD1087448B75F28C2EF300B4CED1E755 /* Pods-CryptoMarketPriceApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 158E0F7CE4E9D2D2D1B3DB686221A497 /* Pods-CryptoMarketPriceApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD1087448B75F28C2EF300B4CED1E755 /* Pods-CryptoMarketPriceApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C8C695B1AAB4F1F86224EE5E728ADB60 /* Pods-CryptoMarketPriceApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE08483A41A5535019BE5E198792480B /* KVORepresentable+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DFF15AB35B97B895998E577872C7C0 /* KVORepresentable+Swift.swift */; };
 		CEEEBAAAEFA16542C0858FC924640E56 /* ShareReplayScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0BA1A09943682D4B00A6108BB9ACF /* ShareReplayScope.swift */; };
 		CF32140300489AD5D6D5A74E4605FDAF /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC0C40457AFB913C289A7301CC461DF /* DispatchQueue+Extensions.swift */; };
@@ -293,7 +293,6 @@
 		D4BC1E2822F8915C57280A9391A9B7E8 /* Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23728CC481736F39FA82345A2355D0F1 /* Rx.swift */; };
 		D59C2826AD288ECFF576B2AFA312716C /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B72E55ECF5E072AD420D1F14DE7CB9 /* ConstraintRelation.swift */; };
 		D5C4E9A8C9D92E4FD2573EF55BC5432E /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CEBD576631D2B29776794B78C80A07 /* ObservableType.swift */; };
-		D6957BD39CD8A58EC7367464F1FBDDA6 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 40DD8406D75DA51D34DEE8792FAF45D0 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6FDE9DFAC4AA548A9A4E2D6BBCE54FC /* ControlProperty+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AC420EBDA98269A7CE1A6D0E3A67D8 /* ControlProperty+Driver.swift */; };
 		D71172FCA27863632E746A41B66F4352 /* TailRecursiveSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E088DF573ACCF876565A38BE5DCF71DA /* TailRecursiveSink.swift */; };
 		D73D9B306E028D5F736210BF6E945C46 /* PrimitiveSequence+Concurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7FCDD7C49D050A327B96561B77BA52 /* PrimitiveSequence+Concurrency.swift */; };
@@ -320,6 +319,7 @@
 		EE6C364198A763EBBF49237035D86439 /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F80F7207D98148083E44037F22C473D /* ConstraintLayoutGuide.swift */; };
 		EE880DD9E35C067E7992AB9DBA16AE58 /* AsyncLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802D29EC30FCBB3C136EBFD4A67751E9 /* AsyncLock.swift */; };
 		EF6DD06709E5EFD67031FF9B5901A827 /* RxTableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A8E51E195767730ECCC6F182B0CD9 /* RxTableViewDelegateProxy.swift */; };
+		EFCE2A3BFD22C0A6B216C9069DB90877 /* Pods-CryptoMarketPriceAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E1D95B3EAB610A2562C9A9FC64B38 /* Pods-CryptoMarketPriceAppUITests-dummy.m */; };
 		F10586462FB54CEA169A1A7A469A926D /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E527E6001DD1C40AF850A155E6B91B2E /* Debugging.swift */; };
 		F20EC1A6B11F53669AD84E6BB26E5244 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D219D63517CDE8E9D5A96B6193AE47 /* Timer.swift */; };
 		F24D06C23DAB2F52A30C886A7A8177C7 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B0D50D9A5A19F1BD621E51B5E2A6EC /* ConstraintView.swift */; };
@@ -342,19 +342,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0C569703AD9766E8F1C84BC558A45037 /* PBXContainerItemProxy */ = {
+		3C56A70D70ABA4DEB4C2E0347DEA3E86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 19622742EBA51E823D6DAE3F8CDBFAD4;
-			remoteInfo = SnapKit;
-		};
-		4CBEBB9AED4BD9DFFF81479DA50DD5B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4622BFEF3DC16E8BD15EEFC30D4D0084;
-			remoteInfo = RxRelay;
+			remoteGlobalIDString = A453CC861928E8F79FB8812885E804A8;
+			remoteInfo = "Pods-CryptoMarketPriceApp";
 		};
 		4E23C898172653C80796935FD4F2A348 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -391,13 +384,6 @@
 			remoteGlobalIDString = EA9EA43B3B503823EE36C60D9C8A865F;
 			remoteInfo = RxSwift;
 		};
-		B9D0C97A5BFB467F79145F5652E8046C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7AD0C6DCDC9CEC8A3C7C10C7FEE07BE6;
-			remoteInfo = RxCocoa;
-		};
 		D1C51BC9EB89B0B971EE6BFEA21A0060 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -419,23 +405,17 @@
 			remoteGlobalIDString = EA9EA43B3B503823EE36C60D9C8A865F;
 			remoteInfo = RxSwift;
 		};
-		FDE303F89469FEE7CC2FB8E35342ADCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA9EA43B3B503823EE36C60D9C8A865F;
-			remoteInfo = RxSwift;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00FA2BF7819FA17FD10E04FDFB417CD6 /* NSButton+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSButton+Rx.swift"; path = "RxCocoa/macOS/NSButton+Rx.swift"; sourceTree = "<group>"; };
 		0173822CC810126D8DC21DB65DD67365 /* RxTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDataSourceProxy.swift; path = RxCocoa/iOS/Proxies/RxTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		01AC420EBDA98269A7CE1A6D0E3A67D8 /* ControlProperty+Driver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ControlProperty+Driver.swift"; path = "RxCocoa/Traits/Driver/ControlProperty+Driver.swift"; sourceTree = "<group>"; };
+		02416D184B7515733DBE0368C106BB04 /* Pods-CryptoMarketPriceAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CryptoMarketPriceAppTests-umbrella.h"; sourceTree = "<group>"; };
 		0249244E9F13F9D25A43D543F950C1C2 /* RxPickerViewDataSourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxPickerViewDataSourceType.swift; path = RxCocoa/iOS/Protocols/RxPickerViewDataSourceType.swift; sourceTree = "<group>"; };
 		03F586F86847C7C8D8F16DD2066C27C0 /* Bag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bag.swift; path = Platform/DataStructures/Bag.swift; sourceTree = "<group>"; };
-		03FF4EF068FEA91F0F43EB281A762164 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		04ED9478354BCBFFA39A849D733D45E3 /* RxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxSwift.debug.xcconfig; sourceTree = "<group>"; };
+		05245DC96877FBD13B4BC52922CD89C8 /* Pods-CryptoMarketPriceApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CryptoMarketPriceApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0576BBE429F5C49616ADC7FD6969A3A6 /* UIPickerView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIPickerView+Rx.swift"; path = "RxCocoa/iOS/UIPickerView+Rx.swift"; sourceTree = "<group>"; };
 		061ECA2B389E72F318E73129D8FC2B7F /* Infallible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Infallible.swift; path = RxSwift/Traits/Infallible/Infallible.swift; sourceTree = "<group>"; };
 		06917325221524FC7DAA6EC1AE592B8D /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
@@ -443,6 +423,7 @@
 		07329266847613CF6D93A99AA5D4228C /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		076489F9C4816E039F3BDE08E4A38ED0 /* ConstraintDirectionalInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsetTarget.swift; path = Source/ConstraintDirectionalInsetTarget.swift; sourceTree = "<group>"; };
 		07C88D103C8983118B8017BF6216BCD8 /* RxRelay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxRelay.release.xcconfig; sourceTree = "<group>"; };
+		07D12B1828B7B2DC12F8D1CF74A64C20 /* Pods-CryptoMarketPriceAppTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceAppTests-Info.plist"; sourceTree = "<group>"; };
 		087CF845124797E6F6AB8B1E4F8D42ED /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
 		08C0139C9DD57994BCBFBCCBE50F02A9 /* RxRelay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxRelay.debug.xcconfig; sourceTree = "<group>"; };
 		08F773BE3B0FE20D396BEB8C1AAAD964 /* Cancelable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cancelable.swift; path = RxSwift/Cancelable.swift; sourceTree = "<group>"; };
@@ -462,7 +443,7 @@
 		14D219D63517CDE8E9D5A96B6193AE47 /* Timer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timer.swift; path = RxSwift/Observables/Timer.swift; sourceTree = "<group>"; };
 		14D82BD17B6BD0B4B4E4F62D1D67CEC3 /* ControlEvent+Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ControlEvent+Signal.swift"; path = "RxCocoa/Traits/Signal/ControlEvent+Signal.swift"; sourceTree = "<group>"; };
 		152BCA18BCAC204AC0852289B197AEC3 /* Repeat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Repeat.swift; path = RxSwift/Observables/Repeat.swift; sourceTree = "<group>"; };
-		158E0F7CE4E9D2D2D1B3DB686221A497 /* Pods-CryptoMarketPriceApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CryptoMarketPriceApp-umbrella.h"; sourceTree = "<group>"; };
+		1580315A00BB64EAE01A9800031E81F5 /* Pods-CryptoMarketPriceAppUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceAppUITests-Info.plist"; sourceTree = "<group>"; };
 		15969B4491EF9351BD0E74D7A003B4AF /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
 		15F2A3CB1E8ECBAC25D807FB1BDBA69C /* SynchronizedOnType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SynchronizedOnType.swift; path = RxSwift/Concurrency/SynchronizedOnType.swift; sourceTree = "<group>"; };
 		1736A1E6CE1D277D0515974E43FB3601 /* Materialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Materialize.swift; path = RxSwift/Observables/Materialize.swift; sourceTree = "<group>"; };
@@ -492,6 +473,7 @@
 		251AD830A939CD7C96FA6DFA7EB99EC7 /* SerialDispatchQueueScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerialDispatchQueueScheduler.swift; path = RxSwift/Schedulers/SerialDispatchQueueScheduler.swift; sourceTree = "<group>"; };
 		268BE11969DE111D8541A6C665D4F4B7 /* Infallible+Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Infallible+Operators.swift"; path = "RxSwift/Traits/Infallible/Infallible+Operators.swift"; sourceTree = "<group>"; };
 		26D0858EF8619EF1A04FFF73C7DC9ECE /* CombineLatest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombineLatest.swift; path = RxSwift/Observables/CombineLatest.swift; sourceTree = "<group>"; };
+		27E2E087596A9697D6E7C9884B931914 /* Pods-CryptoMarketPriceApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CryptoMarketPriceApp.modulemap"; sourceTree = "<group>"; };
 		28AB4E17C8F36383572972F3154AD2DC /* TakeLast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TakeLast.swift; path = RxSwift/Observables/TakeLast.swift; sourceTree = "<group>"; };
 		28F99FB3F612EB3B79D9EDFA55E3216D /* SnapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.debug.xcconfig; sourceTree = "<group>"; };
 		2A52BCBB71505C164BBED7A37E89F367 /* UITabBar+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITabBar+Rx.swift"; path = "RxCocoa/iOS/UITabBar+Rx.swift"; sourceTree = "<group>"; };
@@ -502,7 +484,7 @@
 		2D246B32CA3F580DDCED7351E391D847 /* Decode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Decode.swift; path = RxSwift/Observables/Decode.swift; sourceTree = "<group>"; };
 		2DAF20DA8718E641786D46144D9F008F /* NSControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSControl+Rx.swift"; path = "RxCocoa/macOS/NSControl+Rx.swift"; sourceTree = "<group>"; };
 		2DBEB8456B67592E8BE9E62C9DBAA30D /* SynchronizedDisposeType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SynchronizedDisposeType.swift; path = RxSwift/Concurrency/SynchronizedDisposeType.swift; sourceTree = "<group>"; };
-		2E6BD1E81B2BC539D474DCC6ED33FD42 /* Pods-CryptoMarketPriceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2DF1C283CD5791B66A0341AACF48073B /* Pods-CryptoMarketPriceAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		2F585E4D1822D5683D174D45306F0E93 /* ControlEvent+Driver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ControlEvent+Driver.swift"; path = "RxCocoa/Traits/Driver/ControlEvent+Driver.swift"; sourceTree = "<group>"; };
 		2FA7879779475F2432BE080C1E25C0E0 /* StartWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StartWith.swift; path = RxSwift/Observables/StartWith.swift; sourceTree = "<group>"; };
 		2FC52EDCD939D7DDD528105E4D812E4F /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
@@ -513,12 +495,14 @@
 		3135D20D93070B5408CAB4A847856C6F /* ObservableConvertibleType+Infallible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableConvertibleType+Infallible.swift"; path = "RxSwift/Traits/Infallible/ObservableConvertibleType+Infallible.swift"; sourceTree = "<group>"; };
 		313B6B8C7B39654BFF07F388E5892F25 /* Reactive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reactive.swift; path = RxSwift/Reactive.swift; sourceTree = "<group>"; };
 		325447E7C1E5043EEF851402B2C60D4E /* SharedSequence+Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SharedSequence+Operators.swift"; path = "RxCocoa/Traits/SharedSequence/SharedSequence+Operators.swift"; sourceTree = "<group>"; };
+		326FBBD090A1B18335C90B58FF6E6A21 /* Pods-CryptoMarketPriceApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceApp-Info.plist"; sourceTree = "<group>"; };
 		35580E1194759EF43AA9B0398A855B3B /* Sequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = RxSwift/Observables/Sequence.swift; sourceTree = "<group>"; };
 		358B9198B4750B6DE34B1F49A93CF08D /* KVORepresentable+CoreGraphics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KVORepresentable+CoreGraphics.swift"; path = "RxCocoa/Foundation/KVORepresentable+CoreGraphics.swift"; sourceTree = "<group>"; };
 		35B7C3D4080C06A1BE1965E753E7714F /* Concat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Concat.swift; path = RxSwift/Observables/Concat.swift; sourceTree = "<group>"; };
 		3654BA735AADB77BA456249FA742B7B3 /* RxSearchControllerDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxSearchControllerDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxSearchControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		36F9CCC6481A08B5BC15ED8EF50C799E /* _RXObjCRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _RXObjCRuntime.h; path = RxCocoa/Runtime/include/_RXObjCRuntime.h; sourceTree = "<group>"; };
 		375174308B96585704CF7737318A800F /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
+		37531FB761FC6C61725FD9082ECB4F08 /* Pods-CryptoMarketPriceAppUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CryptoMarketPriceAppUITests"; path = Pods_CryptoMarketPriceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A0BA1A09943682D4B00A6108BB9ACF /* ShareReplayScope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShareReplayScope.swift; path = RxSwift/Observables/ShareReplayScope.swift; sourceTree = "<group>"; };
 		39B5166AC5F4FDDD9B13A28D45ADADBE /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
 		3A81E910842ACDEEAAD99D6720B3898B /* Observable+Bind.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Observable+Bind.swift"; path = "RxRelay/Observable+Bind.swift"; sourceTree = "<group>"; };
@@ -529,10 +513,8 @@
 		3CBB8922FA9B56CC764EE6630A7F8116 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		3E05B6A496227809D98416957FA04324 /* Platform.Darwin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Darwin.swift; path = Platform/Platform.Darwin.swift; sourceTree = "<group>"; };
 		3E8795F736961DE6ABFF49796CA8A793 /* SerialDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerialDisposable.swift; path = RxSwift/Disposables/SerialDisposable.swift; sourceTree = "<group>"; };
-		3F11EBFE2C390620B3DFF880A07473F4 /* Pods-CryptoMarketPriceAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		3F89E19BDF25EA7227F1B6441636B726 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		3FF99A013626C8B37BA03069B9DE0866 /* SubscriptionDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscriptionDisposable.swift; path = RxSwift/Disposables/SubscriptionDisposable.swift; sourceTree = "<group>"; };
-		40DD8406D75DA51D34DEE8792FAF45D0 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-umbrella.h"; sourceTree = "<group>"; };
 		412A0F6FF70D03DE5C5C6EC388EE27F8 /* RxSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RxSwift-dummy.m"; sourceTree = "<group>"; };
 		4239D916C8800600608F6ABD29D82803 /* RxTableViewDataSourcePrefetchingProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDataSourcePrefetchingProxy.swift; path = RxCocoa/iOS/Proxies/RxTableViewDataSourcePrefetchingProxy.swift; sourceTree = "<group>"; };
 		4245C1EBDEB095BB2FE1307FCD18C5C9 /* _RXDelegateProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _RXDelegateProxy.h; path = RxCocoa/Runtime/include/_RXDelegateProxy.h; sourceTree = "<group>"; };
@@ -548,20 +530,19 @@
 		4AC0C40457AFB913C289A7301CC461DF /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Extensions.swift"; path = "Platform/DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		4B1A1B2AF0BF35EC949256075BB5FB4F /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
 		4B8A4398F1D3EA19A182FC417F05E114 /* SharedSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SharedSequence.swift; path = RxCocoa/Traits/SharedSequence/SharedSequence.swift; sourceTree = "<group>"; };
+		4BB65D7AEA3B364C1E7DF7EAF224EC89 /* Pods-CryptoMarketPriceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		4C7FFE428C547B94B01CC4C09B447C6F /* Pods-CryptoMarketPriceAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CryptoMarketPriceAppUITests.modulemap"; sourceTree = "<group>"; };
 		4D1661565030F15B1F8475992EA662AE /* RxSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RxSwift.modulemap; sourceTree = "<group>"; };
 		4DFA7B9724D6FEEFB9614FB7F78CA030 /* RxCollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxCollectionViewDataSourceProxy.swift; path = RxCocoa/iOS/Proxies/RxCollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
-		4F0103EB38645FED1E9E0793494B6026 /* Pods-CryptoMarketPriceApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		4F1A5DCDB2E5BFFAB2F742525C28A0CC /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+Extensions.swift"; path = "RxSwift/ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		5012CED68B9FBC804A3CDFFABC007ED9 /* Optional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Optional.swift; path = RxSwift/Observables/Optional.swift; sourceTree = "<group>"; };
 		503A8E51E195767730ECCC6F182B0CD9 /* RxTableViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxTableViewDelegateProxy.swift; sourceTree = "<group>"; };
-		503ED90854ADF0D743D85679E113AEFD /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-frameworks.sh"; sourceTree = "<group>"; };
 		514BCFF91FFBA257E6ABD9F9C67A2887 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Extensions.swift"; path = "Platform/DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		54A29BAA8984D7BC07D67818CBAAFDA9 /* RxCocoaRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RxCocoaRuntime.h; path = RxCocoa/Runtime/include/RxCocoaRuntime.h; sourceTree = "<group>"; };
 		559FAF659A0D4F71A4CAC1B9DD6EEE26 /* RxSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxSwift-prefix.pch"; sourceTree = "<group>"; };
 		55CB3250986F39B1D8FE8872A29EF3D6 /* UISearchController+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISearchController+Rx.swift"; path = "RxCocoa/iOS/UISearchController+Rx.swift"; sourceTree = "<group>"; };
 		55FC4A984D640DEFF508A88CE894709A /* _RXKVOObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _RXKVOObserver.h; path = RxCocoa/Runtime/include/_RXKVOObserver.h; sourceTree = "<group>"; };
 		568C9DDEABF6DD969F3982164EC91C49 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
-		57A92A960F5D792F643E098EEB1886C2 /* Pods-CryptoMarketPriceApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CryptoMarketPriceApp-frameworks.sh"; sourceTree = "<group>"; };
 		5853D7E8338CB0366F41DCCE6D7A56C9 /* Observable+Bind.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Observable+Bind.swift"; path = "RxCocoa/Common/Observable+Bind.swift"; sourceTree = "<group>"; };
 		586251106E3ACAE9A6ED75F524BEC250 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = RxSwift/Observables/Error.swift; sourceTree = "<group>"; };
 		58B5801BDDE189ACBBDF74C82B7DE6F2 /* SchedulerServices+Emulation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SchedulerServices+Emulation.swift"; path = "RxSwift/Schedulers/SchedulerServices+Emulation.swift"; sourceTree = "<group>"; };
@@ -574,13 +555,17 @@
 		5D60249A72AA0A6FA7F72E99C70A0E99 /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
 		5E68B98357AE3FFF43F677FEB3D0042B /* Zip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zip.swift; path = RxSwift/Observables/Zip.swift; sourceTree = "<group>"; };
 		5E79BCF483D7400D5033D8EEFB8A424B /* SchedulerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SchedulerType.swift; path = RxSwift/SchedulerType.swift; sourceTree = "<group>"; };
+		5F4884FE86A094BB7BDD0FB200A4999E /* Pods-CryptoMarketPriceApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CryptoMarketPriceApp-frameworks.sh"; sourceTree = "<group>"; };
 		5FC9C3E721FD78532D80D4E9E74BF9B3 /* ControlTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ControlTarget.swift; path = RxCocoa/Common/ControlTarget.swift; sourceTree = "<group>"; };
+		603E0CF9705B2529A3C62244F39C9C09 /* Pods-CryptoMarketPriceAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CryptoMarketPriceAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		603E1D95B3EAB610A2562C9A9FC64B38 /* Pods-CryptoMarketPriceAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CryptoMarketPriceAppUITests-dummy.m"; sourceTree = "<group>"; };
 		6081A630BCD02879AD7E745369341EC5 /* NSObject+Rx+RawRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx+RawRepresentable.swift"; path = "RxCocoa/Foundation/NSObject+Rx+RawRepresentable.swift"; sourceTree = "<group>"; };
 		609DEA09529B475D731982DFCC94F4F3 /* UITabBarController+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITabBarController+Rx.swift"; path = "RxCocoa/iOS/UITabBarController+Rx.swift"; sourceTree = "<group>"; };
 		610D6A1EB44C6EEDAF95B788BDCC3540 /* Just.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Just.swift; path = RxSwift/Observables/Just.swift; sourceTree = "<group>"; };
 		61CD787976A99F25DE6BF5A3624A63E6 /* Debug.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = RxSwift/Observables/Debug.swift; sourceTree = "<group>"; };
 		6320E3BD1A36C4C7B3CDC39D9A7533A7 /* HistoricalScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoricalScheduler.swift; path = RxSwift/Schedulers/HistoricalScheduler.swift; sourceTree = "<group>"; };
-		64B1A3E0EBF7A6A006B064AF161383C2 /* Pods-CryptoMarketPriceApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CryptoMarketPriceApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6580254AB3B54AC62718D7D8D22964B2 /* Pods-CryptoMarketPriceAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		65E3BFACFE4AF04493D9F951A3225591 /* Pods-CryptoMarketPriceAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CryptoMarketPriceAppUITests-umbrella.h"; sourceTree = "<group>"; };
 		67208E7E61F2B7D4F737CD1937DBB5B3 /* PriorityQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PriorityQueue.swift; path = Platform/DataStructures/PriorityQueue.swift; sourceTree = "<group>"; };
 		678E10B5FCDDC47064B91CCEC0059094 /* RecursiveLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecursiveLock.swift; path = Platform/RecursiveLock.swift; sourceTree = "<group>"; };
 		695B33FF1C98D17EF98D84782C608804 /* ElementAt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementAt.swift; path = RxSwift/Observables/ElementAt.swift; sourceTree = "<group>"; };
@@ -596,12 +581,12 @@
 		7050552941C558847A565F907326B25D /* RxTableViewReactiveArrayDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewReactiveArrayDataSource.swift; path = RxCocoa/iOS/DataSources/RxTableViewReactiveArrayDataSource.swift; sourceTree = "<group>"; };
 		713C7E7687D2EF9D871CF224C9C66B34 /* Bag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bag.swift; path = Platform/DataStructures/Bag.swift; sourceTree = "<group>"; };
 		71DA0EF1E546969DFC8777E4FF1D42D9 /* Bag+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bag+Rx.swift"; path = "RxSwift/Extensions/Bag+Rx.swift"; sourceTree = "<group>"; };
+		7239E8923408980E6B517E9B12EDECA4 /* Pods-CryptoMarketPriceAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7289114D0A0B4498020EE3096C73AFC4 /* DelegateProxyType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DelegateProxyType.swift; path = RxCocoa/Common/DelegateProxyType.swift; sourceTree = "<group>"; };
 		72B0D50D9A5A19F1BD621E51B5E2A6EC /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
 		72D50DCF79B8343F30F2DD2DEA227FD1 /* Scan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scan.swift; path = RxSwift/Observables/Scan.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		746199CAF9DD015E3B05DB4E977314B4 /* RxCocoa-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RxCocoa-dummy.m"; sourceTree = "<group>"; };
-		758B3C1F91DD2AEF236C5BADC2DB035B /* Pods-CryptoMarketPriceAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CryptoMarketPriceAppTests-umbrella.h"; sourceTree = "<group>"; };
 		75A063C2307E2DCCA9070582E64FB938 /* Merge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Merge.swift; path = RxSwift/Observables/Merge.swift; sourceTree = "<group>"; };
 		76FCBF557147D4390118DFF9413ACBEF /* Signal+Subscription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Signal+Subscription.swift"; path = "RxCocoa/Traits/Signal/Signal+Subscription.swift"; sourceTree = "<group>"; };
 		77EBBD7F8ABA047DD7F3A3BDA5064220 /* NSObject+Rx+KVORepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx+KVORepresentable.swift"; path = "RxCocoa/Foundation/NSObject+Rx+KVORepresentable.swift"; sourceTree = "<group>"; };
@@ -610,7 +595,6 @@
 		79332B3F9E6723D4532BE5A2621C63B2 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		79685177105FB3B699C506A52D3FEA01 /* RxWKNavigationDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxWKNavigationDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxWKNavigationDelegateProxy.swift; sourceTree = "<group>"; };
 		796F9BAC6A0773CAC398A3E02579C5ED /* NSTextField+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSTextField+Rx.swift"; path = "RxCocoa/macOS/NSTextField+Rx.swift"; sourceTree = "<group>"; };
-		7AF873ED15A9D94E8FADAA99F327C514 /* Pods-CryptoMarketPriceApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceApp-Info.plist"; sourceTree = "<group>"; };
 		7BDE0C4629865B385B573CBD292338EE /* Catch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Catch.swift; path = RxSwift/Observables/Catch.swift; sourceTree = "<group>"; };
 		7C74DCC5B1B2A188E7F5684B0733C284 /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
 		7EAA1875D3E7EEC45B762770A77E5756 /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxRelay/PublishRelay.swift; sourceTree = "<group>"; };
@@ -623,11 +607,9 @@
 		849E157F8A58E8D04F479A6FFF6E0BF5 /* DistinctUntilChanged.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DistinctUntilChanged.swift; path = RxSwift/Observables/DistinctUntilChanged.swift; sourceTree = "<group>"; };
 		84DC3811B896A0BA1968D94D25D2E2E5 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		852F3E6B6C4BD2E25C54B08A88E19841 /* ObserverType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserverType.swift; path = RxSwift/ObserverType.swift; sourceTree = "<group>"; };
-		855E9D74E56CEF91667E8DBBDEB50125 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		856A3DECBB762FE1B1A9DF46DDF60B0D /* Debounce.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debounce.swift; path = RxSwift/Observables/Debounce.swift; sourceTree = "<group>"; };
-		85F1CC85FA8A14332CB50E4A46F64A72 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8696EE13DD450DB70B6CAD5952A70436 /* DispatchQueueConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DispatchQueueConfiguration.swift; path = RxSwift/Schedulers/Internal/DispatchQueueConfiguration.swift; sourceTree = "<group>"; };
-		87487D0F30EAC99B53DFE89D25D7C7F1 /* Pods-CryptoMarketPriceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceApp.release.xcconfig"; sourceTree = "<group>"; };
+		8700D214D8E74960F2220EF1CAD36C9D /* Pods-CryptoMarketPriceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceApp.release.xcconfig"; sourceTree = "<group>"; };
 		89A7EFF56870DE4171380302387CB148 /* RxCocoa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RxCocoa.h; path = RxCocoa/RxCocoa.h; sourceTree = "<group>"; };
 		89D4614CC235B6061693D7B1831E5675 /* ObserveOn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserveOn.swift; path = RxSwift/Observables/ObserveOn.swift; sourceTree = "<group>"; };
 		8BB9CD4E0B7949041EEE690032ED360F /* RxSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxSwift-umbrella.h"; sourceTree = "<group>"; };
@@ -639,13 +621,14 @@
 		8E06153CC523762245B30DED2AEF4DA6 /* NopDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NopDisposable.swift; path = RxSwift/Disposables/NopDisposable.swift; sourceTree = "<group>"; };
 		8EDC2E5D308FED0B49B1C6917BF2783A /* RxTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTarget.swift; path = RxCocoa/Common/RxTarget.swift; sourceTree = "<group>"; };
 		900D200763940B15A024BAEEE90AEA52 /* SchedulerType+SharedSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SchedulerType+SharedSequence.swift"; path = "RxCocoa/Traits/SharedSequence/SchedulerType+SharedSequence.swift"; sourceTree = "<group>"; };
+		910B69DAF3BC01780C8C430BB933DC3E /* Pods-CryptoMarketPriceAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		913E168832798666DB880E45F8DA86FC /* Queue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Platform/DataStructures/Queue.swift; sourceTree = "<group>"; };
 		932009B61D7E18B5AE654EAECAB0CB71 /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = RxSwift/Errors.swift; sourceTree = "<group>"; };
 		93363FC62275AF083F43558F3E4732F0 /* Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = RxCocoa/Traits/Signal/Signal.swift; sourceTree = "<group>"; };
-		934447630EBEFE2291641BABE36F02F0 /* Pods-CryptoMarketPriceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		9527A8CFC71E110FEB224472C26923CD /* BehaviorRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BehaviorRelay.swift; path = RxRelay/BehaviorRelay.swift; sourceTree = "<group>"; };
 		952F965E25BBFB2EB1CF3FAF99A796DB /* InvocableScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableScheduledItem.swift; path = RxSwift/Schedulers/Internal/InvocableScheduledItem.swift; sourceTree = "<group>"; };
 		9554826D165948A287E2AED35A0E3019 /* CombineLatest+Collection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CombineLatest+Collection.swift"; path = "RxSwift/Observables/CombineLatest+Collection.swift"; sourceTree = "<group>"; };
+		95EE5677FBDCCBE53DC45664271EB7F9 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		96B03F5E669BAD3E300F3BB577FF1B20 /* UINavigationController+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UINavigationController+Rx.swift"; path = "RxCocoa/iOS/UINavigationController+Rx.swift"; sourceTree = "<group>"; };
 		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		984EBACC94B6B7C69222AA38C2ACACD4 /* RxRelay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxRelay-prefix.pch"; sourceTree = "<group>"; };
@@ -657,7 +640,6 @@
 		9AC9FA721B700E45525298488D0A5173 /* Zip+Collection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Zip+Collection.swift"; path = "RxSwift/Observables/Zip+Collection.swift"; sourceTree = "<group>"; };
 		9AFD1963F2682289275B25C0890BBD12 /* ReplaySubject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaySubject.swift; path = RxSwift/Subjects/ReplaySubject.swift; sourceTree = "<group>"; };
 		9C286E22B582EDB3EA774EA236B3B70E /* TextInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextInput.swift; path = RxCocoa/Common/TextInput.swift; sourceTree = "<group>"; };
-		9CC54421D7F5D2BDD239957A39DD2E8D /* Pods-CryptoMarketPriceAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CryptoMarketPriceAppTests.modulemap"; sourceTree = "<group>"; };
 		9D82C90E200C38937D2240A4FD464B06 /* Sink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sink.swift; path = RxSwift/Observables/Sink.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DFAF1FC1B325F42A36619FE645E7B53 /* Disposables.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposables.swift; path = RxSwift/Disposables/Disposables.swift; sourceTree = "<group>"; };
@@ -685,8 +667,6 @@
 		ADC5FF7B0F139B9E03D25273FB90502E /* Generate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Generate.swift; path = RxSwift/Observables/Generate.swift; sourceTree = "<group>"; };
 		AEC11A17A2663EAFD3D9488C269D06B3 /* ImmediateSchedulerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImmediateSchedulerType.swift; path = RxSwift/ImmediateSchedulerType.swift; sourceTree = "<group>"; };
 		AEC28B0C55AF3C90F21E032CFBB1C4CE /* Create.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Create.swift; path = RxSwift/Observables/Create.swift; sourceTree = "<group>"; };
-		AF8A75C714191812345836A78A9BDD02 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-Info.plist"; sourceTree = "<group>"; };
-		AFE405442E25B53AF5755BDCC9E8DE1B /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests"; path = Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE7212B261A116F2A86ADCCE396929A /* InvocableType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableType.swift; path = RxSwift/Schedulers/Internal/InvocableType.swift; sourceTree = "<group>"; };
 		B03DE5A970045F4627F84288D3D55E64 /* _RX.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RX.m; path = RxCocoa/Runtime/_RX.m; sourceTree = "<group>"; };
 		B10EC5A62B148A38DF6A477868F588F0 /* Sample.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sample.swift; path = RxSwift/Observables/Sample.swift; sourceTree = "<group>"; };
@@ -696,7 +676,6 @@
 		B3F31FFF0E13B6C0AF147CBF654CF904 /* Deferred.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deferred.swift; path = RxSwift/Observables/Deferred.swift; sourceTree = "<group>"; };
 		B4407D8631CFDDD5CB68C7AC89BB4373 /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
 		B552A9D183D9AE9742B87E79EED68D1A /* RxPickerViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxPickerViewDataSourceProxy.swift; path = RxCocoa/iOS/Proxies/RxPickerViewDataSourceProxy.swift; sourceTree = "<group>"; };
-		B55BE99B1AE8FBA0DCFD7C86B7B75AB4 /* Pods-CryptoMarketPriceAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CryptoMarketPriceAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B56AA8DC1E28769E01217237139EEB7F /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = RxSwift/SwiftSupport/SwiftSupport.swift; sourceTree = "<group>"; };
 		B583AE00DD44C6C847275E87015556E4 /* UIApplication+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIApplication+Rx.swift"; path = "RxCocoa/iOS/UIApplication+Rx.swift"; sourceTree = "<group>"; };
 		B621581FB2E7A12E9025DE4576133EC1 /* Skip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Skip.swift; path = RxSwift/Observables/Skip.swift; sourceTree = "<group>"; };
@@ -710,21 +689,19 @@
 		BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD45AB88A11E955AFD30AB38D2918A3E /* TakeWithPredicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TakeWithPredicate.swift; path = RxSwift/Observables/TakeWithPredicate.swift; sourceTree = "<group>"; };
 		BE5CCA2636D0EE23707C1CCEA9CA756F /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
-		BEAC524D7241A9441A0F4B155C95B4A0 /* Pods-CryptoMarketPriceApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CryptoMarketPriceApp-dummy.m"; sourceTree = "<group>"; };
 		BF15B44A6AD871F45C5F20CDD79987E9 /* NSSlider+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSSlider+Rx.swift"; path = "RxCocoa/macOS/NSSlider+Rx.swift"; sourceTree = "<group>"; };
-		C074071BB8AA2E0F30F243B163C9ABF0 /* Pods-CryptoMarketPriceAppTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceAppTests-Info.plist"; sourceTree = "<group>"; };
+		C300BF6CEFC78CFD3B00D95B63C5A725 /* Pods-CryptoMarketPriceAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CryptoMarketPriceAppTests.modulemap"; sourceTree = "<group>"; };
 		C58BC232AD7ABF3340F73537F0DEB760 /* PublishRelay+Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PublishRelay+Signal.swift"; path = "RxCocoa/Traits/Signal/PublishRelay+Signal.swift"; sourceTree = "<group>"; };
 		C65BEC5FF768671BC1763FE27AC5A1C4 /* RxTabBarControllerDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTabBarControllerDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxTabBarControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		C6A7FBE1A058CC5701EFF79D9B5AC326 /* AnonymousDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnonymousDisposable.swift; path = RxSwift/Disposables/AnonymousDisposable.swift; sourceTree = "<group>"; };
 		C6DFF15AB35B97B895998E577872C7C0 /* KVORepresentable+Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KVORepresentable+Swift.swift"; path = "RxCocoa/Foundation/KVORepresentable+Swift.swift"; sourceTree = "<group>"; };
 		C6E85BE194806B1B0D2513343A371383 /* SkipUntil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkipUntil.swift; path = RxSwift/Observables/SkipUntil.swift; sourceTree = "<group>"; };
 		C7A5BFE416EC79D29F19E2B887590AC4 /* Completable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Completable.swift; path = RxSwift/Traits/PrimitiveSequence/Completable.swift; sourceTree = "<group>"; };
+		C8C695B1AAB4F1F86224EE5E728ADB60 /* Pods-CryptoMarketPriceApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CryptoMarketPriceApp-umbrella.h"; sourceTree = "<group>"; };
 		C9DC961B30E5A78950DE9379E42F49F8 /* RxRelay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxRelay-umbrella.h"; sourceTree = "<group>"; };
 		CA3C4DB7AC9C0BDDACE99FDF0D6CFBC4 /* Infallible+Concurrency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Infallible+Concurrency.swift"; path = "RxSwift/Traits/Infallible/Infallible+Concurrency.swift"; sourceTree = "<group>"; };
-		CA751AB92E5F6ACFC2C520651D722139 /* Pods-CryptoMarketPriceApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CryptoMarketPriceApp.modulemap"; sourceTree = "<group>"; };
 		CAAF7CCA9D291B1D0224D69B792D7274 /* URLSession+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSession+Rx.swift"; path = "RxCocoa/Foundation/URLSession+Rx.swift"; sourceTree = "<group>"; };
 		CACFA9A0BB5E721729140CB82B224B6E /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
-		CCD9945E7C64AD0FB40401CE16707931 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-dummy.m"; sourceTree = "<group>"; };
 		CD4B9A50E4C8C566D66242BB4401759B /* UIBarButtonItem+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIBarButtonItem+Rx.swift"; path = "RxCocoa/iOS/UIBarButtonItem+Rx.swift"; sourceTree = "<group>"; };
 		CE59A0E87754421BC72D7F732D1B9A77 /* ReplayRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplayRelay.swift; path = RxRelay/ReplayRelay.swift; sourceTree = "<group>"; };
 		CE9CCC8B1C8171B465C8BBF51D2B3140 /* UIGestureRecognizer+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIGestureRecognizer+Rx.swift"; path = "RxCocoa/iOS/UIGestureRecognizer+Rx.swift"; sourceTree = "<group>"; };
@@ -733,17 +710,19 @@
 		D168445555B0D0D7ADDE939D89B0EA40 /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
 		D16AD298C1A12A5F384BADD9565BBD1A /* Infallible+Create.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Infallible+Create.swift"; path = "RxSwift/Traits/Infallible/Infallible+Create.swift"; sourceTree = "<group>"; };
 		D2668EAF7FB97A4DFC9E4BC91DCD0FB5 /* RxCollectionViewDataSourcePrefetchingProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxCollectionViewDataSourcePrefetchingProxy.swift; path = RxCocoa/iOS/Proxies/RxCollectionViewDataSourcePrefetchingProxy.swift; sourceTree = "<group>"; };
+		D2F6999989C6860DA1ABCF183012ABBD /* Pods-CryptoMarketPriceApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CryptoMarketPriceApp-dummy.m"; sourceTree = "<group>"; };
 		D6A892ECBF8D9E789F0D32D20D23B938 /* GroupBy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupBy.swift; path = RxSwift/Observables/GroupBy.swift; sourceTree = "<group>"; };
 		D7C2E357494689742A0A15063A37DDFD /* RxCollectionViewDataSourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxCollectionViewDataSourceType.swift; path = RxCocoa/iOS/Protocols/RxCollectionViewDataSourceType.swift; sourceTree = "<group>"; };
 		D8E71402DD13EC5F6A3C4C498F107E4F /* Switch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Switch.swift; path = RxSwift/Observables/Switch.swift; sourceTree = "<group>"; };
 		D947DBAF37092343F7CBD58F484C5B22 /* RxMutableBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxMutableBox.swift; path = RxSwift/RxMutableBox.swift; sourceTree = "<group>"; };
 		D97227670547F6C06D140A39501041EE /* ConcurrentDispatchQueueScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConcurrentDispatchQueueScheduler.swift; path = RxSwift/Schedulers/ConcurrentDispatchQueueScheduler.swift; sourceTree = "<group>"; };
 		D998B76672917F00667D5A483E9F9119 /* VirtualTimeScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VirtualTimeScheduler.swift; path = RxSwift/Schedulers/VirtualTimeScheduler.swift; sourceTree = "<group>"; };
-		DA35A39D1697DB20F3457F153E3D7640 /* Pods-CryptoMarketPriceAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CryptoMarketPriceAppTests-dummy.m"; sourceTree = "<group>"; };
 		DA68D83BD2070F6D093FB788E634A787 /* AnonymousObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnonymousObserver.swift; path = RxSwift/Observers/AnonymousObserver.swift; sourceTree = "<group>"; };
 		DABEE7A8350E78D80AD5B295E5B18390 /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
 		DBEF9B5EE4337069A8B51AD93EB50A5A /* AsMaybe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsMaybe.swift; path = RxSwift/Observables/AsMaybe.swift; sourceTree = "<group>"; };
 		DC78548899BC72D289F6CE42AAEC71DE /* DefaultIfEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultIfEmpty.swift; path = RxSwift/Observables/DefaultIfEmpty.swift; sourceTree = "<group>"; };
+		DE10541D094B78F0F72CD56CBF8026AC /* Pods-CryptoMarketPriceAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CryptoMarketPriceAppTests-dummy.m"; sourceTree = "<group>"; };
+		DE145F58CDF57C716570694C6A85F2BD /* Pods-CryptoMarketPriceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		DE5CEE45FCAF7F1775A0BBFC611DD621 /* PrimitiveSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrimitiveSequence.swift; path = RxSwift/Traits/PrimitiveSequence/PrimitiveSequence.swift; sourceTree = "<group>"; };
 		DF3F551D9A3266F97BC4D834D6DAE632 /* InfiniteSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InfiniteSequence.swift; path = Platform/DataStructures/InfiniteSequence.swift; sourceTree = "<group>"; };
 		DF412CB5C0AC446DD75BF0DA3CE4F6B9 /* RxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxSwift.release.xcconfig; sourceTree = "<group>"; };
@@ -756,7 +735,6 @@
 		E120D17104F81C2F470C1CBE6FE4E615 /* SectionedViewDataSourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SectionedViewDataSourceType.swift; path = RxCocoa/Common/SectionedViewDataSourceType.swift; sourceTree = "<group>"; };
 		E1336BED7F486678B4CA9997C362A721 /* NSObject+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx.swift"; path = "RxCocoa/Foundation/NSObject+Rx.swift"; sourceTree = "<group>"; };
 		E14F5391FA1129568C91CC8AC922E910 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
-		E16BB75B9C9B0878A3262006039B900F /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.modulemap"; sourceTree = "<group>"; };
 		E4E5461AC7F8B189688E291B55DE3E54 /* Amb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Amb.swift; path = RxSwift/Observables/Amb.swift; sourceTree = "<group>"; };
 		E527E6001DD1C40AF850A155E6B91B2E /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
 		E553D353E42D51DE399EC9A227EEAA5F /* Pods-CryptoMarketPriceApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CryptoMarketPriceApp"; path = Pods_CryptoMarketPriceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -768,18 +746,18 @@
 		EBBDBB548C4BAC6750305B1F2C781499 /* UIRefreshControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIRefreshControl+Rx.swift"; path = "RxCocoa/iOS/UIRefreshControl+Rx.swift"; sourceTree = "<group>"; };
 		EC2DBFF271BC0A9BD869C75F09AB13D6 /* RxCocoa-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxCocoa-prefix.pch"; sourceTree = "<group>"; };
 		ED087E57C8C135A04226EECF72286C3F /* RxCocoa.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxCocoa.swift; path = RxCocoa/RxCocoa.swift; sourceTree = "<group>"; };
+		ED185D71757B3F464C9CDAFB5DB07BC0 /* Pods-CryptoMarketPriceAppUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CryptoMarketPriceAppUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		ED18DB56B5D5405FABE3D2C33C745AFA /* SharedSequence+Operators+arity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SharedSequence+Operators+arity.swift"; path = "RxCocoa/Traits/SharedSequence/SharedSequence+Operators+arity.swift"; sourceTree = "<group>"; };
 		ED8C1F7F74ED277A6FBD15979A6E3989 /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
 		EE4D64FEDE1D0ECF04870802FE056290 /* AsyncSubject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncSubject.swift; path = RxSwift/Subjects/AsyncSubject.swift; sourceTree = "<group>"; };
+		EE9F05737BD07C74DDAE4080D9137683 /* Pods-CryptoMarketPriceApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		EEA45AAFDD877D7A65AF2C5DFFD49BD3 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		EECA09D255F5C8E25FF6F5E212800879 /* ObservableConvertibleType+SharedSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableConvertibleType+SharedSequence.swift"; path = "RxCocoa/Traits/SharedSequence/ObservableConvertibleType+SharedSequence.swift"; sourceTree = "<group>"; };
 		EF2C86281C1A0B87F96159E582D83AD5 /* CompactMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompactMap.swift; path = RxSwift/Observables/CompactMap.swift; sourceTree = "<group>"; };
-		EF4FBCC8F0A9AE23F5308A98283B0DB9 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EFCC5F061148984A5405E757D576A4D9 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		F0C0D6BEFE062A245AD7C20F549ED150 /* Observable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = RxSwift/Observable.swift; sourceTree = "<group>"; };
 		F10EECB4CF398556A47FF6375052C78A /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		F1149071E7BF76F3B4FA6F01FCC7C555 /* WithLatestFrom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WithLatestFrom.swift; path = RxSwift/Observables/WithLatestFrom.swift; sourceTree = "<group>"; };
-		F2A8D9BB48ED509641BFD70F4FFC7475 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3125A70D08986C7CD7C6C4F40C3C2F6 /* Infallible+Zip+arity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Infallible+Zip+arity.swift"; path = "RxSwift/Traits/Infallible/Infallible+Zip+arity.swift"; sourceTree = "<group>"; };
 		F40FE9EF1992560C46B70DD17D7781E1 /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = RxSwift/Observables/Window.swift; sourceTree = "<group>"; };
 		F4152A9563E920AC9191D88B9A948ABB /* RxTextViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTextViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxTextViewDelegateProxy.swift; sourceTree = "<group>"; };
@@ -830,14 +808,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		79DAB572B4DEAF1099A7D201F5F8A0D0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				358F9258F8ABCCD5458F5D94BEE1F3C3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9B30433E568C40FCE04D5188A9715448 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -859,6 +829,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2987A730911012C32AF6695D7B54E35C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6407B0850B910CDF6DF868FD8FA51BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27CB578B7904DEAA192AD7D9AF47AD10 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1059,20 +1037,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3F8ADD7512D5D9A81FDF2CAABA4CBE51 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E553D353E42D51DE399EC9A227EEAA5F /* Pods-CryptoMarketPriceApp */,
-				AFE405442E25B53AF5755BDCC9E8DE1B /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests */,
-				FD2A8F8F1F89EBE2D4A5E0D066248CFF /* Pods-CryptoMarketPriceAppTests */,
-				BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa.framework */,
-				FF8B264DFE802855D5D67E7CDDABFC3C /* RxRelay.framework */,
-				809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */,
-				979486118B3E90C08386079D57962701 /* SnapKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1125,33 +1089,6 @@
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
-		5CBEE25767F8AE92998D89DC87A8A9F7 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E16BB75B9C9B0878A3262006039B900F /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.modulemap */,
-				03FF4EF068FEA91F0F43EB281A762164 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-acknowledgements.markdown */,
-				EF4FBCC8F0A9AE23F5308A98283B0DB9 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-acknowledgements.plist */,
-				CCD9945E7C64AD0FB40401CE16707931 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-dummy.m */,
-				503ED90854ADF0D743D85679E113AEFD /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-frameworks.sh */,
-				AF8A75C714191812345836A78A9BDD02 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-Info.plist */,
-				40DD8406D75DA51D34DEE8792FAF45D0 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-umbrella.h */,
-				F2A8D9BB48ED509641BFD70F4FFC7475 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig */,
-				855E9D74E56CEF91667E8DBBDEB50125 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig */,
-			);
-			name = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests";
-			path = "Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests";
-			sourceTree = "<group>";
-		};
-		5F1039DB4241CCCB1442AC106173C280 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B1AD97E69F25FD82D7F9DB2585399796 /* Pods-CryptoMarketPriceApp */,
-				5CBEE25767F8AE92998D89DC87A8A9F7 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests */,
-				941DF73E5448363C50AECDB112E3A203 /* Pods-CryptoMarketPriceAppTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		69E449B7A82200C948732A8CDEBE3300 /* RxRelay */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,17 +1117,17 @@
 			path = "../Target Support Files/SnapKit";
 			sourceTree = "<group>";
 		};
-		941DF73E5448363C50AECDB112E3A203 /* Pods-CryptoMarketPriceAppTests */ = {
+		A6437949FF0D795E4E0FA7F080324EE9 /* Pods-CryptoMarketPriceAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				9CC54421D7F5D2BDD239957A39DD2E8D /* Pods-CryptoMarketPriceAppTests.modulemap */,
-				B55BE99B1AE8FBA0DCFD7C86B7B75AB4 /* Pods-CryptoMarketPriceAppTests-acknowledgements.markdown */,
-				3F11EBFE2C390620B3DFF880A07473F4 /* Pods-CryptoMarketPriceAppTests-acknowledgements.plist */,
-				DA35A39D1697DB20F3457F153E3D7640 /* Pods-CryptoMarketPriceAppTests-dummy.m */,
-				C074071BB8AA2E0F30F243B163C9ABF0 /* Pods-CryptoMarketPriceAppTests-Info.plist */,
-				758B3C1F91DD2AEF236C5BADC2DB035B /* Pods-CryptoMarketPriceAppTests-umbrella.h */,
-				85F1CC85FA8A14332CB50E4A46F64A72 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */,
-				934447630EBEFE2291641BABE36F02F0 /* Pods-CryptoMarketPriceAppTests.release.xcconfig */,
+				C300BF6CEFC78CFD3B00D95B63C5A725 /* Pods-CryptoMarketPriceAppTests.modulemap */,
+				603E0CF9705B2529A3C62244F39C9C09 /* Pods-CryptoMarketPriceAppTests-acknowledgements.markdown */,
+				6580254AB3B54AC62718D7D8D22964B2 /* Pods-CryptoMarketPriceAppTests-acknowledgements.plist */,
+				DE10541D094B78F0F72CD56CBF8026AC /* Pods-CryptoMarketPriceAppTests-dummy.m */,
+				07D12B1828B7B2DC12F8D1CF74A64C20 /* Pods-CryptoMarketPriceAppTests-Info.plist */,
+				02416D184B7515733DBE0368C106BB04 /* Pods-CryptoMarketPriceAppTests-umbrella.h */,
+				95EE5677FBDCCBE53DC45664271EB7F9 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */,
+				DE145F58CDF57C716570694C6A85F2BD /* Pods-CryptoMarketPriceAppTests.release.xcconfig */,
 			);
 			name = "Pods-CryptoMarketPriceAppTests";
 			path = "Target Support Files/Pods-CryptoMarketPriceAppTests";
@@ -1226,21 +1163,18 @@
 			path = "../Target Support Files/RxRelay";
 			sourceTree = "<group>";
 		};
-		B1AD97E69F25FD82D7F9DB2585399796 /* Pods-CryptoMarketPriceApp */ = {
+		BBCC8088FD4D1092CB663C095A42E403 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA751AB92E5F6ACFC2C520651D722139 /* Pods-CryptoMarketPriceApp.modulemap */,
-				64B1A3E0EBF7A6A006B064AF161383C2 /* Pods-CryptoMarketPriceApp-acknowledgements.markdown */,
-				4F0103EB38645FED1E9E0793494B6026 /* Pods-CryptoMarketPriceApp-acknowledgements.plist */,
-				BEAC524D7241A9441A0F4B155C95B4A0 /* Pods-CryptoMarketPriceApp-dummy.m */,
-				57A92A960F5D792F643E098EEB1886C2 /* Pods-CryptoMarketPriceApp-frameworks.sh */,
-				7AF873ED15A9D94E8FADAA99F327C514 /* Pods-CryptoMarketPriceApp-Info.plist */,
-				158E0F7CE4E9D2D2D1B3DB686221A497 /* Pods-CryptoMarketPriceApp-umbrella.h */,
-				2E6BD1E81B2BC539D474DCC6ED33FD42 /* Pods-CryptoMarketPriceApp.debug.xcconfig */,
-				87487D0F30EAC99B53DFE89D25D7C7F1 /* Pods-CryptoMarketPriceApp.release.xcconfig */,
+				E553D353E42D51DE399EC9A227EEAA5F /* Pods-CryptoMarketPriceApp */,
+				FD2A8F8F1F89EBE2D4A5E0D066248CFF /* Pods-CryptoMarketPriceAppTests */,
+				37531FB761FC6C61725FD9082ECB4F08 /* Pods-CryptoMarketPriceAppUITests */,
+				BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa.framework */,
+				FF8B264DFE802855D5D67E7CDDABFC3C /* RxRelay.framework */,
+				809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */,
+				979486118B3E90C08386079D57962701 /* SnapKit.framework */,
 			);
-			name = "Pods-CryptoMarketPriceApp";
-			path = "Target Support Files/Pods-CryptoMarketPriceApp";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -1249,8 +1183,8 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				3DD0476D21C52E1CB18BA397E954B3B3 /* Pods */,
-				3F8ADD7512D5D9A81FDF2CAABA4CBE51 /* Products */,
-				5F1039DB4241CCCB1442AC106173C280 /* Targets Support Files */,
+				BBCC8088FD4D1092CB663C095A42E403 /* Products */,
+				E7A1432487CFD84ECACD01EDB4F8D7EC /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1380,6 +1314,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E7A1432487CFD84ECACD01EDB4F8D7EC /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEE48EB8B5613E3C120D906846EE497D /* Pods-CryptoMarketPriceApp */,
+				A6437949FF0D795E4E0FA7F080324EE9 /* Pods-CryptoMarketPriceAppTests */,
+				F7CE8C564D41B9066FCA331C9A017AFA /* Pods-CryptoMarketPriceAppUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		EEE48EB8B5613E3C120D906846EE497D /* Pods-CryptoMarketPriceApp */ = {
+			isa = PBXGroup;
+			children = (
+				27E2E087596A9697D6E7C9884B931914 /* Pods-CryptoMarketPriceApp.modulemap */,
+				05245DC96877FBD13B4BC52922CD89C8 /* Pods-CryptoMarketPriceApp-acknowledgements.markdown */,
+				EE9F05737BD07C74DDAE4080D9137683 /* Pods-CryptoMarketPriceApp-acknowledgements.plist */,
+				D2F6999989C6860DA1ABCF183012ABBD /* Pods-CryptoMarketPriceApp-dummy.m */,
+				5F4884FE86A094BB7BDD0FB200A4999E /* Pods-CryptoMarketPriceApp-frameworks.sh */,
+				326FBBD090A1B18335C90B58FF6E6A21 /* Pods-CryptoMarketPriceApp-Info.plist */,
+				C8C695B1AAB4F1F86224EE5E728ADB60 /* Pods-CryptoMarketPriceApp-umbrella.h */,
+				4BB65D7AEA3B364C1E7DF7EAF224EC89 /* Pods-CryptoMarketPriceApp.debug.xcconfig */,
+				8700D214D8E74960F2220EF1CAD36C9D /* Pods-CryptoMarketPriceApp.release.xcconfig */,
+			);
+			name = "Pods-CryptoMarketPriceApp";
+			path = "Target Support Files/Pods-CryptoMarketPriceApp";
+			sourceTree = "<group>";
+		};
+		F7CE8C564D41B9066FCA331C9A017AFA /* Pods-CryptoMarketPriceAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4C7FFE428C547B94B01CC4C09B447C6F /* Pods-CryptoMarketPriceAppUITests.modulemap */,
+				ED185D71757B3F464C9CDAFB5DB07BC0 /* Pods-CryptoMarketPriceAppUITests-acknowledgements.markdown */,
+				2DF1C283CD5791B66A0341AACF48073B /* Pods-CryptoMarketPriceAppUITests-acknowledgements.plist */,
+				603E1D95B3EAB610A2562C9A9FC64B38 /* Pods-CryptoMarketPriceAppUITests-dummy.m */,
+				1580315A00BB64EAE01A9800031E81F5 /* Pods-CryptoMarketPriceAppUITests-Info.plist */,
+				65E3BFACFE4AF04493D9F951A3225591 /* Pods-CryptoMarketPriceAppUITests-umbrella.h */,
+				7239E8923408980E6B517E9B12EDECA4 /* Pods-CryptoMarketPriceAppUITests.debug.xcconfig */,
+				910B69DAF3BC01780C8C430BB933DC3E /* Pods-CryptoMarketPriceAppUITests.release.xcconfig */,
+			);
+			name = "Pods-CryptoMarketPriceAppUITests";
+			path = "Target Support Files/Pods-CryptoMarketPriceAppUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1413,6 +1390,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23D1F90D3324B98DA89AC442078AD245 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6951BBC8456AFA9A5F6BCBC32F297BF /* Pods-CryptoMarketPriceAppUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B921547E999920F44EBD58F955423CC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1426,14 +1411,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1087448B75F28C2EF300B4CED1E755 /* Pods-CryptoMarketPriceApp-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D2A09CF922389EAFA7803B260A363C0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D6957BD39CD8A58EC7367464F1FBDDA6 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1546,26 +1523,23 @@
 			productReference = E553D353E42D51DE399EC9A227EEAA5F /* Pods-CryptoMarketPriceApp */;
 			productType = "com.apple.product-type.framework";
 		};
-		B5E70AF7DCAA06BFCFC99C2AD9E6B5EB /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests */ = {
+		E7F272BECBAE78F6468340F545018A0F /* Pods-CryptoMarketPriceAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E5DC8C4F0760EA278596DDB5E058FF47 /* Build configuration list for PBXNativeTarget "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests" */;
+			buildConfigurationList = DBD6AED1F7F9C272BE1EC584B8AC0F94 /* Build configuration list for PBXNativeTarget "Pods-CryptoMarketPriceAppUITests" */;
 			buildPhases = (
-				8D2A09CF922389EAFA7803B260A363C0 /* Headers */,
-				9811AD4AA6D8EA26EFBF385BFE350A9C /* Sources */,
-				79DAB572B4DEAF1099A7D201F5F8A0D0 /* Frameworks */,
-				57D6E2E1C779C345B1388088064085D6 /* Resources */,
+				23D1F90D3324B98DA89AC442078AD245 /* Headers */,
+				C1548E454D5CC1A8DF7A864538B76A83 /* Sources */,
+				F6407B0850B910CDF6DF868FD8FA51BC /* Frameworks */,
+				0E63DAB505A51AB0D81D02AD91460D52 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				303B4C575C281EAB9907FFB565DE17A6 /* PBXTargetDependency */,
-				4FE4B962F85AC14B423C400B52F5E8EB /* PBXTargetDependency */,
-				C8DA65B2BCC499D0259B01211EF17E06 /* PBXTargetDependency */,
-				7CFC6F7C4B1566A7B8049C68288964D6 /* PBXTargetDependency */,
+				59117788B619C7519DB6C37E8D26222A /* PBXTargetDependency */,
 			);
-			name = "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests";
-			productName = Pods_CryptoMarketPriceApp_CryptoMarketPriceAppUITests;
-			productReference = AFE405442E25B53AF5755BDCC9E8DE1B /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests */;
+			name = "Pods-CryptoMarketPriceAppUITests";
+			productName = Pods_CryptoMarketPriceAppUITests;
+			productReference = 37531FB761FC6C61725FD9082ECB4F08 /* Pods-CryptoMarketPriceAppUITests */;
 			productType = "com.apple.product-type.framework";
 		};
 		EA9EA43B3B503823EE36C60D9C8A865F /* RxSwift */ = {
@@ -1604,13 +1578,13 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 3F8ADD7512D5D9A81FDF2CAABA4CBE51 /* Products */;
+			productRefGroup = BBCC8088FD4D1092CB663C095A42E403 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A453CC861928E8F79FB8812885E804A8 /* Pods-CryptoMarketPriceApp */,
-				B5E70AF7DCAA06BFCFC99C2AD9E6B5EB /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests */,
 				6FEF12E43156260D3A865EE81D091A40 /* Pods-CryptoMarketPriceAppTests */,
+				E7F272BECBAE78F6468340F545018A0F /* Pods-CryptoMarketPriceAppUITests */,
 				7AD0C6DCDC9CEC8A3C7C10C7FEE07BE6 /* RxCocoa */,
 				4622BFEF3DC16E8BD15EEFC30D4D0084 /* RxRelay */,
 				EA9EA43B3B503823EE36C60D9C8A865F /* RxSwift */,
@@ -1620,6 +1594,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0E63DAB505A51AB0D81D02AD91460D52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CC5B498E78582A6C670372E47C4D825 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1628,13 +1609,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		52A5EE0BDB260C8CCE03B0D62BA9C798 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		57D6E2E1C779C345B1388088064085D6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1841,14 +1815,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9811AD4AA6D8EA26EFBF385BFE350A9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1D5314B1858101E21055B30B9E7E2E5C /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BA51E6D93F2C2EAF7B4E81711322B7FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1862,6 +1828,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E1C3396660B0BCC7F416094CD6AE76C /* Pods-CryptoMarketPriceAppTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1548E454D5CC1A8DF7A864538B76A83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFCE2A3BFD22C0A6B216C9069DB90877 /* Pods-CryptoMarketPriceAppUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2048,17 +2022,11 @@
 			target = 7AD0C6DCDC9CEC8A3C7C10C7FEE07BE6 /* RxCocoa */;
 			targetProxy = 4E23C898172653C80796935FD4F2A348 /* PBXContainerItemProxy */;
 		};
-		303B4C575C281EAB9907FFB565DE17A6 /* PBXTargetDependency */ = {
+		59117788B619C7519DB6C37E8D26222A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = RxCocoa;
-			target = 7AD0C6DCDC9CEC8A3C7C10C7FEE07BE6 /* RxCocoa */;
-			targetProxy = B9D0C97A5BFB467F79145F5652E8046C /* PBXContainerItemProxy */;
-		};
-		4FE4B962F85AC14B423C400B52F5E8EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RxRelay;
-			target = 4622BFEF3DC16E8BD15EEFC30D4D0084 /* RxRelay */;
-			targetProxy = 4CBEBB9AED4BD9DFFF81479DA50DD5B1 /* PBXContainerItemProxy */;
+			name = "Pods-CryptoMarketPriceApp";
+			target = A453CC861928E8F79FB8812885E804A8 /* Pods-CryptoMarketPriceApp */;
+			targetProxy = 3C56A70D70ABA4DEB4C2E0347DEA3E86 /* PBXContainerItemProxy */;
 		};
 		59AEC185465775EAA25ADE80D242E079 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2077,18 +2045,6 @@
 			name = RxSwift;
 			target = EA9EA43B3B503823EE36C60D9C8A865F /* RxSwift */;
 			targetProxy = 6983F37F53E156EE536D2ED2B50593A5 /* PBXContainerItemProxy */;
-		};
-		7CFC6F7C4B1566A7B8049C68288964D6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SnapKit;
-			target = 19622742EBA51E823D6DAE3F8CDBFAD4 /* SnapKit */;
-			targetProxy = 0C569703AD9766E8F1C84BC558A45037 /* PBXContainerItemProxy */;
-		};
-		C8DA65B2BCC499D0259B01211EF17E06 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RxSwift;
-			target = EA9EA43B3B503823EE36C60D9C8A865F /* RxSwift */;
-			targetProxy = FDE303F89469FEE7CC2FB8E35342ADCB /* PBXContainerItemProxy */;
 		};
 		D956DB922EEFDBC703D5730BC01974B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2111,9 +2067,9 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		3388BC5A4925C194EDE8190538EADCE5 /* Debug */ = {
+		02025537C55808AFEA70E23B2B4D1CEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2A8D9BB48ED509641BFD70F4FFC7475 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.debug.xcconfig */;
+			baseConfigurationReference = 7239E8923408980E6B517E9B12EDECA4 /* Pods-CryptoMarketPriceAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2125,7 +2081,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceAppUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2134,7 +2090,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceAppUITests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -2320,7 +2276,7 @@
 		};
 		858914F9184F4FC6FFD44CDE5B0A2EE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85F1CC85FA8A14332CB50E4A46F64A72 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */;
+			baseConfigurationReference = 95EE5677FBDCCBE53DC45664271EB7F9 /* Pods-CryptoMarketPriceAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2357,7 +2313,7 @@
 		};
 		BA58696AB4AC25524FEA5B0692388C04 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E6BD1E81B2BC539D474DCC6ED33FD42 /* Pods-CryptoMarketPriceApp.debug.xcconfig */;
+			baseConfigurationReference = 4BB65D7AEA3B364C1E7DF7EAF224EC89 /* Pods-CryptoMarketPriceApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2462,7 +2418,7 @@
 		};
 		C48CB9C81DADCA16040B31DC137E7C48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87487D0F30EAC99B53DFE89D25D7C7F1 /* Pods-CryptoMarketPriceApp.release.xcconfig */;
+			baseConfigurationReference = 8700D214D8E74960F2220EF1CAD36C9D /* Pods-CryptoMarketPriceApp.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2533,6 +2489,44 @@
 			};
 			name = Debug;
 		};
+		CDAC67F63BD5E6A6DA500B6023FD6B85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 910B69DAF3BC01780C8C430BB933DC3E /* Pods-CryptoMarketPriceAppUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceAppUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceAppUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		DFFD31690F9CC8449FD1F803388E1D46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DABEE7A8350E78D80AD5B295E5B18390 /* SnapKit.release.xcconfig */;
@@ -2569,47 +2563,9 @@
 			};
 			name = Release;
 		};
-		F601F7D067B717FF386BB06CD06CB7D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 855E9D74E56CEF91667E8DBBDEB50125 /* Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests/Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		FC372B7A8A9B7BC82986768962280F3A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 934447630EBEFE2291641BABE36F02F0 /* Pods-CryptoMarketPriceAppTests.release.xcconfig */;
+			baseConfigurationReference = DE145F58CDF57C716570694C6A85F2BD /* Pods-CryptoMarketPriceAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2772,6 +2728,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		DBD6AED1F7F9C272BE1EC584B8AC0F94 /* Build configuration list for PBXNativeTarget "Pods-CryptoMarketPriceAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02025537C55808AFEA70E23B2B4D1CEF /* Debug */,
+				CDAC67F63BD5E6A6DA500B6023FD6B85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E090725C727DF3A07493C4B7D77415C5 /* Build configuration list for PBXNativeTarget "Pods-CryptoMarketPriceAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2786,15 +2751,6 @@
 			buildConfigurations = (
 				42E231129ECFFB5592788B8D25609C06 /* Debug */,
 				43EB84177D239693DD660BCFF0BCFB79 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E5DC8C4F0760EA278596DDB5E058FF47 /* Build configuration list for PBXNativeTarget "Pods-CryptoMarketPriceApp-CryptoMarketPriceAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3388BC5A4925C194EDE8190538EADCE5 /* Debug */,
-				F601F7D067B717FF386BB06CD06CB7D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
