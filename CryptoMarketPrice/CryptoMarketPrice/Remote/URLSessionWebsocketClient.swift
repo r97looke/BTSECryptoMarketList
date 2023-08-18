@@ -35,7 +35,7 @@ public final class URLSessionWebsocketClient: NSObject, WebsocketClient {
         task?.send(.data(data)) { [weak self] error in
             guard let self = self else { return }
             
-            if let error = error {
+            if error != nil {
                 self.delegate?.websocketSendError()
             }
             else {
@@ -48,7 +48,7 @@ public final class URLSessionWebsocketClient: NSObject, WebsocketClient {
         task?.send(.string(string)) { [weak self] error in
             guard let self = self else { return }
             
-            if let error = error {
+            if error != nil {
                 self.delegate?.websocketSendError()
             }
             else {
@@ -69,7 +69,7 @@ public final class URLSessionWebsocketClient: NSObject, WebsocketClient {
                 self.delegate?.websocketReceive(string: receivedString)
                 break
                 
-            case let .failure(receivedError):
+            case .failure:
                 self.delegate?.websocketReceiveError()
                 
             default:
